@@ -1021,7 +1021,7 @@ document.addEventListener('keydown', e => {
 // ── GitHub stars social proof ──
 (function fetchGitHubStars() {
   fetch('https://api.github.com/repos/elkimek/get-based')
-    .then(r => r.json())
+    .then(r => { if (!r.ok) return {}; return r.json(); })
     .then(data => {
       const stars = data.stargazers_count;
       if (!stars || stars <= 0) return;
