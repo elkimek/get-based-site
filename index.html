@@ -312,7 +312,6 @@ section{position:relative;z-index:1;padding:120px 32px}
 .support-card p{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px}
 .support-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity 0.2s;margin-top:auto}
 .support-btn:hover{opacity:0.85}
-.btcpay-form{margin:0;padding:0;margin-top:auto}
 .donate-btn{background:#f7931a;color:#fff;border:none;cursor:pointer;font-family:inherit}
 .contribute-btn{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
 .share-btn{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
@@ -851,15 +850,10 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         </div>
         <h3>Donate</h3>
         <p>Support development with Bitcoin over Lightning. No middlemen, no fees, no accounts.</p>
-        <!-- TODO: Replace YOURSERVER and STORE_ID with your BTCPay Server instance -->
-        <form method="POST" action="https://YOURSERVER.com/api/v1/invoices" class="btcpay-form" onsubmit="onBTCPayFormSubmit(event)">
-          <input type="hidden" name="storeId" value="STORE_ID">
-          <input type="hidden" name="currency" value="BTC">
-          <button type="submit" class="support-btn donate-btn">
+        <a href="https://hydranode.org/btcpay/api/v1/invoices?storeId=BfxZicwEaRcJvJnkBPHdzGuCAonAhwLBb5vbWfjT2ZR1&checkoutDesc=Donate%20to%20getbased.health&price=&currency=USD" class="support-btn donate-btn" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.525.362 9.105 1.962 2.67 8.475-1.243 14.9.358c6.43 1.605 10.342 8.115 8.738 14.546z"/><path d="M17.2 10.56c.24-1.6-.98-2.46-2.64-3.03l.54-2.16-1.32-.33-.52 2.1c-.35-.09-.7-.17-1.06-.25l.53-2.12-1.32-.33-.54 2.16c-.29-.07-.57-.13-.85-.2l-1.82-.45-.35 1.4s.98.22.96.24c.54.13.63.49.62.78l-.62 2.5c.04.01.08.02.13.04l-.13-.03-.87 3.5c-.07.16-.23.41-.6.32.01.02-.96-.24-.96-.24l-.66 1.5 1.72.43c.32.08.63.16.94.24l-.54 2.18 1.32.33.54-2.17c.36.1.71.19 1.05.28l-.54 2.15 1.32.33.54-2.17c2.24.42 3.93.25 4.64-1.77.57-1.63-.03-2.57-1.2-3.18.86-.2 1.5-.76 1.67-1.93zm-2.99 4.2c-.4 1.63-3.13.75-4.02.53l.72-2.88c.88.22 3.73.66 3.3 2.35zm.41-4.22c-.37 1.48-2.64.73-3.38.54l.65-2.61c.73.18 3.12.53 2.73 2.07z" fill="var(--bg)"/></svg>
             Donate with Bitcoin
-          </button>
-        </form>
+          </a>
       </div>
       <div class="support-card reveal reveal-delay-3">
         <div class="support-icon">
@@ -1076,19 +1070,6 @@ document.addEventListener('keydown', e => {
   statEls.forEach(el => countObserver.observe(el));
 })();
 
-// BTCPay Server pay button — loads modal script on demand
-function onBTCPayFormSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const action = form.getAttribute('action');
-  if (action.includes('YOURSERVER')) { alert('BTCPay Server not configured yet. Replace YOURSERVER and STORE_ID in site.html.'); return; }
-  if (!window.btcpay) {
-    const s = document.createElement('script');
-    s.src = action.replace('/api/v1/invoices', '/modal/btcpay.js');
-    s.onload = function() { form.submit(); };
-    document.head.appendChild(s);
-  } else { form.submit(); }
-}
 // Local dev: rewrite absolute app/docs links to relative paths
 if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
   document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health','/app')});
