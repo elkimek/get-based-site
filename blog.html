@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You — Get Based</title>
-<meta name="description" content="Thank you for supporting Get Based. Your donation keeps the project free, open source, and independent.">
-<meta property="og:title" content="Thank You — Get Based">
-<meta property="og:description" content="Thank you for supporting Get Based.">
+<title>Blog — Get Based</title>
+<meta name="description" content="Stories and insights from building Get Based — an open-source blood work dashboard.">
+<meta property="og:title" content="Blog — Get Based">
+<meta property="og:description" content="Stories and insights from building Get Based — an open-source blood work dashboard.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://getbased.health/thank-you">
+<meta property="og:url" content="https://getbased.health/blog">
 <meta property="og:image" content="https://getbased.health/icon-512.png">
-<link rel="canonical" href="https://getbased.health/thank-you">
+<link rel="canonical" href="https://getbased.health/blog">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
@@ -59,7 +59,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;
 nav.scrolled{padding:12px 32px;background:var(--nav-bg-scrolled)}
 .nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;
   background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
-.nav-logo span{-webkit-text-fill-color:var(--text)}
 .nav-right{display:flex;align-items:center;gap:16px}
 .nav-right a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
 .nav-right a:hover{color:var(--text)}
@@ -73,44 +72,66 @@ nav.scrolled{padding:12px 32px;background:var(--nav-bg-scrolled)}
 [data-theme="light"] .theme-icon-sun{display:none}
 [data-theme="light"] .theme-icon-moon{display:block}
 
-/* ═══ MAIN CONTENT ═══ */
-.thank-you-main{flex:1;display:flex;align-items:center;justify-content:center;
-  position:relative;z-index:1;padding:120px 32px 80px;text-align:center}
-.thank-you-content{display:flex;flex-direction:column;align-items:center;max-width:560px}
+/* ═══ BLOG LAYOUT ═══ */
+.blog-main{flex:1;position:relative;z-index:1;padding:120px 32px 80px}
+.blog-container{max-width:720px;margin:0 auto}
 
-/* ── Checkmark icon ── */
-.check-icon{width:96px;height:96px;border-radius:50%;
-  background:rgba(52,211,153,0.12);border:2px solid rgba(52,211,153,0.25);
-  display:flex;align-items:center;justify-content:center;margin-bottom:32px;
-  box-shadow:0 0 40px rgba(52,211,153,0.15),0 0 80px rgba(52,211,153,0.08);
-  animation:checkPop 0.6s cubic-bezier(0.16,1,0.3,1) both}
-.check-icon svg{color:var(--green)}
-@keyframes checkPop{0%{transform:scale(0.5);opacity:0}100%{transform:scale(1);opacity:1}}
-
-/* ── Typography ── */
-.thank-you-content h1{font-family:'Outfit',sans-serif;font-weight:900;
-  font-size:clamp(40px,7vw,64px);letter-spacing:-2px;line-height:1.1;margin-bottom:16px;
+/* ── Blog header ── */
+.blog-header{margin-bottom:48px}
+.blog-header h1{font-family:'Outfit',sans-serif;font-weight:900;
+  font-size:clamp(32px,5vw,48px);letter-spacing:-1.5px;line-height:1.1;margin-bottom:8px;
   background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.thank-you-content p{font-size:clamp(16px,2vw,19px);color:var(--text2);line-height:1.7;margin-bottom:40px;max-width:480px}
+.blog-header p{font-size:16px;color:var(--text2)}
 
-/* ── Buttons ── */
-.thank-you-actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;
-  background:var(--gradient2);color:#fff;border:none;border-radius:12px;
-  font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;
-  transition:all 0.25s;box-shadow:0 4px 24px rgba(79,140,255,0.25)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,140,255,0.4)}
-.btn-secondary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;
-  background:var(--surface2);color:var(--text);border:1px solid var(--border2);border-radius:12px;
-  font-family:'Inter',sans-serif;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;
-  transition:all 0.25s}
-.btn-secondary:hover{background:var(--surface2);border-color:var(--border2);transform:translateY(-1px)}
+/* ── Post list ── */
+.post-list{display:flex;flex-direction:column;gap:24px}
+.post-card{display:block;padding:28px;border:1px solid var(--border);border-radius:16px;
+  background:var(--surface);text-decoration:none;color:var(--text);
+  transition:border-color 0.25s,transform 0.25s,box-shadow 0.25s}
+.post-card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:var(--glow)}
+.post-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.post-card h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;
+  letter-spacing:-0.5px;margin-bottom:8px;line-height:1.3}
+.post-card p{font-size:15px;color:var(--text2);line-height:1.6}
 
-/* ═══ ANIMATIONS ═══ */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
-.reveal-delay-3{transition-delay:0.3s}
+/* ── Article view ── */
+.blog-back{display:inline-flex;align-items:center;gap:6px;color:var(--text2);
+  text-decoration:none;font-size:14px;font-weight:500;margin-bottom:32px;transition:color 0.2s}
+.blog-back:hover{color:var(--text)}
+
+.article{line-height:1.8}
+.article h1{font-family:'Outfit',sans-serif;font-weight:900;
+  font-size:clamp(28px,5vw,42px);letter-spacing:-1.5px;line-height:1.15;margin-bottom:8px}
+.article h2{font-family:'Outfit',sans-serif;font-weight:700;
+  font-size:clamp(22px,3vw,28px);letter-spacing:-0.5px;margin:48px 0 16px;line-height:1.2}
+.article h3{font-family:'Outfit',sans-serif;font-weight:600;
+  font-size:clamp(18px,2.5vw,22px);margin:32px 0 12px;line-height:1.3}
+.article p{font-size:16px;color:var(--text2);margin-bottom:20px}
+.article p:first-of-type{font-size:17px;color:var(--text)}
+.article strong{color:var(--text);font-weight:600}
+.article em{color:var(--text2);font-style:italic}
+.article a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(79,140,255,0.3);transition:border-color 0.2s}
+.article a:hover{border-color:var(--blue)}
+.article ul,.article ol{margin:0 0 20px 24px;color:var(--text2)}
+.article li{margin-bottom:6px;font-size:15px}
+.article li strong{color:var(--text)}
+.article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.article blockquote{border-left:3px solid var(--indigo);padding:12px 20px;margin:24px 0;
+  background:rgba(99,102,241,0.05);border-radius:0 8px 8px 0}
+.article blockquote p{color:var(--text2);margin-bottom:0;font-size:15px;font-style:italic}
+.article code{font-family:'JetBrains Mono',monospace;font-size:14px;
+  background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--blue)}
+.article pre{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+  padding:20px;margin:24px 0;overflow-x:auto}
+.article pre code{background:none;padding:0;font-size:13px;color:var(--text);line-height:1.7}
+.article img{max-width:100%;border-radius:12px;margin:24px 0}
+
+/* ── Loading / Error ── */
+.blog-loading{text-align:center;padding:80px 0;color:var(--text3);font-size:15px}
+.blog-error{text-align:center;padding:80px 0}
+.blog-error h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:24px;margin-bottom:8px}
+.blog-error p{color:var(--text2);font-size:15px;margin-bottom:24px}
 
 /* ═══ FOOTER ═══ */
 footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-index:1}
@@ -138,8 +159,6 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 [data-theme="light"] ::selection{color:var(--text)}
 [data-theme="light"] .bg-glow{opacity:0.5}
 [data-theme="light"] .bg-noise{opacity:0.12}
-[data-theme="light"] .check-icon{background:rgba(5,150,105,0.1);border-color:rgba(5,150,105,0.25);
-  box-shadow:0 0 40px rgba(5,150,105,0.1),0 0 80px rgba(5,150,105,0.05)}
 @media(prefers-color-scheme:light){
   :root:not([data-theme]){
     --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;--bg4:#e8ebf5;
@@ -156,8 +175,6 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   :root:not([data-theme]) ::selection{color:#1a1d27}
   :root:not([data-theme]) .bg-glow{opacity:0.5}
   :root:not([data-theme]) .bg-noise{opacity:0.12}
-  :root:not([data-theme]) .check-icon{background:rgba(5,150,105,0.1);border-color:rgba(5,150,105,0.25);
-    box-shadow:0 0 40px rgba(5,150,105,0.1),0 0 80px rgba(5,150,105,0.05)}
   :root:not([data-theme]) .theme-icon-sun{display:none}
   :root:not([data-theme]) .theme-icon-moon{display:block}
 }
@@ -165,20 +182,18 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:768px){
   nav{padding:14px 20px}nav.scrolled{padding:10px 20px}
-  .thank-you-main{padding:100px 24px 60px}
-  .check-icon{width:80px;height:80px;margin-bottom:24px}
-  .check-icon svg{width:36px;height:36px}
+  .blog-main{padding:100px 24px 60px}
+  .post-card{padding:20px}
   .footer-inner{flex-direction:column;gap:24px;text-align:center}
   .footer-links{flex-wrap:wrap;justify-content:center}
 }
 @media(max-width:480px){
-  .thank-you-actions{flex-direction:column;width:100%}
-  .btn-primary,.btn-secondary{width:100%;justify-content:center}
+  .blog-main{padding:90px 16px 48px}
+  .post-card{padding:16px}
+  .article h1{margin-bottom:4px}
   .bg-grid,.bg-glow,.bg-noise{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  .check-icon{animation:none}
-  .reveal{transition:none;opacity:1;transform:none}
   .bg-glow{animation:none}
 }
 </style>
@@ -199,7 +214,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="https://getbased.health" class="nav-logo">Get <span>Based</span></a>
+  <a href="https://getbased.health" class="nav-logo">getbased</a>
   <div class="nav-right">
     <a href="https://getbased.health">Back to site</a>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -210,17 +225,9 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 </nav>
 
 <!-- MAIN CONTENT -->
-<main class="thank-you-main">
-  <div class="thank-you-content">
-    <div class="check-icon reveal">
-      <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <h1 class="reveal reveal-delay-1">Thank you!</h1>
-    <p class="reveal reveal-delay-2">Your support keeps Get Based free, open source, and independent. Every sat goes directly toward development and hosting.</p>
-    <div class="thank-you-actions reveal reveal-delay-3">
-      <a href="https://getbased.health" class="btn-primary">&larr; Back to site</a>
-      <a href="https://app.getbased.health" class="btn-secondary">Open App &rarr;</a>
-    </div>
+<main class="blog-main">
+  <div class="blog-container" id="blog-content">
+    <div class="blog-loading">Loading...</div>
   </div>
 </main>
 
@@ -231,23 +238,83 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     <div class="footer-links">
       <a href="https://app.getbased.health">Open App</a>
       <a href="https://app.getbased.health/docs">Docs</a>
-      <a href="/blog">Blog</a>
       <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <span class="footer-copy">&copy; 2026 Get Based &middot; Open source &middot; No tracking &middot; Vibecoded with ❤️ by <a href="https://x.com/elkimxoc" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Elkim</a></span>
+    <span class="footer-copy">&copy; 2026 Get Based &middot; Open source &middot; No tracking &middot; Vibecoded with &#10084;&#65039; by <a href="https://x.com/elkimxoc" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Elkim</a></span>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+(function() {
+  var container = document.getElementById('blog-content');
+  var params = new URLSearchParams(window.location.search);
+  var slug = params.get('post');
+
+  // Configure marked
+  if (window.marked) {
+    marked.setOptions({ breaks: false, gfm: true });
+  }
+
+  function escapeHTML(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function formatDate(dateStr) {
+    var d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function renderPostList(posts) {
+    var html = '<div class="blog-header"><h1>Blog</h1><p>Stories from building Get Based</p></div>';
+    html += '<div class="post-list">';
+    posts.forEach(function(post) {
+      html += '<a class="post-card" href="?post=' + encodeURIComponent(post.slug) + '">'
+        + '<div class="post-date">' + escapeHTML(formatDate(post.date)) + '</div>'
+        + '<h2>' + escapeHTML(post.title) + '</h2>'
+        + '<p>' + escapeHTML(post.description) + '</p>'
+        + '</a>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function renderArticle(md) {
+    var html = '<a href="blog" class="blog-back">&larr; All posts</a>';
+    html += '<div class="article">' + marked.parse(md) + '</div>';
+    container.innerHTML = html;
+    // Update page title from the first h1
+    var h1 = container.querySelector('.article h1');
+    if (h1) document.title = h1.textContent + ' — Get Based';
+  }
+
+  function renderError(msg) {
+    container.innerHTML = '<div class="blog-error"><h2>Not found</h2><p>' + escapeHTML(msg) + '</p>'
+      + '<a href="blog" class="blog-back">&larr; All posts</a></div>';
+  }
+
+  if (slug) {
+    // Article view
+    fetch('blog/' + encodeURIComponent(slug) + '.md')
+      .then(function(r) {
+        if (!r.ok) throw new Error('Post not found');
+        return r.text();
+      })
+      .then(renderArticle)
+      .catch(function() { renderError('This post doesn\'t exist.'); });
+  } else {
+    // List view
+    fetch('blog/posts.json')
+      .then(function(r) {
+        if (!r.ok) throw new Error('Could not load posts');
+        return r.json();
+      })
+      .then(renderPostList)
+      .catch(function() { renderError('Could not load posts.'); });
+  }
+})();
 
 // Live OS theme switch
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
@@ -267,15 +334,15 @@ document.getElementById('theme-toggle').addEventListener('click', function() {
 });
 
 // Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
   nav.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
 // Local dev: rewrite absolute app/docs links to relative paths
 if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
-  document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health','/app')});
-  document.querySelectorAll('a[href*="getbased.health"]').forEach(a=>{if(!a.href.includes('/app'))a.href=a.href.replace('https://getbased.health','')||'/'});
+  document.querySelectorAll('a[href*="app.getbased.health"]').forEach(function(a){a.href=a.href.replace('https://app.getbased.health','/app')});
+  document.querySelectorAll('a[href*="getbased.health"]').forEach(function(a){if(!a.href.includes('/app'))a.href=a.href.replace('https://getbased.health','')||'/'});
 }
 </script>
 </body>

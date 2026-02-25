@@ -228,7 +228,7 @@
     assert('Nav drawer in DOM', !!drawerEl);
     if (drawerEl) {
       const drawerLinks = drawerEl.querySelectorAll('a');
-      assert('Drawer has 6 links', drawerLinks.length === 6, `found ${drawerLinks.length}`);
+      assert('Drawer has 9 links', drawerLinks.length === 9, `found ${drawerLinks.length}`);
     }
 
     // Animation class DOM checks
