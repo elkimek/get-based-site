@@ -140,7 +140,7 @@
   assert('Hamburger has aria-expanded', siteSrc.includes('aria-expanded="false"'));
   assert('Has nav-drawer div', siteSrc.includes('class="nav-drawer"'));
   assert('Nav drawer has links', /nav-drawer[\s\S]*?href="#why"/.test(siteSrc));
-  assert('Nav drawer has Open App CTA', /nav-drawer[\s\S]*?getbased\.health\/app/.test(siteSrc));
+  assert('Nav drawer has Open App CTA', /nav-drawer[\s\S]*?app\.getbased\.health/.test(siteSrc));
   assert('CSS: nav-hamburger hidden by default', /\.nav-hamburger\{[^}]*display:none/.test(siteSrc));
   assert('CSS: nav-hamburger shown at 768px', /768px[\s\S]*?\.nav-hamburger\{display:flex/.test(siteSrc));
   assert('CSS: nav-drawer transforms', /\.nav-drawer\{[^}]*transform:translateY\(-100%\)/.test(siteSrc));
@@ -253,7 +253,7 @@
 
   // ── 3. Link integrity ──
   console.log('\n%c3. Link integrity', 'font-weight:bold');
-  const appLinks = (siteSrc.match(/getbased\.health\/app/g) || []).length;
+  const appLinks = (siteSrc.match(/app\.getbased\.health/g) || []).length;
   assert('App links present (CTAs)', appLinks >= 3, `found ${appLinks}`);
   assert('No /landing links', !siteSrc.includes('href="/landing"'));
   assert('No relative /app links', !siteSrc.includes('href="/app"'));
