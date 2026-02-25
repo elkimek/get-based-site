@@ -282,6 +282,88 @@
   assert('CSS: light hides sun icon', /\[data-theme="light"\]\s+\.theme-icon-sun\{display:none\}/.test(siteSrc));
   assert('JS: toggle click sets localStorage', /theme-toggle[\s\S]*?localStorage\.setItem\('labcharts-theme'/.test(siteSrc));
 
+  // ── 5. Donate link redirect ──
+  console.log('\n%c5. Donate link redirect', 'font-weight:bold');
+  assert('Donate link has redirectURL param', siteSrc.includes('redirectURL=https%3A%2F%2Fgetbased.health%2Fthank-you'));
+  assert('Donate link still has storeId', siteSrc.includes('storeId=BfxZicwEaRcJvJnkBPHdzGuCAonAhwLBb5vbWfjT2ZR1'));
+  assert('Donate link still has currency=USD', siteSrc.includes('currency=USD'));
+
+  // ── 6. Thank-you page ──
+  console.log('\n%c6. Thank-you page', 'font-weight:bold');
+  const tySrc = await fetch('thank-you.html').then(r => r.ok ? r.text() : '').catch(() => '');
+  assert('thank-you.html exists', tySrc.length > 0);
+  if (tySrc) {
+
+    // Meta tags
+    assert('TY: has title', tySrc.includes('<title>Thank You'));
+    assert('TY: og:url is /thank-you', tySrc.includes('og:url') && tySrc.includes('getbased.health/thank-you'));
+    assert('TY: has og:image', tySrc.includes('og:image'));
+    assert('TY: theme-color dark meta', /meta name="theme-color" content="#0a0c14"/.test(tySrc));
+    assert('TY: theme-color light meta', /meta name="theme-color" content="#f5f7ff"/.test(tySrc));
+    assert('TY: apple-touch-icon', tySrc.includes('apple-touch-icon'));
+
+    // Design system
+    assert('TY: has bg-grid', tySrc.includes('class="bg-grid"'));
+    assert('TY: has bg-glow', tySrc.includes('class="bg-glow"'));
+    assert('TY: has bg-noise', tySrc.includes('class="bg-noise"'));
+    assert('TY: has nav element', tySrc.includes('<nav'));
+    assert('TY: nav-logo links to site', /href="https:\/\/getbased\.health"[^>]*class="nav-logo"/.test(tySrc));
+    assert('TY: has footer', tySrc.includes('<footer>'));
+    assert('TY: footer-logo', tySrc.includes('footer-logo'));
+    assert('TY: footer-links', tySrc.includes('footer-links'));
+
+    // Content
+    assert('TY: "Thank you!" heading', tySrc.includes('Thank you!'));
+    assert('TY: support message', tySrc.includes('free, open source, and independent'));
+    assert('TY: has check icon', tySrc.includes('check-icon'));
+    assert('TY: checkmark polyline', /polyline points="20 6 9 17 4 12"/.test(tySrc));
+    assert('TY: Back to site button', tySrc.includes('Back to site'));
+    assert('TY: Open App button', tySrc.includes('Open App'));
+    assert('TY: btn-primary exists', tySrc.includes('btn-primary'));
+    assert('TY: btn-secondary exists', tySrc.includes('btn-secondary'));
+
+    // Fonts
+    assert('TY: Inter font loaded', tySrc.includes('family=Inter'));
+    assert('TY: Outfit font loaded', tySrc.includes('family=Outfit'));
+    assert('TY: JetBrains Mono loaded', tySrc.includes('JetBrains+Mono'));
+
+    // Theme support
+    assert('TY: dark CSS vars', /--bg:#0a0c14/.test(tySrc));
+    assert('TY: light theme block', /\[data-theme="light"\]\s*\{/.test(tySrc));
+    assert('TY: light --bg override', /\[data-theme="light"\]\s*\{[^}]*--bg:#f5f7ff/.test(tySrc));
+    assert('TY: prefers-color-scheme fallback', /prefers-color-scheme:\s*light[\s\S]*?:root:not\(\[data-theme\]\)/.test(tySrc));
+    assert('TY: early theme detection script', /labcharts-theme[\s\S]*?setAttribute\('data-theme'/.test(tySrc));
+    assert('TY: theme toggle button', tySrc.includes('id="theme-toggle"'));
+    assert('TY: theme toggle JS', /theme-toggle[\s\S]*?localStorage\.setItem\('labcharts-theme'/.test(tySrc));
+    assert('TY: sun icon', tySrc.includes('theme-icon-sun'));
+    assert('TY: moon icon', tySrc.includes('theme-icon-moon'));
+
+    // Animations
+    assert('TY: reveal animation CSS', /\.reveal\{[^}]*opacity:0/.test(tySrc));
+    assert('TY: reveal elements', tySrc.includes('class="check-icon reveal"'));
+    assert('TY: IntersectionObserver', tySrc.includes('IntersectionObserver'));
+    assert('TY: checkPop animation', tySrc.includes('@keyframes checkPop'));
+    assert('TY: reduced motion support', /prefers-reduced-motion/.test(tySrc));
+
+    // Responsive
+    assert('TY: 768px breakpoint', /768px/.test(tySrc));
+    assert('TY: 480px breakpoint', /480px/.test(tySrc));
+    assert('TY: bg layers hidden at 480px', /480px[\s\S]*?\.bg-grid/.test(tySrc));
+
+    // Nav scroll
+    assert('TY: nav scroll JS', tySrc.includes('nav.classList.toggle'));
+
+    // Local dev link rewriting
+    assert('TY: local dev link rewrite', /localhost[\s\S]*?app\.getbased\.health/.test(tySrc));
+
+    // No unnecessary page elements
+    assert('TY: no hamburger menu', !tySrc.includes('nav-hamburger'));
+    assert('TY: no nav-drawer', !tySrc.includes('nav-drawer'));
+    assert('TY: no hero section', !tySrc.includes('class="hero"'));
+  } else {
+    console.log('  ⚠️  Could not fetch thank-you.html — skipping');
+  }
+
   // ── Summary ──
   console.log(`\n%c${pass + fail} tests: ${pass} passed, ${fail} failed`, fail ? 'color:red;font-weight:bold' : 'color:green;font-weight:bold');
 })();
