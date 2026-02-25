@@ -1089,6 +1089,11 @@ function onBTCPayFormSubmit(e) {
     document.head.appendChild(s);
   } else { form.submit(); }
 }
+// Local dev: rewrite absolute app/docs links to relative paths
+if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
+  document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health','/app')});
+  document.querySelectorAll('a[href*="app.getbased.health/docs"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health/docs','/docs')});
+}
 </script>
 </body>
 </html>
