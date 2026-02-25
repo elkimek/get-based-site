@@ -10,4 +10,4 @@ Join the [Discord](https://discord.gg/zJdVB9zgQB).
 
 ## License
 
-AGPL-3.0. See [LICENSE](LICENSE).
+GPL-3.0. See [LICENSE](LICENSE).
