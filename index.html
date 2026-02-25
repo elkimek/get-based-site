@@ -435,12 +435,15 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 }
 @media(max-width:480px){
   .hero h1{font-size:36px;letter-spacing:-1.5px}
+  .mockup-body{min-height:auto}
   .mockup-cards{grid-template-columns:1fr}
   .hero-actions{flex-direction:column;width:100%}
   .btn-primary,.btn-secondary{width:100%;justify-content:center}
+  .stats-bar{padding:32px 16px}
   .stats-grid{grid-template-columns:1fr}
   .providers-grid{grid-template-columns:1fr}
-  .ctx-mock{grid-template-columns:repeat(2,1fr)}
+  .ctx-mock{grid-template-columns:1fr}
+  footer{padding:32px 16px}
   .bg-grid,.bg-glow,.bg-noise{display:none}
 }
 @media(prefers-reduced-motion:reduce){
