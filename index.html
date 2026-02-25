@@ -290,7 +290,7 @@ section{position:relative;z-index:1;padding:120px 32px}
 .faq-q svg{flex-shrink:0;color:var(--text3);transition:transform 0.3s,color 0.3s}
 .faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--blue)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.16,1,0.3,1)}
-.faq-item.open .faq-a{max-height:300px}
+.faq-item.open .faq-a{max-height:400px}
 .faq-a-inner{padding:0 24px 20px;font-size:15px;color:var(--text2);line-height:1.75}
 
 /* ═══ CTA ═══ */
@@ -688,7 +688,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       <div class="bento-card span-7 reveal">
         <span class="bento-icon">&#128172;</span>
         <h3>Consult anyone</h3>
-        <p>Type a name &mdash; any specialist, researcher, or doctor &mdash; and a full analytical persona is generated: their philosophy, their lens, their approach. Grounded in your actual lab results and lifestyle context.</p>
+        <p>Type a name &mdash; any specialist, researcher, or doctor &mdash; and a full analytical persona is generated. Then make them debate each other. Steer the discussion, stop mid-stream, or let them go another round. All grounded in your actual lab results and lifestyle context.</p>
         <div class="bento-visual">
           <div class="chat-mock">
             <div style="display:grid;grid-template-columns:180px 1fr;gap:0;height:100%">
@@ -740,9 +740,9 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       </div>
       <div class="feature-card reveal reveal-delay-1">
         <span class="feature-icon">&#128172;</span>
-        <h3>More than a chatbot</h3>
-        <p>Every claim can be traced back to academic sources. Conversations persist as named threads you can search and pick up anytime.</p>
-        <span class="feature-tag cyan">Threads</span>
+        <h3>Second opinions, built in</h3>
+        <p>Two AI personas debate your results &mdash; you steer the topic. Stop mid-stream, continue round by round, or jump in yourself. Named threads persist across sessions.</p>
+        <span class="feature-tag cyan">Debate</span>
       </div>
       <div class="feature-card reveal reveal-delay-2">
         <span class="feature-icon">&#129518;</span>
@@ -906,7 +906,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
           What&rsquo;s the most powerful feature?
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Honestly, the whole thing is pretty powerful. But once you try Custom Personality &mdash; you can&rsquo;t untry it. Talk to AI like it&rsquo;s someone on the other side of the planet, or someone who charges $2,000 an hour. Talk to a team of experts, or someone who&rsquo;s no longer with us but you always wished you could.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">The persona debate. Create two AI personalities &mdash; say a functional medicine doctor and a conventional endocrinologist &mdash; and hit Discuss. They argue over your actual lab results while you steer the conversation: &ldquo;what about my iron panel?&rdquo; It&rsquo;s like having a panel of specialists who never rush you, never bill you, and actually disagree with each other. That&rsquo;s where the real insights come from.</div></div>
       </div>
       <div class="faq-item reveal reveal-delay-4">
         <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -916,6 +916,13 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         <div class="faq-a"><div class="faq-a-inner">The app itself is completely free and open-source &mdash; no subscriptions, no paywalls, no catch. The only cost is your AI API key, which you get directly from the provider (like Anthropic or OpenRouter). Think of it like buying a calculator &mdash; you own the tool, you just supply the batteries.</div></div>
       </div>
       <div class="faq-item reveal reveal-delay-5">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          Is this just another AI wrapper?
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">No. A wrapper just passes your question to an API and shows the answer. Get Based is a harness &mdash; it constrains AI with structured health context (9 lifestyle cards, cycle data, goals, interpretive lens), directs it with priority-tiered prompts, multiplies it through personas that challenge each other, and grounds every response in your actual lab values and reference ranges. You steer, stop, and continue. The AI is the horse. The app is the reins.</div></div>
+      </div>
+      <div class="faq-item reveal reveal-delay-6">
         <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           Who is behind this?
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
