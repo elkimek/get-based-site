@@ -231,6 +231,8 @@ section{position:relative;z-index:1;padding:120px 32px}
 
 /* AI Chat mockup */
 .chat-mock{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:16px;font-size:13px;overflow:hidden}
+.chat-mock-grid{display:grid;grid-template-columns:180px 1fr;gap:0;height:100%}
+.chat-mock-rail{border-right:1px solid var(--border);padding:10px 8px;display:flex;flex-direction:column;gap:4px}
 .chat-msg-user{background:rgba(79,140,255,0.1);border:1px solid rgba(79,140,255,0.15);border-radius:10px;
   padding:10px 14px;margin-bottom:10px;color:var(--text);max-width:80%}
 .chat-msg-ai{background:var(--surface2);border:1px solid var(--border);border-radius:10px;
@@ -314,7 +316,7 @@ section{position:relative;z-index:1;padding:120px 32px}
 .support-btn:hover{opacity:0.85}
 .donate-btn{background:#f7931a;color:#fff;border:none;cursor:pointer;font-family:inherit}
 .contribute-btn{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
-.share-btn{background:var(--bg4);color:var(--text);border:1px solid var(--border2)}
+.share-btn{background:var(--bg4);color:var(--text);border:1px solid var(--border2);cursor:pointer;font-family:inherit}
 @media(max-width:768px){
   .support-grid{grid-template-columns:1fr;max-width:400px}
 }
@@ -428,6 +430,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   .mockup-cards{grid-template-columns:repeat(2,1fr)}
   .nav-links a:not(.nav-cta){display:none}
   .footer-inner{flex-direction:column;gap:24px;text-align:center}
+  .chat-mock-rail{display:none}
+  .chat-mock-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .hero h1{font-size:36px;letter-spacing:-1.5px}
@@ -689,8 +693,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         <p>Type a name &mdash; any specialist, researcher, or doctor &mdash; and a full analytical persona is generated. Then make them debate each other. Steer the discussion, stop mid-stream, or let them go another round. All grounded in your actual lab results and lifestyle context.</p>
         <div class="bento-visual">
           <div class="chat-mock">
-            <div style="display:grid;grid-template-columns:180px 1fr;gap:0;height:100%">
-              <div style="border-right:1px solid var(--border);padding:10px 8px;display:flex;flex-direction:column;gap:4px">
+            <div class="chat-mock-grid">
+              <div class="chat-mock-rail">
                 <div style="font-size:11px;font-weight:600;color:var(--text);margin-bottom:4px">Threads</div>
                 <div style="font-size:11px;padding:6px 8px;border-radius:6px;background:rgba(79,140,255,0.1);color:var(--blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ferritin drop concern</div>
                 <div style="font-size:11px;padding:6px 8px;border-radius:6px;color:var(--text3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Vitamin D protocol</div>
@@ -871,10 +875,10 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         </div>
         <h3>Share</h3>
         <p>Know someone who tracks their labs? Tell them about Get Based. Word of mouth is the best marketing.</p>
-        <a href="https://x.com/intent/tweet?text=Get%20Based%20%E2%80%94%20your%20blood%20work%2C%20decoded.%20AI-powered%20PDF%20import%2C%20287%2B%20biomarkers%2C%20trend%20charts.%20Open%20source%2C%20free%2C%20private.%20%40getbasedhealth&url=https%3A%2F%2Fgetbased.health" class="support-btn share-btn" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          Share on X
-        </a>
+        <button class="support-btn share-btn" onclick="if(navigator.share){navigator.share({title:'Get Based',text:'Your blood work, decoded. AI-powered PDF import, 287+ biomarkers, trend charts. Open source, free, private.',url:'https://getbased.health'})}else{navigator.clipboard.writeText('https://getbased.health').then(()=>{this.textContent='Copied!';setTimeout(()=>{this.innerHTML='<svg width=&quot;16&quot; height=&quot;16&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; viewBox=&quot;0 0 24 24&quot;><path d=&quot;M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8&quot;/><polyline points=&quot;16 6 12 2 8 6&quot;/><line x1=&quot;12&quot; y1=&quot;2&quot; x2=&quot;12&quot; y2=&quot;15&quot;/></svg> Copy link'},1500)})}">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Copy link
+        </button>
       </div>
     </div>
   </div>
