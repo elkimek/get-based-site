@@ -89,7 +89,7 @@ You know what the best part of this story is? I probably vibecode like an absolu
 
 I want to be upfront about that. My story might sound like it's from another reality, but the harsh truth is I wasted *many* tokens and many hours by not planning, not thinking ahead, not visualizing the next steps properly. I'd jump into a feature, realize halfway through that I should have structured it differently, then burn time and context window refactoring what I'd just built. My skills improved along the way — but what took me 14 days, someone with better discipline and a clearer mental model would do in one.
 
-I'm not saying this to be humble. I'm saying it because the economics section above might make it sound like vibecoding is effortless. It's not. The AI is fast, but you still need to think. And I was learning to think in this medium while building in it. If you're starting out, plan more than I did. Sketch things out. Talk through the architecture before you start prompting. You'll save yourself a lot of wasted runs.
+I'm not saying this to be humble. I'm saying it because the economics section above might make it sound like vibecoding is effortless. It's not. The AI is fast, but you still need to think. And I was learning to think this way while building in it. If you're starting out, plan more than I did. Sketch things out. Talk through the architecture before you start prompting. You'll save yourself a lot of wasted runs.
 
 ## What I learned
 
