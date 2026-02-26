@@ -109,7 +109,7 @@ I hear and read from so many people right now — *you can build a million-dolla
 
 I did what I did while not even slightly compromising on my health habits. I saw the sunrise every morning. I went on walks with my wife. I read books. I was in bed before 9 PM. Every single day.
 
-That's winning. Because here's what I'll tell you — all of this is great, and while I'm not bold enough to predict what's going to happen with AI, I'm pretty sure we're going to see many, many more sick people thanks to their bad relationship with technology. The sleepless grind, the screen addiction, the "I'll rest when I make it" mentality. We are not going to front-run and outsmart Mother Nature. Not with AI, not with anything.
+That's winning. Because here's what I'll tell you — all of this is great, and while I'm not bold enough to predict what's going to happen with AI, I'm pretty sure we're going to see many, many more sick people thanks to their bad relationship with technology. Sleepless nights, your face bathed in toxic blue light, your retinas burning, your cells committing suicide, the "I'll rest when I make it" mentality. We are not going to front-run and outsmart Mother Nature. Not with AI, not with anything.
 
 Take care of yourself first. The tools will still be there tomorrow morning. And you'll use them better after a good night's sleep.
 
