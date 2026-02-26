@@ -128,6 +128,14 @@ Get Based is open source under GPL-3.0. The code is on [GitHub](https://github.c
 
 Your labs tell a story. You should be the one reading it.
 
+## Yes, AI wrote this too
+
+You're probably wondering if AI wrote this blog post as well. It did. I helped.
+
+Because when's the last time you wrote a blog post from a command-line interface, punching in one thought after another with a bunch of typos like a ferret on speed? I know what you might think — but I've punched keyboards enough in the last decade. Thanks to my neuropathy, I type only with my thumbs, and they get tired very quickly. I'm not going to do that anymore. I don't like to dictate either.
+
+So what does the future bring? Maybe writing via [open-source EEG](https://x.com/ZyphraAI/status/2024114248020898015)? I'd be first in line.
+
 ---
 
 *Get Based is free, open source, and vibecoded. No tracking, no accounts, no cloud dependency.*
