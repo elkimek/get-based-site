@@ -63,19 +63,17 @@ All of this runs as **static files**. No server, no database, no build step. 25 
 
 At some point I asked Claude what this would have cost to build the traditional way. Here's what it said:
 
-A full-stack PWA with 25 ES modules, 287+ biomarkers, AI-powered PDF import, streaming chat, cycle-aware interpretation, encrypted storage, 35 pages of docs, and a full test suite. A traditional team for this scope would need 5-6 people — a product manager/designer, 2-3 frontend engineers, a backend engineer (the AI integration, encryption, and data pipeline complexity warrants it even though it's client-side), a QA engineer, and maybe a technical writer for the docs. Timeline: 4-6 months for an MVP, 8-12 months to reach this feature depth. That's **30-50 person-months** of work.
-
-The costs break down roughly like this:
-
-| Role | Monthly cost |
-|---|---|
-| Product manager / designer | ~$12k |
-| Frontend engineers (2-3) | ~$10-12k each |
-| Backend engineer | ~$10-12k |
-| QA engineer | ~$8k |
-| Technical writer (part-time) | ~$7k |
-
-**Total: $300k-$600k** for a mid-cost market. In San Francisco with senior engineers, closer to **$800k-$1.2M**.
+> A full-stack PWA with 25 ES modules, 287+ biomarkers, AI-powered PDF import, streaming chat, cycle-aware interpretation, encrypted storage, 35 pages of docs, and a full test suite. A traditional team for this scope would need 5-6 people — a product manager/designer, 2-3 frontend engineers, a backend engineer (the AI integration, encryption, and data pipeline complexity warrants it even though it's client-side), a QA engineer, and maybe a technical writer for the docs. Timeline: 4-6 months for an MVP, 8-12 months to reach this feature depth. That's **30-50 person-months** of work.
+>
+> | Role | Monthly cost |
+> |---|---|
+> | Product manager / designer | ~$12k |
+> | Frontend engineers (2-3) | ~$10-12k each |
+> | Backend engineer | ~$10-12k |
+> | QA engineer | ~$8k |
+> | Technical writer (part-time) | ~$7k |
+>
+> **Total: $300k-$600k** for a mid-cost market. In San Francisco with senior engineers, closer to **$800k-$1.2M**.
 
 What I actually spent: about **$120** on AI tools — one month of Claude Code subscription and some API keys for testing. But let's be honest about the full picture. I put in roughly 80 hours of my own time. If I charge that at my normal hourly rate, that's another $3,100. So the real cost was about **$3,200** all-in.
 
