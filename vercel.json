@@ -1,7 +1,4 @@
 {
-  "rewrites": [
-    { "source": "/blog", "destination": "/blog.html" }
-  ],
   "routes": [
     {
       "src": "/(.*)",
@@ -13,6 +10,7 @@
         "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
       },
       "continue": true
-    }
+    },
+    { "src": "^/blog$", "dest": "/blog.html" }
   ]
 }
