@@ -93,7 +93,7 @@ I'm not saying this to be humble. I'm saying it because the economics section ab
 
 ## What I learned
 
-**You don't need to be a coder.** I'm not one. But I know what I want, and I can describe it clearly. That turned out to be enough. The AI handles the implementation; you handle the intent.
+**You don't need to be a coder.** I'm not one. But I know what I want, and I do my best to describe it clearly. That turned out to be enough. The AI handles the implementation; you handle the intent.
 
 **Context is everything.** The most valuable feature isn't the charts — it's the context assembly pipeline. When the AI chat knows your sleep schedule, your stress levels, your health goals, and your full lab history, its insights are transformative. A number alone means nothing. A number in context tells a story.
 
