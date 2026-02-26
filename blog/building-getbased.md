@@ -77,7 +77,7 @@ The costs break down roughly like this:
 
 **Total: $300k-$600k** for a mid-cost market. In San Francisco with senior engineers, closer to **$800k-$1.2M**.
 
-What I actually spent: about **$120** on AI tools — two months of Claude Code subscription and some API keys for testing. But let's be honest about the full picture. I put in roughly 80 hours of my own time. If I charge that at my normal hourly rate, that's another $3,100. So the real cost was about **$3,200** all-in.
+What I actually spent: about **$120** on AI tools — one month of Claude Code subscription and some API keys for testing. But let's be honest about the full picture. I put in roughly 80 hours of my own time. If I charge that at my normal hourly rate, that's another $3,100. So the real cost was about **$3,200** all-in.
 
 Still. $3,200 vs $300k+. One person vs a team of six. Two weeks vs a year. And the product is exactly what I wanted — no committee decisions, no sprint planning, no "that's out of scope for this quarter."
 
