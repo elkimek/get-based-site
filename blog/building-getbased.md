@@ -1,4 +1,4 @@
-# How I Built a Full Health App in Weeks with AI
+# How I Built a Full Health App in Under Two Weeks with AI
 
 *February 25, 2026*
 
