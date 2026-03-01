@@ -9,7 +9,7 @@
 
 - Import any blood work PDF — AI extracts all markers automatically
 - Track trends over time with interactive charts across 16+ biomarker categories
-- Specialty labs supported: OAT (organic acids), DUTCH (hormones), HTMA (hair minerals), GI Maps
+- Specialty labs supported: OAT (organic acids) and more via custom marker pipeline
 - AI chat panel with debate mode — pit two AI personas against each other over your results
 - 9 lifestyle context cards (diet, exercise, sleep, stress, etc.) shape AI interpretation
 - Menstrual cycle tracking with phase-aware reference ranges
@@ -30,6 +30,6 @@
 
 - [Getting started](https://app.getbased.health/docs/getting-started): First import walkthrough
 - [AI setup guide](https://app.getbased.health/docs/ai-setup): Configure OpenRouter, Anthropic, Venice, or Ollama
-- [Specialty labs](https://app.getbased.health/docs/specialty-labs): Importing OAT, DUTCH, HTMA, GI Maps
+- [Specialty labs](https://app.getbased.health/docs/specialty-labs): Importing OAT and other specialty tests
 - [Privacy and security](https://app.getbased.health/docs/privacy): Local-first architecture, encryption, PII obfuscation
 - [Changelog](https://app.getbased.health/docs/changelog): Version history and updates
