@@ -23,7 +23,7 @@
 - [Web app](https://app.getbased.health): Launch the dashboard (no install needed)
 - [Documentation](https://app.getbased.health/docs): User guides, setup, and feature walkthroughs
 - [Blog](https://getbased.health/blog): Development stories and health data insights
-- [GitHub](https://github.com/elkimek/get-based): Source code (MIT license)
+- [GitHub](https://github.com/elkimek/get-based): Source code (GPLv3 license)
 - [Discord](https://discord.gg/zJdVB9zgQB): Community and support
 
 ## Docs highlights
