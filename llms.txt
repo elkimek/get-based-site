@@ -1,0 +1,35 @@
+# getbased
+
+> Free, open-source blood work dashboard that runs entirely in your browser.
+> Import any lab PDF with AI, track biomarker trends over time, and get
+> AI-powered interpretations. No account required. Your data never leaves
+> your device.
+
+## What getbased does
+
+- Import any blood work PDF — AI extracts all markers automatically
+- Track trends over time with interactive charts across 16+ biomarker categories
+- Specialty labs supported: OAT (organic acids), DUTCH (hormones), HTMA (hair minerals), GI Maps
+- AI chat panel with debate mode — pit two AI personas against each other over your results
+- 9 lifestyle context cards (diet, exercise, sleep, stress, etc.) shape AI interpretation
+- Menstrual cycle tracking with phase-aware reference ranges
+- Correlation viewer, heatmaps, trend alerts, PDF reports
+- Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM)
+- Works with OpenRouter (200+ models), Anthropic, Venice, or local Ollama
+
+## Key pages
+
+- [Landing page](https://getbased.health/): Feature overview and getting started
+- [Web app](https://app.getbased.health): Launch the dashboard (no install needed)
+- [Documentation](https://app.getbased.health/docs): User guides, setup, and feature walkthroughs
+- [Blog](https://getbased.health/blog): Development stories and health data insights
+- [GitHub](https://github.com/elkimek/get-based): Source code (MIT license)
+- [Discord](https://discord.gg/zJdVB9zgQB): Community and support
+
+## Docs highlights
+
+- [Getting started](https://app.getbased.health/docs/getting-started): First import walkthrough
+- [AI setup guide](https://app.getbased.health/docs/ai-setup): Configure OpenRouter, Anthropic, Venice, or Ollama
+- [Specialty labs](https://app.getbased.health/docs/specialty-labs): Importing OAT, DUTCH, HTMA, GI Maps
+- [Privacy and security](https://app.getbased.health/docs/privacy): Local-first architecture, encryption, PII obfuscation
+- [Changelog](https://app.getbased.health/docs/changelog): Version history and updates

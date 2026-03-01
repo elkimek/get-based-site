@@ -10,6 +10,13 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getbased.health/">
 <meta property="og:image" content="https://getbased.health/icon-512.png">
+<meta property="og:site_name" content="getbased">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@getbasedhealth">
+<meta name="twitter:title" content="getbased — Your Blood Work, Decoded">
+<meta name="twitter:description" content="AI-powered blood work dashboard. Import any lab PDF, track 287+ biomarkers, get personalized insights. Local-first, no account needed.">
+<meta name="twitter:image" content="https://getbased.health/icon-512.png">
 <link rel="canonical" href="https://getbased.health/">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -462,6 +469,89 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
 })();
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "getbased",
+  "url": "https://app.getbased.health",
+  "description": "Free, open-source blood work dashboard. Import any lab PDF with AI, track biomarker trends over time, and get AI-powered interpretations. Runs entirely in your browser with no account required.",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Web browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "isAccessibleForFree": true,
+  "license": "https://opensource.org/licenses/MIT",
+  "featureList": [
+    "AI-powered PDF lab import",
+    "Biomarker trend charts for 16+ categories",
+    "Specialty labs: OAT, DUTCH, HTMA, GI Maps",
+    "AI chat panel with debate mode",
+    "Menstrual cycle phase-aware reference ranges",
+    "Correlation viewer and heatmaps",
+    "Local-first with AES-256-GCM encryption",
+    "JSON export and PDF reports"
+  ],
+  "softwareVersion": "1.1.3"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does getbased AI hallucinate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "getbased isn't a chatbot — it's a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. You can pit two personas against each other and steer the debate yourself. The AI is the horse. The app is the reins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is getbased free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The app itself is completely free and open-source — no subscriptions, no paywalls, no catch. The only cost is your AI API key, which you get directly from the provider (like Anthropic or OpenRouter). Think of it like buying a calculator — you own the tool, you just supply the batteries."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most powerful feature of getbased?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The persona debate. Create two AI personalities — say a functional medicine doctor and a conventional endocrinologist — and hit Discuss. They argue over your actual lab results while you steer the conversation. It's like having a panel of specialists who never rush you, never bill you, and actually disagree with each other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is behind getbased?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A solo developer dealing with his own health issues, who vibecoded the entire app with AI. getbased is open source, MIT licensed, and community-driven."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "getbased",
+  "url": "https://getbased.health",
+  "description": "Open-source tools for personal health data.",
+  "sameAs": [
+    "https://github.com/elkimek/get-based",
+    "https://discord.gg/zJdVB9zgQB",
+    "https://x.com/getbasedhealth"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -500,6 +590,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   <a href="/blog">Blog</a>
   <a href="https://app.getbased.health" class="nav-cta">Open App &rarr;</a>
 </div>
+
+<main>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -946,6 +1038,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
