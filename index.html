@@ -1118,8 +1118,8 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && drawer.classList.contains('open')) toggleDrawer(false);
 });
 
-// ── GitHub stars social proof ──
-(function fetchGitHubStars() {
+// ── GitHub stars social proof (deferred to avoid critical path) ──
+setTimeout(function fetchGitHubStars() {
   fetch('https://api.github.com/repos/elkimek/get-based')
     .then(r => { if (!r.ok) return {}; return r.json(); })
     .then(data => {
@@ -1137,7 +1137,7 @@ document.addEventListener('keydown', e => {
       });
     })
     .catch(() => {});
-})();
+}, 2000);
 
 // ── Stats count-up animation ──
 (function initCountUp() {
