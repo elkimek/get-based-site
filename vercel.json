@@ -11,7 +11,7 @@
       },
       "continue": true
     },
-    { "src": "^/blog/([^/]+)$", "dest": "/blog.html" },
+    { "src": "^/blog/([^/.]+)$", "dest": "/blog.html" },
     { "src": "^/blog$", "dest": "/blog.html" }
   ]
 }
