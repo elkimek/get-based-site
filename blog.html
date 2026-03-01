@@ -256,7 +256,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 (function() {
   var container = document.getElementById('blog-content');
   var params = new URLSearchParams(window.location.search);
-  var slug = params.get('post');
+  var pathMatch = window.location.pathname.match(/^\/blog\/([^\/]+)$/);
+  var slug = pathMatch ? pathMatch[1] : params.get('post');
 
   // Configure marked
   if (window.marked) {
@@ -278,7 +279,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     var html = '<div class="blog-header"><h1>Blog</h1><p>Stories from building Get Based</p></div>';
     html += '<div class="post-list">';
     posts.forEach(function(post) {
-      html += '<a class="post-card" href="?post=' + encodeURIComponent(post.slug) + '">'
+      html += '<a class="post-card" href="/blog/' + encodeURIComponent(post.slug) + '">'
         + '<div class="post-date">' + escapeHTML(formatDate(post.date)) + '</div>'
         + '<h2>' + escapeHTML(post.title) + '</h2>'
         + '<p>' + escapeHTML(post.description) + '</p>'
@@ -289,22 +290,25 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   }
 
   function renderArticle(md) {
-    var html = '<a href="blog" class="blog-back">&larr; All posts</a>';
+    var html = '<a href="/blog" class="blog-back">&larr; All posts</a>';
     html += '<div class="article">' + marked.parse(md) + '</div>';
     container.innerHTML = html;
     // Update page title from the first h1
     var h1 = container.querySelector('.article h1');
     if (h1) document.title = h1.textContent + ' — Get Based';
+    var cleanUrl = 'https://getbased.health/blog/' + slug;
+    document.querySelector('link[rel="canonical"]').href = cleanUrl;
+    document.querySelector('meta[property="og:url"]').content = cleanUrl;
   }
 
   function renderError(msg) {
     container.innerHTML = '<div class="blog-error"><h2>Not found</h2><p>' + escapeHTML(msg) + '</p>'
-      + '<a href="blog" class="blog-back">&larr; All posts</a></div>';
+      + '<a href="/blog" class="blog-back">&larr; All posts</a></div>';
   }
 
   if (slug) {
     // Article view
-    fetch('blog/' + encodeURIComponent(slug) + '.md')
+    fetch('/blog/' + encodeURIComponent(slug) + '.md')
       .then(function(r) {
         if (!r.ok) throw new Error('Post not found');
         return r.text();
@@ -313,7 +317,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       .catch(function() { renderError('This post doesn\'t exist.'); });
   } else {
     // List view
-    fetch('blog/posts.json')
+    fetch('/blog/posts.json')
       .then(function(r) {
         if (!r.ok) throw new Error('Could not load posts');
         return r.json();
