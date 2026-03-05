@@ -15,7 +15,7 @@
 - Menstrual cycle tracking with phase-aware reference ranges
 - Correlation viewer, heatmaps, trend alerts, PDF reports
 - Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM)
-- Works with OpenRouter (200+ models), Anthropic, Venice, or local Ollama
+- Works with OpenRouter (200+ models, recommended), Anthropic, Venice, or Local AI (Ollama, LM Studio, Jan, and other OpenAI-compatible servers)
 
 ## Key pages
 
