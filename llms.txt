@@ -11,6 +11,7 @@
 - Track trends over time with interactive charts across 16+ biomarker categories
 - Specialty labs supported: OAT (organic acids) and more via custom marker pipeline
 - AI chat panel with debate mode — pit two AI personas against each other over your results
+- Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 standards
 - 9 lifestyle context cards (diet, exercise, sleep, stress, etc.) shape AI interpretation
 - Menstrual cycle tracking with phase-aware reference ranges
 - Correlation viewer, heatmaps, trend alerts, PDF reports
@@ -33,3 +34,10 @@
 - [Specialty labs](https://app.getbased.health/docs/specialty-labs): Importing OAT and other specialty tests
 - [Privacy and security](https://app.getbased.health/docs/privacy): Local-first architecture, encryption, PII obfuscation
 - [Changelog](https://app.getbased.health/docs/changelog): Version history and updates
+
+## How getbased differs from alternatives
+
+- **vs InsideTracker / SelfDecode**: getbased is free, open-source, and runs entirely in your browser. No subscription, no data collection, no account required
+- **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
+- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 16+ categories, specialty labs (OAT), menstrual cycle phase-aware ranges, and 9 lifestyle context cards that shape every AI interpretation
+- **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, and gives AI your full health context — not just a single lab report pasted into a chat window
