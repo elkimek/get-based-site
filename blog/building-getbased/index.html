@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — getbased</title>
-<meta name="description" content="Stories and insights from building getbased — an open-source blood work dashboard.">
-<meta property="og:title" content="Blog — getbased">
-<meta property="og:description" content="Stories and insights from building getbased — an open-source blood work dashboard.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://getbased.health/blog">
+<title>How I Built a Full Health App in Under Two Weeks with AI — getbased</title>
+<meta name="description" content="The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.">
+<meta property="og:title" content="How I Built a Full Health App in Under Two Weeks with AI — getbased">
+<meta property="og:description" content="The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://getbased.health/blog/building-getbased">
 <meta property="og:image" content="https://getbased.health/og-image.png">
 <meta property="og:site_name" content="getbased">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@getbasedhealth">
-<meta name="twitter:title" content="Blog — getbased">
-<meta name="twitter:description" content="Stories and insights from building getbased — an open-source blood work dashboard.">
+<meta name="twitter:title" content="How I Built a Full Health App in Under Two Weeks with AI — getbased">
+<meta name="twitter:description" content="The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.">
 <meta name="twitter:image" content="https://getbased.health/og-image.png">
-<link rel="canonical" href="https://getbased.health/blog">
+<link rel="canonical" href="https://getbased.health/blog/building-getbased">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
@@ -212,7 +212,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"getbased Blog","url":"https://getbased.health/blog","description":"Stories and insights from building getbased — an open-source blood work dashboard.","publisher":{"@type":"Organization","name":"getbased","url":"https://getbased.health"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"How I Built a Full Health App in Under Two Weeks with AI","description":"The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.","url":"https://getbased.health/blog/building-getbased","datePublished":"2026-02-25","publisher":{"@type":"Organization","name":"getbased","url":"https://getbased.health"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://getbased.health/blog/building-getbased"}}</script>
 </head>
 <body>
 
@@ -235,7 +235,83 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <!-- MAIN CONTENT -->
 <main class="blog-main">
   <div class="blog-container" id="blog-content">
-    <div class="blog-header"><h1>Blog</h1><p>Stories from building getbased</p></div><div class="post-list"><a class="post-card" href="/blog/building-getbased"><div class="post-date">February 25, 2026</div><h2>How I Built a Full Health App in Under Two Weeks with AI</h2><p>The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.</p></a></div>
+    <a href="/blog" class="blog-back">&larr; All posts</a><article class="article"><h1>How I Built a Full Health App in Under Two Weeks with AI</h1>
+<p><em>February 25, 2026</em></p>
+<hr>
+<p>I'm not a coder. I want to get that out of the way first.</p>
+<p>I'm a Bitcoiner. That's probably the more relevant thing to know. Open source, privacy, sovereignty — these aren't features I bolted on at the end. They're the lens I see everything through. When I started building Get Based, I wasn't thinking about product-market fit or monetization. I was thinking: <em>I want to own my health data the same way I own my keys.</em></p>
+<p>I wanted nice charts for my blood work. That's it. That was the whole idea. I'd get lab results as a PDF, and the numbers would sit in a drawer, disconnected from everything else. I wanted to <em>see</em> my trends over time — not just one test, but across years, across dozens of markers. Something visual. Something mine.</p>
+<p>What happened next was not planned.</p>
+<h2>How it started</h2>
+<p>My X timeline was on fire. Everyone was talking about "vibecoding" — building software with AI. People were panicking that the web is dead, that developers are going to lose their jobs. Half the takes were apocalyptic, half were euphoric. I had almost zero experience with any of it. But the charts idea was sitting there, and I figured — why not try?</p>
+<p>I started with Claude Code, Anthropic's CLI tool. The initial goal was humble: a single HTML page with Chart.js that renders my lab data. Drop a file, see lines go up and down. That's it.</p>
+<p>But then something happened. The vision started evolving. Every time one thing worked, I'd see the next possibility. <em>What if the AI could parse any lab PDF automatically? What if it understood not just the numbers but my diet, my sleep, my stress levels?</em> Each feature unlocked the next idea. The scope kept growing — not because I planned it, but because I was discovering what was possible in real time.</p>
+<p>I didn't set out to build an AI-powered health dashboard. I didn't even know the project would be AI-powered. I just wanted charts. The AI harness, the multi-provider system, the context assembly pipeline — all of that emerged from the process of vibecoding itself.</p>
+<h2>The rabbit hole</h2>
+<p>Two weeks. That's how long it took to get to this point.</p>
+<p>The bottleneck wasn't Claude — the $100/month plan gave me more than enough. It wasn't my time either. The bottleneck was <strong>my mind</strong>. I couldn't stop thinking about new features, improvements, edge cases. Some nights I literally couldn't fall asleep because my brain was racing with ideas for the next thing to build.</p>
+<p>To not go completely crazy, I rewatched the <em>Spartacus</em> series — a masterpiece about love and freedom, and honestly the perfect companion to a project about sovereignty. And I read <em>A History of the Breast</em> by Marilyn Yalom (pretty bizarre and sad, but it worked as a palate cleanser). You need something to pull your brain out of the code, or the code becomes your entire reality.</p>
+<p>The process was addictive. I'd describe a feature to Claude, review the output, refine it, and ship. Then immediately see three more things I wanted to add. The feedback loop was so fast that the limiting factor shifted from "how long will this take to code" to "how fast can I think of what to build next."</p>
+<h2>The intermezzo: my first AI arbitrage</h2>
+<p>Somewhere along the way, a job landed in my inbox. Something I would've normally spent 30 hours on.</p>
+<p>Around the same time, Pavol Luptak wrote a post — <a href="https://x.com/wilderko/status/2021995764168196236">"In a few years, you will probably be redundant"</a>. So I told myself, why the hell not?</p>
+<p>I put everything I had into a single folder and fired up another Claude Code session. Vaguely described the assignment, the budget, gave it a link to my other work. Twenty minutes later? Almost perfect output. Then it took another 90 minutes of manual polish — because even the best models can't get non-English word ordering right.</p>
+<p>The result? The client is happy with what I delivered. And while I was busy building Get Based, my effective hourly rate on that job increased more than tenfold. I mean... Jesus.</p>
+<h2>What got built</h2>
+<p>The feature list grew insanely fast. Here's what exists today:</p>
+<ul>
+<li><strong>AI-powered PDF import</strong> — drop any lab report from any country, any language, and the AI extracts your biomarkers automatically</li>
+<li><strong>287+ biomarkers</strong> across 15 categories — with trend detection, reference ranges, and optimal range overlays</li>
+<li><strong>9 lifestyle context cards</strong> — diet, sleep, exercise, stress, environment, and more — so the AI interprets your labs in the context of your actual life</li>
+<li><strong>4 AI providers</strong> — Anthropic, OpenRouter, Venice, or local Ollama — your choice, your keys</li>
+<li><strong>Menstrual cycle tracking</strong> — phase-aware hormone reference ranges, perimenopause detection, iron cross-referencing</li>
+<li><strong>Encryption at rest</strong> — AES-256-GCM, because your health data is nobody's business</li>
+<li><strong>Full PWA</strong> — installable, works offline, dark/light themes, 10 responsive breakpoints</li>
+<li><strong>35 pages of docs</strong>, a full test suite, and a landing page</li>
+</ul>
+<p>That's the short version. The <a href="https://app.getbased.health/docs/guide/getting-started">full feature breakdown is in the docs</a>.</p>
+<p>All of this runs as <strong>static files</strong>. No server, no database, no build step. 25 ES modules loaded natively by the browser. One person. Two weeks.</p>
+<h2>The economics</h2>
+<p>At some point I asked Claude what this would have cost to build the traditional way. Here's what it said:</p>
+<blockquote><p>A full-stack PWA with 25 ES modules, 287+ biomarkers, AI-powered PDF import, streaming chat, cycle-aware interpretation, encrypted storage, 35 pages of docs, and a full test suite. A traditional team for this scope would need 5-6 people — a product manager/designer, 2-3 frontend engineers, a backend engineer, a QA engineer, and maybe a technical writer for the docs. Timeline: 4-6 months for an MVP, 8-12 months to reach this feature depth. That's 30-50 person-months of work. Total: $300k-$600k for a mid-cost market. In San Francisco with senior engineers, closer to $800k-$1.2M.</p>
+</blockquote>
+<p>What I actually spent: about <strong>$120</strong> on AI tools — one month of Claude Code subscription and some API keys for testing. But let's be honest about the full picture. I put in roughly 80 hours of my own time. If I charge that at my normal hourly rate, that's another $3,100. So the real cost was about <strong>$3,200</strong> all-in.</p>
+<p>Still. $3,200 vs $300k+. One person vs a team of six. Two weeks vs a year. And the product is exactly what I wanted — no committee decisions, no sprint planning, no "that's out of scope for this quarter."</p>
+<p>That's the real story of vibecoding. Not that AI writes code — but that one person with clear vision can now build what used to require a funded team.</p>
+<h2>The honest part</h2>
+<p>You know what the best part of this story is? I probably vibecode like an absolute idiot.</p>
+<p>I want to be upfront about that. My story might sound like it's from another reality, but the harsh truth is I wasted <em>many</em> tokens and many hours by not planning, not thinking ahead, not visualizing the next steps properly. I'd jump into a feature, realize halfway through that I should have structured it differently, then burn time and context window refactoring what I'd just built. My skills improved along the way — but what took me 14 days, someone with better discipline and a clearer mental model would do in one.</p>
+<p>I'm not saying this to be humble. I'm saying it because the economics section above might make it sound like vibecoding is effortless. It's not. The AI is fast, but you still need to think. And I was learning to think this way while building in it. If you're starting out, plan more than I did. Sketch things out. Talk through the architecture before you start prompting. You'll save yourself a lot of wasted runs.</p>
+<h2>What I learned</h2>
+<p><strong>You don't need to be a coder.</strong> I'm not one. But I know what I want, and I do my best to describe it clearly. That turned out to be enough. The AI handles the implementation; you handle the intent.</p>
+<p><strong>Context is everything.</strong> The most valuable feature isn't the charts — it's the context assembly pipeline. When the AI chat knows your sleep schedule, your stress levels, your health goals, and your full lab history, its insights are transformative. A number alone means nothing. A number in context tells a story.</p>
+<p><strong>Shipping the ugly version is harder than it sounds.</strong> The first version was a single HTML file with inline JavaScript. It worked. Users could drop a file and see charts. Everything after that was iteration. But with a tool like Claude Code at hand, the temptation to keep iterating forever is real. You always see one more thing to improve. Knowing when to stop polishing and just ship — that's a discipline vibecoding makes harder, not easier.</p>
+<p><strong>Your brain is the bottleneck, not the tools.</strong> The hardest part wasn't getting Claude to write code. It was managing the flood of ideas and staying focused enough to ship one thing before starting the next. Have a <em>Spartacus</em> equivalent ready.</p>
+<h2>The real win</h2>
+<p>I want to be clear about one thing.</p>
+<p>I hear and read from so many people right now — <em>you can build a million-dollar business alone, this changes everything, I haven't slept since December, the grind is insane.</em> Guys? You're not winning.</p>
+<p>I did what I did while not even slightly compromising on my health habits. I saw the sunrise every morning. I went on walks with my wife. I read books. I was in bed before 9 PM. Every single day.</p>
+<p>That's winning. Because here's what I'll tell you — all of this is great, and while I'm not bold enough to predict what's going to happen with AI, I'm pretty sure we're going to see many, many more sick people thanks to their bad relationship with technology. Sleepless nights, your face bathed in toxic blue light, your retinas burning, your cells committing suicide, the "I'll rest when I make it" mentality. We are not going to front-run and outsmart Mother Nature. Not with AI, not with anything.</p>
+<p>Take care of yourself first. The tools will still be there tomorrow morning. And you'll use them better after a good night's sleep.</p>
+<h2>What's next</h2>
+<p>The core app is solid. The roadmap is ambitious:</p>
+<ul>
+<li><strong>Wearable data integration</strong> — WHOOP, Apple Watch, Oura, Ultrahuman overlaid on biomarker charts</li>
+<li><strong>CGM/CKM integration</strong> — continuous glucose and ketone monitor data alongside labs</li>
+<li><strong>AI supplement recommendations</strong> — analyzing trends and suggesting supplements with projected impact</li>
+<li><strong>AI-powered lab ordering</strong> — smart recommendations for which labs to order next, with price comparison</li>
+<li><strong>Auto-select best AI model</strong> — using live medical benchmarks from Chatbot Arena</li>
+<li><strong>OpenClaw integration</strong> — proactive health alerts via WhatsApp, Telegram, and other messaging apps</li>
+</ul>
+<p>Get Based is open source under GPL-3.0. The code is on <a href="https://github.com/elkimek/get-based">GitHub</a>. If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.</p>
+<p>Your labs tell a story. You should be the one reading it.</p>
+<h2>Yes, AI wrote this too</h2>
+<p>You're probably wondering if AI wrote this blog post as well. It did. I helped.</p>
+<p>Because when's the last time you wrote a blog post from a command-line interface, punching in one thought after another with a bunch of typos like a ferret on speed? I know what you might think — but I've punched keyboards enough in the last decade. Thanks to my neuropathy, I type only with my thumbs, and they get tired very quickly. I'm not going to do that anymore. I don't like to dictate either.</p>
+<p>So what does the future bring? Maybe writing via <a href="https://x.com/ZyphraAI/status/2024114248020898015">open-source EEG</a>? I'd be first in line.</p>
+<hr>
+<p><em>Get Based is free, open source, and vibecoded. No tracking, no accounts, no cloud dependency.</em></p>
+</article>
   </div>
 </main>
 

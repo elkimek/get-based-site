@@ -212,7 +212,6 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"getbased Blog","url":"https://getbased.health/blog","description":"Stories and insights from building getbased — an open-source blood work dashboard.","publisher":{"@type":"Organization","name":"getbased","url":"https://getbased.health"}}</script>
 </head>
 <body>
 
@@ -235,7 +234,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <!-- MAIN CONTENT -->
 <main class="blog-main">
   <div class="blog-container" id="blog-content">
-    <div class="blog-header"><h1>Blog</h1><p>Stories from building getbased</p></div><div class="post-list"><a class="post-card" href="/blog/building-getbased"><div class="post-date">February 25, 2026</div><h2>How I Built a Full Health App in Under Two Weeks with AI</h2><p>The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.</p></a></div>
+    <div class="blog-loading">Loading...</div>
   </div>
 </main>
 
@@ -252,7 +251,105 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
+(function() {
+  var container = document.getElementById('blog-content');
+  var params = new URLSearchParams(window.location.search);
+  var pathMatch = window.location.pathname.match(/^\/blog\/([^\/]+)$/);
+  var slug = pathMatch ? pathMatch[1] : params.get('post');
+
+  // Configure marked
+  if (window.marked) {
+    marked.setOptions({ breaks: false, gfm: true });
+  }
+
+  function escapeHTML(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function formatDate(dateStr) {
+    var d = new Date(dateStr + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function renderPostList(posts) {
+    var html = '<div class="blog-header"><h1>Blog</h1><p>Stories from building getbased</p></div>';
+    html += '<div class="post-list">';
+    posts.forEach(function(post) {
+      html += '<a class="post-card" href="/blog/' + encodeURIComponent(post.slug) + '">'
+        + '<div class="post-date">' + escapeHTML(formatDate(post.date)) + '</div>'
+        + '<h2>' + escapeHTML(post.title) + '</h2>'
+        + '<p>' + escapeHTML(post.description) + '</p>'
+        + '</a>';
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  }
+
+  function updateHeadMeta(post) {
+    var cleanUrl = 'https://getbased.health/blog/' + slug;
+    var title = post.title + ' — getbased';
+    var desc = post.description || '';
+    document.title = title;
+    document.querySelector('link[rel="canonical"]').href = cleanUrl;
+    document.querySelector('meta[name="description"]').content = desc;
+    document.querySelector('meta[property="og:title"]').content = title;
+    document.querySelector('meta[property="og:description"]').content = desc;
+    document.querySelector('meta[property="og:url"]').content = cleanUrl;
+    document.querySelector('meta[property="og:type"]').content = 'article';
+    document.querySelector('meta[name="twitter:title"]').content = title;
+    document.querySelector('meta[name="twitter:description"]').content = desc;
+  }
+
+  function renderArticle(md, postMeta) {
+    var html = '<a href="/blog" class="blog-back">&larr; All posts</a>';
+    html += '<div class="article">' + marked.parse(md) + '</div>';
+    container.innerHTML = html;
+    if (postMeta) {
+      updateHeadMeta(postMeta);
+    } else {
+      // Fallback: extract title from first h1
+      var h1 = container.querySelector('.article h1');
+      if (h1) document.title = h1.textContent + ' — getbased';
+      var cleanUrl = 'https://getbased.health/blog/' + slug;
+      document.querySelector('link[rel="canonical"]').href = cleanUrl;
+      document.querySelector('meta[property="og:url"]').content = cleanUrl;
+    }
+  }
+
+  function renderError(msg) {
+    container.innerHTML = '<div class="blog-error"><h2>Not found</h2><p>' + escapeHTML(msg) + '</p>'
+      + '<a href="/blog" class="blog-back">&larr; All posts</a></div>';
+  }
+
+  if (slug) {
+    // Article view: fetch metadata and markdown in parallel
+    Promise.all([
+      fetch('/blog/posts.json').then(function(r) { return r.ok ? r.json() : []; }).catch(function() { return []; }),
+      fetch('/blog/' + encodeURIComponent(slug) + '.md').then(function(r) {
+        if (!r.ok) throw new Error('Post not found');
+        return r.text();
+      })
+    ]).then(function(results) {
+      var posts = results[0];
+      var md = results[1];
+      var postMeta = posts.find(function(p) { return p.slug === slug; });
+      renderArticle(md, postMeta);
+    }).catch(function() { renderError('This post doesn\'t exist.'); });
+  } else {
+    // List view
+    fetch('/blog/posts.json')
+      .then(function(r) {
+        if (!r.ok) throw new Error('Could not load posts');
+        return r.json();
+      })
+      .then(renderPostList)
+      .catch(function() { renderError('Could not load posts.'); });
+  }
+})();
 
 // Live OS theme switch
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
