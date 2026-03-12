@@ -1275,8 +1275,7 @@ function switchMockupCategory(cat) {
     refBot.setAttribute('y1', d.chart.bandY + d.chart.bandH);
     refBot.setAttribute('y2', d.chart.bandY + d.chart.bandH);
     line.style.animation = 'none';
-    line.offsetHeight;
-    line.style.animation = '';
+    requestAnimationFrame(function() { requestAnimationFrame(function() { line.style.animation = ''; }); });
     main.style.opacity = '1';
   }, 150);
 }
@@ -1324,8 +1323,8 @@ document.querySelectorAll('.ctx-card[data-detail]').forEach(card => {
 });
 
 // ── GitHub stars social proof (deferred to avoid critical path) ──
-setTimeout(function fetchGitHubStars() {
-  fetch('https://api.github.com/repos/elkimek/get-based')
+(window.requestIdleCallback || function(cb) { setTimeout(cb, 3000); })(function fetchGitHubStars() {
+  fetch('https://api.github.com/repos/elkimek/get-based', { priority: 'low' })
     .then(r => { if (!r.ok) return {}; return r.json(); })
     .then(data => {
       const stars = data.stargazers_count;
@@ -1342,7 +1341,7 @@ setTimeout(function fetchGitHubStars() {
       });
     })
     .catch(() => {});
-}, 2000);
+});
 
 // ── Stats count-up animation ──
 (function initCountUp() {
