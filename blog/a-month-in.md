@@ -34,7 +34,7 @@ Local AI support — Ollama, OpenAI-compatible servers, whatever you're running.
 
 **Calculated Ratios & Biological Age** — hsCRP/HDL, Triglyceride/HDL, ApoB/ApoA-I, De Ritis, Copper/Zinc, HOMA-IR, Free Water Deficit, BUN/Creatinine, biological vs. chronological age, and more. These tell a much more interesting story about what's going on with you than a bunch of isolated markers ever could.
 
-**Menstrual Cycle** — rebuilt from the ground up. Because you think you understand women's biology and then you realize again and again you really, really don't, so you reiterate over and over. LH, FSH, prolactin — the whole picture.
+**Menstrual Cycle** — rebuilt from the ground up. Because you think you understand women's biology and then you realize again and again you really, really don't, so you reiterate over and over. The whole picture.
 
 **Custom Biomarkers** — track anything. Your markers, your categories, your rules. Specialty labs, fatty acid panels, reference range editing.
 
@@ -54,7 +54,7 @@ But I always had a suspicion it might not be that straightforward.
 
 My mom has the same mutation. I inherited it from her. She's completely asymptomatic at 60 years old. Doctors always said it's inconclusive whether my issues are caused by the mutation. But they never cared to look any further.
 
-## The Moment Everything Clicked
+## The Moment Something Clicked
 
 I've been using a new UV-A/UV-B enabled PBM panel since January and wanted to see its effect on my vitamin D. So I asked the chat a simple question: *"I'm going to take blood tomorrow — what should I get tested?"*
 
@@ -101,7 +101,7 @@ So I kinda missed it too. And that's on me — at least from a certain age. But 
 
 It recommended specific tests to support the theory. The results came back today. Exactly what the AI predicted.
 
-The solution, if the theory holds, would be relatively simple: specific forms of B vitamins that can route around the broken methylation pathway. I'll take 8–12 weeks of this protocol to see if my homocysteine drops and my creatine rises. I wonder how I'll feel by then.
+The solution, if the theory holds, would be relatively simple: specific forms of B vitamins that can route around the broken methylation pathway. I'll take 8–12 weeks of this protocol to see if my homocysteine drops and how it'll affect the overall picture. I wonder how I'll feel by then. Stay tuned!
 
 If anything, it'll be an interesting N=1 experiment — AI edition — for the first time in my life.
 
@@ -113,7 +113,7 @@ The most likely scenario? Both. And the unaddressed methylation has been kerosen
 
 I don't want to get ahead of myself, but I have to say this.
 
-No one — and I repeat, *no one* — in the almost four decades I've spent in the healthcare system ever connected these things together. Not a single doctor thought to link my Mitofusin 2 mutation with my DNA variants with my lab trends and symptoms into a coherent picture.
+No one — and I repeat, *no one* — in the almost four decades I've spent in the healthcare system ever connected these things together. Not a single doctor thought to link my MFN2 mutation with my DNA variants with my lab trends and symptoms into a coherent picture.
 
 I had to wait for this very moment — the moment half the world is worried about AI taking everyone's job and the other half is enthusiastic about it — to vibecode my own solution.
 
@@ -129,13 +129,13 @@ But it has something else.
 
 And you can fear that something, or you can use it as an extension of your brain — given you mind having a healthy relationship with it. It's the same with your smartphone, your TV. The relationship you have with technology is what matters. And most people have a toxic one. That's up to you.
 
-I see so many people in denial. But your ignorance and fear don't matter. AI won't go anywhere. People won't stop asking AI about their health instead of their doctors who can't keep up with the velocity. So the question is not how to make them stop — but how to do it right.
+I see so many people in denial. But your ignorance and fear don't matter. AI won't go anywhere. People won't stop asking AI about their health instead of their doctors who can't keep up with the velocity. So the question is not how to make them stop — but how to help them do it right.
 
 Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: *"If you're using AI, that's not you doing the work."* Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off.
 
 ## Why I Keep Going
 
-I'll be honest — I actually might have a habit of getting ahead of myself. When I started vibecoding getbased, my brain was already fantasy-racing that something like this might happen. Then there's [that guy](https://x.com/paul_conyngham) who just vibecoded his own mRNA vaccine with ChatGPT, AlphaFold, and Grok — and saved his dog. These tools are something else.
+I'll be honest — I actually might have a habit of getting ahead of myself. When I started vibecoding getbased, my brain was already fantasy-racing that something like this might happen. Then there's [that guy](https://x.com/paul_conyngham) who just vibecoded his own mRNA vaccine with ChatGPT, AlphaFold, and Grok — and saved his dog. What a time to be alive.
 
 My dad and I don't have the greatest relationship, but he randomly told me something when I was a little kid: *"Look for a cure, and when you find it, do everything to get it."* I was maybe five years old and didn't have any health issues back then, but it somehow stuck — even though I had no idea what the old man was talking about.
 
