@@ -248,7 +248,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <h2>What Changed Since Launch</h2>
 <p>A lot. 319 commits in a month. The app went from v1.0 to v1.8. Here's what that looks like, grouped by theme:</p>
 <h3>Your data, your rules</h3>
-<p>Encryption, folder backup, and a full security audit. Self-hosted analytics — no third-party tracking, nothing phones home. You can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.</p>
+<p>Encryption, folder backup, and a full security audit. Self-hosted analytics — no third-party tracking. You can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.</p>
 <h3>Getting data in</h3>
 <p>PDF import was there from day one, but now you can also drop photos of lab results, scanned PDFs — because apparently not every lab in the world has moved past 1995. The AI figures it out. Manual entry and inline editing for when you just need to punch in a number. And a smarter import flow that actually tells you what's happening instead of making you guess.</p>
 <h3>AI that actually helps</h3>
@@ -273,15 +273,17 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <p>So I tell it yes, I did. It asked me to look for a specific SNP.</p>
 <p>Like, dude — I just asked what I should get tested tomorrow and now you want me to dig through my raw DNA file with 700,000 lines of text?</p>
 <p>So I hit Ctrl+F. Copy. Paste.</p>
-<p><em>"Good, can you look for two more?"</em></p>
+<p><em>"Good, can you look for three more?"</em></p>
 <p>I became curious. Found them. Then it started connecting dots I'd never seen.</p>
 <p>My entire methylation chain is compromised:</p>
-<blockquote><p><strong>Step 1 — Material processing (MTHFR C677T)</strong>
-→ Your processing machine runs at 60%</p>
-<p><strong>Step 2 — Main production (MTR A;G)</strong>
-→ Your main machine is less efficient</p>
-<p><strong>Step 3 — Machine maintenance (MTRR G;G)</strong>
-→ Nobody is properly servicing the machines</p>
+<blockquote><p><strong>Step 1 — Raw material prep (MTHFR C677T A;G)</strong>
+→ Your folate grinder only runs at ~65% speed</p>
+<p><strong>Step 2 — Main assembly line (MTR A2756G A;G)</strong>
+→ The assembly machine keeps breaking down</p>
+<p><strong>Step 3 — Machine maintenance (MTRR A66G G;G)</strong>
+→ The mechanic who fixes the assembly line barely shows up</p>
+<p><strong>Step 4 — Emergency exit (BHMT R239Q A;A)</strong>
+→ Even the failsafe backup isn't working properly</p>
 <p><strong>Result: homocysteine piles up at the factory gate</strong>
 → Your 12.4 µmol/L is exactly what this predicts</p>
 </blockquote>
@@ -306,7 +308,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <p>But it has something else.</p>
 <p>And you can fear that something, or you can use it as an extension of your brain — given you mind having a healthy relationship with it. It's the same with your smartphone, your TV. The relationship you have with technology is what matters. And most people have a toxic one. That's up to you.</p>
 <p>I see so many people in denial. But your ignorance and fear don't matter. AI won't go anywhere. People won't stop asking AI about their health instead of their doctors who can't keep up with the velocity. So the question is not how to make them stop — but how to do it right.</p>
-<p>Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: <em>"If you're using AI, that's not you doing the work."</em> Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off and remove yourself from my view.</p>
+<p>Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: <em>"If you're using AI, that's not you doing the work."</em> Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off.</p>
 <h2>Why I Keep Going</h2>
 <p>I'll be honest — I actually might have a habit of getting ahead of myself. When I started vibecoding getbased, my brain was already fantasy-racing that something like this might happen. Then there's <a href="https://x.com/paul_conyngham">that guy</a> who just vibecoded his own mRNA vaccine with ChatGPT, AlphaFold, and Grok — and saved his dog. These tools are something else.</p>
 <p>My dad and I don't have the greatest relationship, but he randomly told me something when I was a little kid: <em>"Look for a cure, and when you find it, do everything to get it."</em> I was maybe five years old and didn't have any health issues back then, but it somehow stuck — even though I had no idea what the old man was talking about.</p>

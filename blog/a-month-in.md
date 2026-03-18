@@ -18,7 +18,7 @@ A lot. 319 commits in a month. The app went from v1.0 to v1.8. Here's what that 
 
 ### Your data, your rules
 
-Encryption, folder backup, and a full security audit. Self-hosted analytics — no third-party tracking, nothing phones home. You can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.
+Encryption, folder backup, and a full security audit. Self-hosted analytics — no third-party tracking. You can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.
 
 ### Getting data in
 
@@ -68,20 +68,23 @@ Like, dude — I just asked what I should get tested tomorrow and now you want m
 
 So I hit Ctrl+F. Copy. Paste.
 
-*"Good, can you look for two more?"*
+*"Good, can you look for three more?"*
 
 I became curious. Found them. Then it started connecting dots I'd never seen.
 
 My entire methylation chain is compromised:
 
-> **Step 1 — Material processing (MTHFR C677T)**
-> → Your processing machine runs at 60%
+> **Step 1 — Raw material prep (MTHFR C677T A;G)**
+> → Your folate grinder only runs at ~65% speed
 >
-> **Step 2 — Main production (MTR A;G)**
-> → Your main machine is less efficient
+> **Step 2 — Main assembly line (MTR A2756G A;G)**
+> → The assembly machine keeps breaking down
 >
-> **Step 3 — Machine maintenance (MTRR G;G)**
-> → Nobody is properly servicing the machines
+> **Step 3 — Machine maintenance (MTRR A66G G;G)**
+> → The mechanic who fixes the assembly line barely shows up
+>
+> **Step 4 — Emergency exit (BHMT R239Q A;A)**
+> → Even the failsafe backup isn't working properly
 >
 > **Result: homocysteine piles up at the factory gate**
 > → Your 12.4 µmol/L is exactly what this predicts
@@ -128,7 +131,7 @@ And you can fear that something, or you can use it as an extension of your brain
 
 I see so many people in denial. But your ignorance and fear don't matter. AI won't go anywhere. People won't stop asking AI about their health instead of their doctors who can't keep up with the velocity. So the question is not how to make them stop — but how to do it right.
 
-Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: *"If you're using AI, that's not you doing the work."* Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off and remove yourself from my view.
+Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: *"If you're using AI, that's not you doing the work."* Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off.
 
 ## Why I Keep Going
 
