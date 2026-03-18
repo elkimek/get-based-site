@@ -1,6 +1,6 @@
-# Get Based — Landing Page
+# getbased — Landing Page
 
-Landing page for [Get Based](https://getbased.health), deployed to `getbased.health` via Vercel.
+Landing page for [getbased](https://getbased.health), deployed to `getbased.health` via Vercel.
 
 The app lives in a [separate repo](https://github.com/elkimek/get-based).
 

@@ -50,7 +50,7 @@
   assert('blog.html exists', blogSrc.length > 0);
 
   // Meta tags
-  assert('Title: "Blog — Get Based"', blogSrc.includes('<title>Blog \u2014 Get Based</title>'));
+  assert('Title: "Blog — getbased"', blogSrc.includes('<title>Blog \u2014 getbased</title>'));
   assert('og:title present', blogSrc.includes('og:title'));
   assert('og:url is /blog', blogSrc.includes('getbased.health/blog'));
   assert('og:image present', blogSrc.includes('og:image'));

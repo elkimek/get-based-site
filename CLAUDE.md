@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Landing page and blog for [Get Based](https://getbased.health) — blood work tracking app at `app.getbased.health`.
+Landing page and blog for [getbased](https://getbased.health) — blood work tracking app at `app.getbased.health`.
 
 ## Structure
 

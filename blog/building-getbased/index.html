@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>How I Built a Full Health App in Under Two Weeks with AI — getbased</title>
 <meta name="description" content="The story of building getbased — a 287+ biomarker health dashboard — as one person with Claude Code.">
 <meta property="og:title" content="How I Built a Full Health App in Under Two Weeks with AI — getbased">
@@ -126,7 +127,7 @@ nav.scrolled{padding:12px 32px;background:var(--nav-bg-scrolled)}
 .article hr{border:none;border-top:1px solid var(--border);margin:40px 0}
 .article blockquote{border-left:3px solid var(--indigo);padding:12px 20px;margin:24px 0;
   background:rgba(99,102,241,0.05);border-radius:0 8px 8px 0}
-.article blockquote p{color:var(--text2);margin-bottom:0;font-size:15px;font-style:italic}
+.article blockquote p,.article blockquote p:first-of-type{color:var(--text2);margin-bottom:0;font-size:15px;font-style:italic}
 .article code{font-family:'JetBrains Mono',monospace;font-size:14px;
   background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--blue)}
 .article pre{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
@@ -239,7 +240,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <p><em>February 25, 2026</em></p>
 <hr>
 <p>I'm not a coder. I want to get that out of the way first.</p>
-<p>I'm a Bitcoiner. That's probably the more relevant thing to know. Open source, privacy, sovereignty — these aren't features I bolted on at the end. They're the lens I see everything through. When I started building Get Based, I wasn't thinking about product-market fit or monetization. I was thinking: <em>I want to own my health data the same way I own my keys.</em></p>
+<p>I'm a Bitcoiner. That's probably the more relevant thing to know. Open source, privacy, sovereignty — these aren't features I bolted on at the end. They're the lens I see everything through. When I started building getbased, I wasn't thinking about product-market fit or monetization. I was thinking: <em>I want to own my health data the same way I own my keys.</em></p>
 <p>I wanted nice charts for my blood work. That's it. That was the whole idea. I'd get lab results as a PDF, and the numbers would sit in a drawer, disconnected from everything else. I wanted to <em>see</em> my trends over time — not just one test, but across years, across dozens of markers. Something visual. Something mine.</p>
 <p>What happened next was not planned.</p>
 <h2>How it started</h2>
@@ -256,7 +257,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <p>Somewhere along the way, a job landed in my inbox. Something I would've normally spent 30 hours on.</p>
 <p>Around the same time, Pavol Luptak wrote a post — <a href="https://x.com/wilderko/status/2021995764168196236">"In a few years, you will probably be redundant"</a>. So I told myself, why the hell not?</p>
 <p>I put everything I had into a single folder and fired up another Claude Code session. Vaguely described the assignment, the budget, gave it a link to my other work. Twenty minutes later? Almost perfect output. Then it took another 90 minutes of manual polish — because even the best models can't get non-English word ordering right.</p>
-<p>The result? The client is happy with what I delivered. And while I was busy building Get Based, my effective hourly rate on that job increased more than tenfold. I mean... Jesus.</p>
+<p>The result? The client is happy with what I delivered. And while I was busy building getbased, my effective hourly rate on that job increased more than tenfold. I mean... Jesus.</p>
 <h2>What got built</h2>
 <p>The feature list grew insanely fast. Here's what exists today:</p>
 <ul>
@@ -303,14 +304,14 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <li><strong>Auto-select best AI model</strong> — using live medical benchmarks from Chatbot Arena</li>
 <li><strong>OpenClaw integration</strong> — proactive health alerts via WhatsApp, Telegram, and other messaging apps</li>
 </ul>
-<p>Get Based is open source under GPL-3.0. The code is on <a href="https://github.com/elkimek/get-based">GitHub</a>. If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.</p>
+<p>getbased is open source under GPL-3.0. The code is on <a href="https://github.com/elkimek/get-based">GitHub</a>. If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.</p>
 <p>Your labs tell a story. You should be the one reading it.</p>
 <h2>Yes, AI wrote this too</h2>
 <p>You're probably wondering if AI wrote this blog post as well. It did. I helped.</p>
 <p>Because when's the last time you wrote a blog post from a command-line interface, punching in one thought after another with a bunch of typos like a ferret on speed? I know what you might think — but I've punched keyboards enough in the last decade. Thanks to my neuropathy, I type only with my thumbs, and they get tired very quickly. I'm not going to do that anymore. I don't like to dictate either.</p>
 <p>So what does the future bring? Maybe writing via <a href="https://x.com/ZyphraAI/status/2024114248020898015">open-source EEG</a>? I'd be first in line.</p>
 <hr>
-<p><em>getbased is free, open source, and vibecoded. No accounts, no paywalls.</em></p>
+<p><em>getbased is free, open source, and vibecoded. No accounts, no cloud dependency.</em></p>
 </article>
   </div>
 </main>
@@ -324,7 +325,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       <a href="https://app.getbased.health/docs">Docs</a>
       <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <span class="footer-copy">&copy; 2026 getbased &middot; Open source &middot; No tracking &middot; Vibecoded with &#10084;&#65039; by <a href="https://x.com/elkimxoc" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Elkim</a></span>
+    <span class="footer-copy">&copy; 2026 getbased &middot; Open source &middot; Vibecoded with &#10084;&#65039; by <a href="https://x.com/elkimxoc" target="_blank" rel="noopener" style="color:var(--text2);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Elkim</a></span>
   </div>
 </footer>
 

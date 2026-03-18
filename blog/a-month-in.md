@@ -1,4 +1,4 @@
-# A Month In — and Why I Believe getbased Is Going to Change the Game
+# A Month In — How My Own Tool Found What My Doctors Wouldn't
 
 When I hit publish on the first release of getbased, I genuinely thought it was in pretty good shape.
 
@@ -18,15 +18,15 @@ A lot. 319 commits in a month. The app went from v1.0 to v1.8. Here's what that 
 
 ### Your data, your rules
 
-Encryption, folder backup, and a full security audit of the entire codebase. Self-hosted analytics — no third-party tracking, nothing phones home. PII obfuscation with a streaming review modal so you can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.
+Encryption, folder backup, and a full security audit. Self-hosted analytics — no third-party tracking, nothing phones home. You can see exactly what gets redacted before anything touches an AI. Client management for practitioners who want to use it with multiple people. Your data never leaves your device unless you explicitly choose to.
 
 ### Getting data in
 
-PDF import was there from day one, but now you can also drop photos of lab results, scanned PDFs — because apparently not every lab in the world has moved past 1995. The AI figures it out. A parser adapter system that makes the whole import pipeline extensible. Manual entry and inline value editing for when you just need to punch in a number. And a smarter import flow that actually tells you what's happening instead of making you guess.
+PDF import was there from day one, but now you can also drop photos of lab results, scanned PDFs — because apparently not every lab in the world has moved past 1995. The AI figures it out. Manual entry and inline editing for when you just need to punch in a number. And a smarter import flow that actually tells you what's happening instead of making you guess.
 
 ### AI that actually helps
 
-Local AI support — Ollama, OpenAI-compatible servers, whatever you're running. A Model Advisor that looks at your hardware and tells you which model will actually work well, so you stop wondering why your responses are garbage on a 4-bit quant. Chat image attachments, discuss mode overhaul, message search, smart auto-scroll, markdown rendering. The AI chat went from "functional" to actually pleasant to use. A chat-driven onboarding wizard instead of dumping you into an empty dashboard.
+Local AI support — Ollama, OpenAI-compatible servers, whatever you're running. A Model Advisor that looks at your hardware and tells you which model will actually work well, so you stop wondering why your responses are garbage on a 4-bit quant. The chat got a complete overhaul — image attachments, better discussions, search, proper markdown rendering. It went from "functional" to actually pleasant to use. And a chat-driven onboarding wizard instead of dumping you into an empty dashboard.
 
 ### Connecting the dots
 
@@ -37,6 +37,8 @@ Local AI support — Ollama, OpenAI-compatible servers, whatever you're running.
 **Menstrual Cycle** — rebuilt from the ground up. Because you think you understand women's biology and then you realize again and again you really, really don't, so you reiterate over and over. LH, FSH, prolactin — the whole picture.
 
 **Custom Biomarkers** — track anything. Your markers, your categories, your rules. Specialty labs, fatty acid panels, reference range editing.
+
+**EMF Environment Assessment** — a full Baubiologie-style survey for your home. Room-by-room EMF mapping, severity ratings, import for consultant reports, and AI interpretation that factors your environment into your health picture.
 
 **Smarter Focus Card** — the AI picks what to pay attention to today based on your trends and notable changes.
 
@@ -91,9 +93,13 @@ Then it explained how impaired methylation is well-documented to overlap with pe
 
 Are you kidding me?
 
+For the record — methylation issues are not something unknown to me. They're not rare. Many people have problems with it. The first time I tested homocysteine was almost 20 years ago because some food guru asked me to. I don't remember what the result was, but neither him, nor any of the half dozen neurologists I've seen over the years, nor even the country's leading expert on my disease ever made the connection. Not even hypothetically.
+
+So I kinda missed it too. And that's on me — at least from a certain age. But I've made plenty of other mistakes I'm paying for now. This is exactly why I'm building this tool. And it seems to work — at least in theory. A very plausible, testable theory.
+
 ## The N=1 Experiment
 
-It recommended specific tests to support the theory. The results came back today. Exactly what my tool — driven by Claude Sonnet 4.6 — predicted.
+It recommended specific tests to support the theory. The results came back today. Exactly what the AI predicted.
 
 The solution, if the theory holds, would be relatively simple: specific forms of B vitamins that can route around the broken methylation pathway. I'll take 8–12 weeks of this protocol to see if my homocysteine drops and my creatine rises. I wonder how I'll feel by then.
 
@@ -107,15 +113,29 @@ The most likely scenario? Both. And the unaddressed methylation has been kerosen
 
 I don't want to get ahead of myself, but I have to say this.
 
-No one — and I repeat, *no one* — in the almost four decades I've spent in the healthcare system was able to connect these things together. Not a single doctor thought to link my Mitofusin 2 mutation with my DNA variants with my lab trends and symptoms into a coherent picture.
+No one — and I repeat, *no one* — in the almost four decades I've spent in the healthcare system ever connected these things together. Not a single doctor thought to link my Mitofusin 2 mutation with my DNA variants with my lab trends and symptoms into a coherent picture.
 
-I had to wait for this very moment — the moment half the world is worried about AI and the other half is enthusiastic about it — to vibecode my own solution.
+I had to wait for this very moment — the moment half the world is worried about AI taking everyone's job and the other half is enthusiastic about it — to vibecode my own solution.
 
 I'm not sure this will make any difference for my body after almost four decades of unrelenting stress. But let me hope, right?
 
+## Last but Not Least — Let Me Chime In on AI
+
+I hear so many people saying things like: *It makes things up! It hallucinates! It's trained on shit data! It can't think! It's not intelligent! It doesn't have a soul and feel emotions! It's not human!* And my personal favourite: *iT jUsT pReDiCtS tHe nExT wOrD!!*
+
+I mean... do you have any idea how your brain works? Especially your cortex? It's a huge prediction machine. That's it. To be fair, compared to AI, it has a memory-sensory prediction error mechanism that filters out most of what's actually there — it just won't let you see it. That's what happens when you take DMT: you kill the prediction error detection, and then you see machine elves, fractals, and whatnot. Your brain is a wet, warm quantum mess, and AI doesn't have that.
+
+But it has something else.
+
+And you can fear that something, or you can use it as an extension of your brain — given you mind having a healthy relationship with it. It's the same with your smartphone, your TV. The relationship you have with technology is what matters. And most people have a toxic one. That's up to you.
+
+I see so many people in denial. But your ignorance and fear don't matter. AI won't go anywhere. People won't stop asking AI about their health instead of their doctors who can't keep up with the velocity. So the question is not how to make them stop — but how to do it right.
+
+Then there's a special group of people who will psyop you into the Proof of Work delusion, saying things like: *"If you're using AI, that's not you doing the work."* Garbage like that. That's like saying taking a picture with your phone is not you because you didn't draw it on canvas. I've spent about 250 hours on getbased by now to get it to this point, and if that's not heavy lifting, I don't know what is. It just happens I have this insane multiplier — trained on everything there is — at hand, and you don't. So either start using it yourself or fuck off and remove yourself from my view.
+
 ## Why I Keep Going
 
-I'll be honest — I actually might have a habit of getting ahead of myself. When I started vibecoding getbased, my brain was already fantasy-racing that something like this might happen. Then there's that guy who just vibecoded his own mRNA vaccine with ChatGPT, AlphaFold, and Grok — and saved his dog. These tools are something else.
+I'll be honest — I actually might have a habit of getting ahead of myself. When I started vibecoding getbased, my brain was already fantasy-racing that something like this might happen. Then there's [that guy](https://x.com/paul_conyngham) who just vibecoded his own mRNA vaccine with ChatGPT, AlphaFold, and Grok — and saved his dog. These tools are something else.
 
 My dad and I don't have the greatest relationship, but he randomly told me something when I was a little kid: *"Look for a cure, and when you find it, do everything to get it."* I was maybe five years old and didn't have any health issues back then, but it somehow stuck — even though I had no idea what the old man was talking about.
 
@@ -123,8 +143,6 @@ I have no idea if what I'm doing here will move the needle for me. But being my 
 
 I got here. I'm not going to stop now.
 
-As a wise man says: *"If you know better, you do better."* I heard him say that a thousand times online. Then I met him over dinner in Prague last summer and heard it in person — but this time, he added: *"How much do you want to know?"*
+---
 
-It resonated so strongly it still has vibes, even now. I've been building this with what I've learned from him over the past three years, and I think if he wasn't skeptical of AI, he might actually like it.
-
-I won't bother him with it out of respect — the project is still in diapers. But I'm excited about how it will look eleven months from now. And maybe then, I'll take the courage to ask him to test it.
+*getbased is free, open source, and vibecoded. No accounts, no cloud dependency.*

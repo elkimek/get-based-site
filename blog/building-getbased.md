@@ -6,7 +6,7 @@
 
 I'm not a coder. I want to get that out of the way first.
 
-I'm a Bitcoiner. That's probably the more relevant thing to know. Open source, privacy, sovereignty — these aren't features I bolted on at the end. They're the lens I see everything through. When I started building Get Based, I wasn't thinking about product-market fit or monetization. I was thinking: *I want to own my health data the same way I own my keys.*
+I'm a Bitcoiner. That's probably the more relevant thing to know. Open source, privacy, sovereignty — these aren't features I bolted on at the end. They're the lens I see everything through. When I started building getbased, I wasn't thinking about product-market fit or monetization. I was thinking: *I want to own my health data the same way I own my keys.*
 
 I wanted nice charts for my blood work. That's it. That was the whole idea. I'd get lab results as a PDF, and the numbers would sit in a drawer, disconnected from everything else. I wanted to *see* my trends over time — not just one test, but across years, across dozens of markers. Something visual. Something mine.
 
@@ -40,7 +40,7 @@ Around the same time, Pavol Luptak wrote a post — ["In a few years, you will p
 
 I put everything I had into a single folder and fired up another Claude Code session. Vaguely described the assignment, the budget, gave it a link to my other work. Twenty minutes later? Almost perfect output. Then it took another 90 minutes of manual polish — because even the best models can't get non-English word ordering right.
 
-The result? The client is happy with what I delivered. And while I was busy building Get Based, my effective hourly rate on that job increased more than tenfold. I mean... Jesus.
+The result? The client is happy with what I delivered. And while I was busy building getbased, my effective hourly rate on that job increased more than tenfold. I mean... Jesus.
 
 ## What got built
 
@@ -112,7 +112,7 @@ The core app is solid. The roadmap is ambitious:
 - **Auto-select best AI model** — using live medical benchmarks from Chatbot Arena
 - **OpenClaw integration** — proactive health alerts via WhatsApp, Telegram, and other messaging apps
 
-Get Based is open source under GPL-3.0. The code is on [GitHub](https://github.com/elkimek/get-based). If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.
+getbased is open source under GPL-3.0. The code is on [GitHub](https://github.com/elkimek/get-based). If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.
 
 Your labs tell a story. You should be the one reading it.
 
@@ -126,4 +126,4 @@ So what does the future bring? Maybe writing via [open-source EEG](https://x.com
 
 ---
 
-*Get Based is free, open source, and vibecoded. No tracking, no accounts, no cloud dependency.*
+*getbased is free, open source, and vibecoded. No accounts, no cloud dependency.*
