@@ -68,22 +68,19 @@ Like, dude — I just asked what I should get tested tomorrow and now you want m
 
 So I hit Ctrl+F. Copy. Paste.
 
-*"Good, can you look for three more?"*
+*"Good, can you look for two more?"*
 
 I became curious. Found them. Then it started connecting dots I'd never seen.
 
 My entire methylation chain is compromised:
 
-> **Step 1 — Raw material delivery (TCN2 C;C)**
-> → Your delivery truck is half empty
->
-> **Step 2 — Material processing (MTHFR C677T)**
+> **Step 1 — Material processing (MTHFR C677T)**
 > → Your processing machine runs at 60%
 >
-> **Step 3 — Main production (MTR A;G)**
+> **Step 2 — Main production (MTR A;G)**
 > → Your main machine is less efficient
 >
-> **Step 4 — Machine maintenance (MTRR G;G)**
+> **Step 3 — Machine maintenance (MTRR G;G)**
 > → Nobody is properly servicing the machines
 >
 > **Result: homocysteine piles up at the factory gate**
