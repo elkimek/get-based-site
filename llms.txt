@@ -7,16 +7,21 @@
 
 ## What getbased does
 
-- Import any blood work PDF — AI extracts all markers automatically
-- Track trends over time with interactive charts across 16+ biomarker categories
-- Specialty labs supported: OAT (organic acids) and more via custom marker pipeline
-- AI chat panel with debate mode — pit two AI personas against each other over your results
-- Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 standards
+- Import any blood work PDF or image — AI extracts all markers automatically (any format, any language, batch import)
+- Track trends over time with interactive charts across 16+ biomarker categories (287+ markers)
+- Specialty labs supported: OAT (organic acids), fatty acids (Spadia, ZinZino, OmegaQuant) via custom marker pipeline
+- DNA import — upload raw data from 23andMe, Ancestry, MyHeritage, FTDNA, or Living DNA. 42 curated SNPs across 10 health categories with APOE haplotype resolution
+- Biological age — PhenoAge (Levine 2018) + Bortz Age combined, with chronological age reference line
+- AI chat panel with debate mode — pit two AI personas against each other over your results. Conversation threads, image attachments, web search hints
+- DNA-aware supplement and lifestyle recommendations
 - 9 lifestyle context cards (diet, exercise, sleep, stress, etc.) shape AI interpretation
-- Menstrual cycle tracking with phase-aware reference ranges
-- Correlation viewer, heatmaps, trend alerts, PDF reports
-- Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM)
-- Works with OpenRouter (200+ models, recommended), Anthropic, Venice, or Local AI (Ollama, LM Studio, Jan, and other OpenAI-compatible servers)
+- Menstrual cycle tracking with phase-aware reference ranges, perimenopause detection, iron alerts
+- Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 standards
+- Correlation viewer, heatmaps, compare dates, trend alerts, PDF reports
+- E2E encrypted cross-device sync via Evolu CRDT — self-host the relay for full control
+- OpenClaw messenger bot integration — chat about your labs over Telegram, Signal, or any messenger
+- Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM), auto-backup
+- 4 AI providers: OpenRouter (200+ models, recommended), Anthropic, Venice (with optional E2E encryption), or Local AI (Ollama, LM Studio, Jan)
 
 ## Key pages
 
@@ -29,15 +34,16 @@
 
 ## Docs highlights
 
-- [Getting started](https://app.getbased.health/docs/getting-started): First import walkthrough
-- [AI setup guide](https://app.getbased.health/docs/ai-setup): Configure OpenRouter, Anthropic, Venice, or Ollama
-- [Specialty labs](https://app.getbased.health/docs/specialty-labs): Importing OAT and other specialty tests
-- [Privacy and security](https://app.getbased.health/docs/privacy): Local-first architecture, encryption, PII obfuscation
-- [Changelog](https://app.getbased.health/docs/changelog): Version history and updates
+- [Getting started](https://app.getbased.health/docs/guide/getting-started): First import walkthrough
+- [AI setup guide](https://app.getbased.health/docs/guide/ai-chat): Configure OpenRouter, Anthropic, Venice, or Ollama
+- [DNA import](https://app.getbased.health/docs/guide/dna-import): Upload raw DNA data and view genetic insights
+- [Cross-device sync](https://app.getbased.health/docs/guide/cross-device-sync): E2E encrypted sync setup and self-hosting
+- [OpenClaw](https://app.getbased.health/docs/guide/openclaw): Connect your messenger bot
+- [Privacy and security](https://app.getbased.health/docs/guide/encryption): Local-first architecture, encryption, PII obfuscation
 
 ## How getbased differs from alternatives
 
 - **vs InsideTracker / SelfDecode**: getbased is free, open-source, and runs entirely in your browser. No subscription, no data collection, no account required
 - **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
-- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 16+ categories, specialty labs (OAT), menstrual cycle phase-aware ranges, and 9 lifestyle context cards that shape every AI interpretation
-- **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, and gives AI your full health context — not just a single lab report pasted into a chat window
+- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 16+ categories, specialty labs (OAT, fatty acids), DNA import (42 SNPs), biological age, menstrual cycle phase-aware ranges, and 9 lifestyle context cards that shape every AI interpretation
+- **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, and gives AI your full health context — not just a single lab report pasted into a chat window. Connect via OpenClaw to chat over any messenger
