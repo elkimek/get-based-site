@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>getbased — Open-Source Blood Work Dashboard with AI</title>
-<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF with AI, track 287+ biomarkers over time, and get personalized health insights. Private, offline-first, no account needed.">
+<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
 <meta property="og:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta property="og:description" content="AI-powered blood work dashboard. Import any lab PDF, track 287+ biomarkers, get personalized insights. Local-first, no account needed.">
+<meta property="og:description" content="AI-powered blood work dashboard. Import any lab PDF or photo, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getbased.health/">
 <meta property="og:image" content="https://getbased.health/og-image.png">
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@getbasedhealth">
 <meta name="twitter:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta name="twitter:description" content="AI-powered blood work dashboard. Import any lab PDF, track 287+ biomarkers, get personalized insights. Local-first, no account needed.">
+<meta name="twitter:description" content="AI-powered blood work dashboard. Import any lab PDF or photo, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
 <meta name="twitter:image" content="https://getbased.health/og-image.png">
 <link rel="canonical" href="https://getbased.health/">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -491,7 +491,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   "@type": "SoftwareApplication",
   "name": "getbased",
   "url": "https://app.getbased.health",
-  "description": "Free, open-source blood work dashboard. Import any lab PDF with AI, track biomarker trends over time, and get AI-powered interpretations. Runs entirely in your browser with no account required.",
+  "description": "Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. Runs entirely in your browser with no account required.",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "Web browser",
   "offers": {
@@ -508,9 +508,11 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     "AI chat panel with debate mode, image attachments, and conversation threads",
     "Menstrual cycle phase-aware reference ranges with perimenopause detection",
     "9 lifestyle context cards with AI health ratings",
-    "DNA import (42 SNPs, APOE haplotype, 5 raw DNA formats)",
+    "DNA import (42 SNPs, APOE haplotype, 5 raw DNA formats, mtDNA haplogroup with coupling classification)",
     "Biological age (PhenoAge + Bortz Age)",
-    "E2E encrypted cross-device sync via Evolu CRDT",
+    "Multi-profile support for practitioners and families",
+    "Biometrics tracking (weight, blood pressure, pulse)",
+    "E2E encrypted cross-device sync via Evolu CRDT with status indicator",
     "OpenClaw messenger bot integration",
     "4 AI providers (OpenRouter, Anthropic, Venice E2EE, Local AI)",
     "DNA-aware supplement and lifestyle recommendations",
@@ -518,7 +520,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     "Local-first with AES-256-GCM encryption and auto-backup",
     "JSON export and PDF reports"
   ],
-  "softwareVersion": "1.9.7"
+  "softwareVersion": "1.12.0"
 }
 </script>
 <script type="application/ld+json">
@@ -840,7 +842,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       <div class="feature-card reveal reveal-delay-1">
         <span class="feature-icon">&#129302;</span>
         <h3>AI PDF Import</h3>
-        <p>Drop any lab PDF &mdash; any format, any language. Blood work, OAT, and specialty labs. AI maps results to 287+ known markers. Unknown markers are kept automatically.</p>
+        <p>Drop any lab PDF, photo, or screenshot &mdash; any format, any language. Blood work, OAT, and specialty labs. AI maps results to 287+ known markers. Unknown markers are kept automatically.</p>
         <span class="feature-tag purple">Any format</span>
       </div>
       <div class="feature-card reveal reveal-delay-2">
@@ -881,7 +883,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       <div class="bento-card span-5 reveal reveal-delay-1">
         <span class="bento-icon">&#129657;</span>
         <h3>What your GP won't ask</h3>
-        <p>9 lifestyle cards &mdash; diet, sleep, light, exercise, stress, love life, environment, conditions, and goals. Each gets an AI health rating. All of it feeds into every analysis.</p>
+        <p>9 lifestyle cards &mdash; diet, sleep, light, exercise, stress, love life, environment, conditions, and goals. Plus biometrics: weight, blood pressure, and pulse tracked over time. Each card gets an AI health rating. All of it feeds into every analysis.</p>
         <div class="bento-visual">
           <div class="ctx-mock">
             <div class="ctx-card" data-detail="Insulin sensitivity, lower HbA1c, optimize thyroid"><span class="ctx-dot g"></span><div class="ctx-label">&#127919; Goals</div><div class="ctx-value">Improve insulin</div></div>
@@ -914,24 +916,24 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       </div>
       <div class="feature-card reveal reveal-delay-2">
         <span class="feature-icon">&#129518;</span>
-        <h3>Ratios &amp; Derived Markers</h3>
-        <p>The most powerful insights often come from ratios between markers, not individual numbers. Computed automatically from your existing results.</p>
+        <h3>Biological Age &amp; Derived Markers</h3>
+        <p>Biological age calculated from a standard blood panel. Plus auto-computed ratios between markers &mdash; often more revealing than individual numbers.</p>
         <span class="feature-tag orange">Derived</span>
       </div>
     </div>
 
     <!-- Third row: 3 feature cards -->
-    <div class="features-section-bottom" style="margin-top:20px">
+    <div class="features-section-bottom features-section-4col" style="margin-top:20px">
       <div class="feature-card reveal">
         <span class="feature-icon">&#129516;</span>
-        <h3>DNA Import</h3>
-        <p>Upload raw DNA data from 23andMe, Ancestry, or any major provider. 42 curated SNPs across 10 health categories with APOE haplotype resolution. AI uses your genetics for context-aware insights.</p>
+        <h3>DNA &amp; mtDNA Import</h3>
+        <p>Upload raw DNA data from any major provider. 42 curated SNPs across 10 health categories with APOE haplotype resolution. mtDNA haplogroup with mitochondrial coupling classification. AI uses your genetics for context-aware insights.</p>
         <span class="feature-tag purple">Genetics</span>
       </div>
       <div class="feature-card reveal reveal-delay-1">
         <span class="feature-icon">&#128274;</span>
         <h3>E2E Encrypted Sync</h3>
-        <p>Sync all profiles and AI settings across devices. Your data is encrypted before it leaves the browser &mdash; the relay only sees ciphertext. Self-host the relay for full control.</p>
+        <p>Manage multiple profiles &mdash; clients, family, or your own &mdash; and sync them across devices. Data is encrypted before it leaves the browser. Self-host the relay for full control.</p>
         <span class="feature-tag green">Privacy</span>
       </div>
       <div class="feature-card reveal reveal-delay-2">
