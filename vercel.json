@@ -12,7 +12,8 @@
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Onion-Location", "value": "http://p75tbgf5smjkrq7pqap5bkq6esrgin66q6td2lmukbxo5r3gyocfqxid.onion{path}" }
       ]
     }
   ],

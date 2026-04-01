@@ -220,6 +220,12 @@ if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
   document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health','/app')});
   document.querySelectorAll('a[href*="getbased.health"]').forEach(a=>{if(!a.href.includes('/app'))a.href=a.href.replace('https://getbased.health','')||'/'});
 }
+// Tor: rewrite clearnet links to .onion equivalents
+if(location.hostname.endsWith('.onion')){
+  var appOnion='http://iobqafpywmncin7m2wpvbemouvulaeb7jnvtvugxnru4gpneushb5jyd.onion';
+  document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health',appOnion)});
+  document.querySelectorAll('a[href*="getbased.health"]').forEach(a=>{if(!a.href.includes(appOnion))a.href=a.href.replace('https://getbased.health','')||'/'});
+}
 </script>
 </body>
 </html>
