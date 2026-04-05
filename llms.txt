@@ -24,7 +24,7 @@
 - E2E encrypted cross-device sync via Evolu CRDT with sync status indicator — self-host the relay for full control
 - OpenClaw messenger bot integration — chat about your labs over Telegram, Signal, or any messenger
 - Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM), auto-backup
-- 4 AI providers: OpenRouter (200+ models, recommended), Anthropic, Venice (with optional E2E encryption), or Local AI (Ollama, LM Studio, Jan)
+- 5 AI providers: PPQ (anonymous, E2EE, crypto topup), Routstr (Bitcoin Lightning + Cashu), OpenRouter (200+ models, card/USDC), Venice (E2E encryption), or Local AI (Ollama, LM Studio, Jan)
 
 ## Key pages
 
@@ -38,7 +38,7 @@
 ## Docs highlights
 
 - [Getting started](https://app.getbased.health/docs/guide/getting-started): First import walkthrough
-- [AI setup guide](https://app.getbased.health/docs/guide/ai-chat): Configure OpenRouter, Anthropic, Venice, or Ollama
+- [AI setup guide](https://app.getbased.health/docs/guide/ai-chat): Configure PPQ, Routstr, OpenRouter, Venice, or Local AI
 - [DNA import](https://app.getbased.health/docs/guide/dna-import): Upload raw DNA data, mtDNA haplogroup, and view genetic insights
 - [Cross-device sync](https://app.getbased.health/docs/guide/cross-device-sync): E2E encrypted sync setup, status indicator, and self-hosting
 - [OpenClaw](https://app.getbased.health/docs/guide/openclaw): Connect your messenger bot
