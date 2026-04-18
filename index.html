@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>getbased — Open-Source Blood Work Dashboard with AI</title>
-<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
+<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta property="og:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta property="og:description" content="AI-powered blood work dashboard. Import any lab PDF or photo, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
+<meta property="og:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getbased.health/">
 <meta property="og:image" content="https://getbased.health/og-image.png">
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@getbasedhealth">
 <meta name="twitter:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta name="twitter:description" content="AI-powered blood work dashboard. Import any lab PDF or photo, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. No account needed.">
+<meta name="twitter:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta name="twitter:image" content="https://getbased.health/og-image.png">
 <link rel="canonical" href="https://getbased.health/">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -215,6 +215,7 @@ section{position:relative;z-index:1;padding:120px 32px}
 .features-section-top{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
 .features-section-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:20px}
 .features-section-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.features-section-bottom.features-section-4col{grid-template-columns:repeat(4,1fr)}
 .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;
   transition:all 0.3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
@@ -231,6 +232,7 @@ section{position:relative;z-index:1;padding:120px 32px}
 .feature-tag.purple{background:rgba(167,139,250,0.1);color:var(--purple)}
 .feature-tag.orange{background:rgba(251,146,60,0.1);color:var(--orange)}
 .feature-tag.cyan{background:rgba(56,189,248,0.1);color:var(--cyan)}
+.feature-tag.blue{background:rgba(79,140,255,0.1);color:var(--blue)}
 .bento-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;
   position:relative;overflow:hidden;transition:all 0.3s}
 .bento-card:hover{border-color:var(--border2)}
@@ -441,6 +443,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   .privacy-inner{grid-template-columns:1fr;gap:40px}
   .why-grid{grid-template-columns:1fr;gap:40px}
   .providers-grid{grid-template-columns:repeat(3,1fr)}
+  .features-section-bottom.features-section-4col{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   section{padding:80px 20px}
@@ -491,7 +494,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   "@type": "SoftwareApplication",
   "name": "getbased",
   "url": "https://app.getbased.health",
-  "description": "Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. E2E encrypted sync. Runs entirely in your browser with no account required.",
+  "description": "Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. Ground the AI's analysis in your own research library so it cites papers and guides you trust, not just what it already knows. E2E encrypted sync. Runs entirely in your browser with no account required.",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "Web browser",
   "offers": {
@@ -503,9 +506,10 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   "license": "https://www.gnu.org/licenses/gpl-3.0.html",
   "featureList": [
     "AI-powered PDF and image lab import (any format, any language)",
-    "Biomarker trend charts for 16+ categories with 287+ markers",
-    "Specialty labs (OAT, fatty acids) via custom marker pipeline",
+    "Biomarker trend charts for 17+ categories with 287+ markers",
+    "Specialty labs (OAT, fatty acids, BioStarks) via custom marker pipeline",
     "AI chat panel with debate mode, image attachments, and conversation threads",
+    "Bring-your-own research library (on-device RAG) — the AI grounds every answer in PDFs, research papers, and clinical guides you upload, with multi-library support",
     "Menstrual cycle phase-aware reference ranges with perimenopause detection",
     "9 lifestyle context cards with AI health ratings",
     "DNA import (42 SNPs, APOE haplotype, 5 raw DNA formats, mtDNA haplogroup with coupling classification)",
@@ -513,14 +517,14 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     "Multi-profile support for practitioners and families",
     "Biometrics tracking (weight, blood pressure, pulse)",
     "E2E encrypted cross-device sync via Evolu CRDT with status indicator",
-    "OpenClaw messenger bot integration",
-    "5 AI providers (OpenRouter, PPQ, Routstr, Venice E2EE, Local AI)",
+    "Personal agent integration — query your labs from Hermes, OpenClaw, or any MCP-compatible agent",
+    "Choice of AI provider (OpenRouter, PPQ, Routstr, Venice E2EE, Local AI, or any custom OpenAI-compatible endpoint)",
     "DNA-aware supplement and lifestyle recommendations",
     "Correlation viewer, heatmaps, and compare dates",
     "Local-first with AES-256-GCM encryption and auto-backup",
     "JSON export and PDF reports"
   ],
-  "softwareVersion": "1.12.0"
+  "softwareVersion": "1.21.0"
 }
 </script>
 <script type="application/ld+json">
@@ -533,7 +537,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       "name": "Does getbased AI hallucinate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "getbased isn't a chatbot — it's a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. You can pit two personas against each other and steer the debate yourself. The AI is the horse. The app is the reins."
+        "text": "getbased isn't a chatbot — it's a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. Add your own research library and every answer gets grounded in the papers and guides you trust, not just what the model happened to see in training. You can pit two personas against each other and steer the debate yourself. The AI is the horse. The app is the reins."
       }
     },
     {
@@ -586,7 +590,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       "@type": "HowToStep",
       "position": 3,
       "name": "Understand",
-      "text": "Ask AI about any marker. It knows your diet, sleep, location, stress, and goals — not just the numbers."
+      "text": "Ask AI about any marker. It knows your diet, sleep, location, stress, goals, and the research you trust — not just the numbers."
     }
   ],
   "tool": [
@@ -659,10 +663,10 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   <div class="container">
     <div class="hero-badge">
       <span class="hero-badge-dot"></span>
-      Open source &middot; No account required &middot; 287+ biomarkers
+      Open source &middot; No account required &middot; 287+ biomarkers<span id="hero-version" style="opacity:0"></span>
     </div>
     <h1 class="reveal reveal-delay-1">Your lab results deserve<br><span class="gradient">better than a PDF</span></h1>
-    <p class="hero-sub reveal reveal-delay-2">Drop any lab report and get interactive charts, trend detection, and AI that understands your full health context &mdash; not just reference ranges.</p>
+    <p class="hero-sub reveal reveal-delay-2">Drop any lab report and get interactive charts, trend detection, and AI grounded in your full health context and the research you trust &mdash; not just reference ranges or what AI already knows.</p>
     <div class="hero-actions reveal reveal-delay-3">
       <a href="https://app.getbased.health" class="btn-primary">
         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 2v10m0 0l-4-4m4 4l4-4M3 15h12"/></svg>
@@ -743,7 +747,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <div class="stats-bar">
   <div class="stats-grid">
     <div class="reveal"><div class="stat-number" data-count="287" data-suffix="+">287+</div><div class="stat-label">Biomarkers</div></div>
-    <div class="reveal reveal-delay-1"><div class="stat-number" data-count="16" data-suffix="+">16+</div><div class="stat-label">Categories</div></div>
+    <div class="reveal reveal-delay-1"><div class="stat-number" data-count="17" data-suffix="+">17+</div><div class="stat-label">Categories</div></div>
     <div class="reveal reveal-delay-2"><div class="stat-number" data-count="9" data-suffix="">9</div><div class="stat-label">Context cards</div></div>
     <div class="reveal reveal-delay-3"><div class="stat-number" data-count="5" data-suffix="">5</div><div class="stat-label">AI providers</div></div>
   </div>
@@ -818,7 +822,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         <div class="step-num">3</div>
         <span class="step-icon"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
         <h3>Understand</h3>
-        <p>Ask AI about any marker. It knows your diet, sleep, location, stress, and goals &mdash; not just the numbers.</p>
+        <p>Ask AI about any marker. It knows your diet, sleep, location, stress, goals, and the research you trust &mdash; not just the numbers.</p>
       </div>
     </div>
   </div>
@@ -922,15 +926,21 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       </div>
     </div>
 
-    <!-- Third row: 3 feature cards -->
+    <!-- Third row: 4 feature cards -->
     <div class="features-section-bottom features-section-4col" style="margin-top:20px">
       <div class="feature-card reveal">
-        <span class="feature-icon">&#129516;</span>
-        <h3>DNA &amp; mtDNA Import</h3>
-        <p>Upload raw DNA data from any major provider. 42 curated SNPs across 10 health categories with APOE haplotype resolution. mtDNA haplogroup with mitochondrial coupling classification. AI uses your genetics for context-aware insights.</p>
-        <span class="feature-tag purple">Genetics</span>
+        <span class="feature-icon">&#128218;</span>
+        <h3>Your research library</h3>
+        <p>The AI reads your research, not just what it already knows. Drop the papers, guides, and protocols you trust &mdash; every answer is grounded in them. Runs locally, with separate libraries for each collection.</p>
+        <span class="feature-tag blue">Grounded</span>
       </div>
       <div class="feature-card reveal reveal-delay-1">
+        <span class="feature-icon">&#129516;</span>
+        <h3>DNA &amp; mtDNA Import</h3>
+        <p>The AI factors your genes, not just your labs. Upload raw DNA from any major provider &mdash; 42 SNPs across 10 health categories with APOE haplotype, plus mtDNA haplogroup for mitochondrial context.</p>
+        <span class="feature-tag purple">Genetics</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
         <span class="feature-icon">&#128274;</span>
         <h3>E2E Encrypted Sync</h3>
         <p>Manage multiple profiles &mdash; clients, family, or your own &mdash; and sync them across devices. Data is encrypted before it leaves the browser. Self-host the relay for full control.</p>
@@ -938,9 +948,9 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       </div>
       <div class="feature-card reveal reveal-delay-2">
         <span class="feature-icon">&#129302;</span>
-        <h3>OpenClaw</h3>
-        <p>Connect your self-hosted <a href="https://github.com/elkimek/getbased-openclaw" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">OpenClaw</a> bot and chat about your labs over your favorite messenger. Only a read-only summary is shared.</p>
-        <span class="feature-tag cyan">Messenger</span>
+        <h3>Personal Agents</h3>
+        <p>Chat about your labs anywhere, not just the app. Connect <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">Hermes</a>, <a href="https://openclaw.ai" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">OpenClaw</a>, or other agents to ask through your favorite messenger.</p>
+        <span class="feature-tag cyan">Read-only</span>
       </div>
     </div>
   </div>
@@ -998,8 +1008,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 <section class="providers" id="providers">
   <div class="container">
     <div class="section-label reveal">Choose your AI</div>
-    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Five providers,<br>your choice</h2>
-    <p class="section-sub reveal reveal-delay-2" style="margin:12px auto 0;text-align:center">Pick the balance of quality, privacy, and cost that works for you. Switch anytime.</p>
+    <h2 class="section-title reveal reveal-delay-1" style="text-align:center">Your choice<br>of AI provider</h2>
+    <p class="section-sub reveal reveal-delay-2" style="margin:12px auto 0;text-align:center">Pick the balance of quality, privacy, and cost that works for you. Switch anytime, or point at any custom OpenAI-compatible endpoint from Settings.</p>
     <div class="providers-grid">
       <div class="provider-card reveal reveal-delay-2">
         <span class="provider-logo"><svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12 23c-3.2 0-7-2.4-7-7 0-3.1 2.1-5.7 4-7.6.3-.3.8-.1.8.4v2.5c0 .2.2.3.3.2C12 9.6 13.5 5.3 13.6 2.2c0-.3.4-.5.6-.2C17.3 5.7 21 10.3 21 14.5 21 19.6 17 23 12 23z"/></svg></span>
@@ -1091,7 +1101,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
           Wait, AI? Doesn&rsquo;t it hallucinate?
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"/><line x1="4" y1="10" x2="16" y2="10"/></svg>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">It can &mdash; but getbased isn&rsquo;t a chatbot. It&rsquo;s a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. You can pit two personas against each other and steer the debate yourself. That&rsquo;s not &ldquo;ask ChatGPT about my blood work&rdquo; &mdash; that&rsquo;s directed, structured, multiplied intelligence. The AI is the horse. The app is the reins. Use the best model you have access to.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">It can &mdash; but getbased isn&rsquo;t a chatbot. It&rsquo;s a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. Add your own research library and every answer gets grounded in the papers and guides you trust, not just what the model happened to see in training. You can pit two personas against each other and steer the debate yourself. That&rsquo;s not &ldquo;ask ChatGPT about my blood work&rdquo; &mdash; that&rsquo;s directed, structured, multiplied intelligence. The AI is the horse. The app is the reins. Use the best model you have access to.</div></div>
       </div>
       <div class="faq-item reveal reveal-delay-3">
         <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -1420,6 +1430,22 @@ if(location.hostname.endsWith('.onion')){
   var appOnion='http://iobqafpywmncin7m2wpvbemouvulaeb7jnvtvugxnru4gpneushb5jyd.onion';
   document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health',appOnion)});
   document.querySelectorAll('a[href*="getbased.health"]').forEach(a=>{if(!a.href.includes(appOnion))a.href=a.href.replace('https://getbased.health','')||'/'});
+}
+// Dynamic latest-tag badge. Fetches the most recent git tag from GitHub
+// (no auth, rate-limited to 60/hr per IP — plenty for a landing page).
+// Skips .onion so we don't leak clearnet requests from a Tor session.
+if(!location.hostname.endsWith('.onion')){
+  fetch('https://api.github.com/repos/elkimek/get-based/tags?per_page=1')
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(tags => {
+      var el = document.getElementById('hero-version');
+      if (el && tags && tags[0] && tags[0].name) {
+        el.textContent = ' · ' + tags[0].name;
+        el.style.transition = 'opacity 0.4s';
+        el.style.opacity = '1';
+      }
+    })
+    .catch(() => {});
 }
 </script>
 <script defer src="https://umami-iota-olive.vercel.app/script.js" data-website-id="2de54c75-4893-4785-bb06-be26fdbe284a"></script>
