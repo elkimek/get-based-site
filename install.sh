@@ -45,6 +45,32 @@ else
   exit 1
 fi
 
+# ── clean up legacy standalone installs ──────────────────────────────
+# Pre-0.5.0 docs (and users following the per-package install examples)
+# commonly have getbased-mcp / getbased-rag / getbased-dashboard
+# installed as their OWN isolated tools — not consolidated under
+# getbased-agent-stack. Those standalone venvs become orphaned disk
+# waste (~100–600 MB each) after we install the unified stack, and
+# their tool-registry entries leave the install in a confusing
+# half-migrated state in `uv tool list` / `pipx list`. No-op on
+# clean systems.
+legacy_pkgs="getbased-dashboard getbased-mcp getbased-rag"
+if [ "$installer" = "uv" ]; then
+  for pkg in $legacy_pkgs; do
+    if uv tool list 2>/dev/null | grep -q "^$pkg "; then
+      echo "${dim}▶ removing legacy standalone tool: $pkg${reset}"
+      uv tool uninstall "$pkg" >/dev/null 2>&1 || true
+    fi
+  done
+else
+  for pkg in $legacy_pkgs; do
+    if pipx list --short 2>/dev/null | awk '{print $1}' | grep -qx "$pkg"; then
+      echo "${dim}▶ removing legacy standalone tool: $pkg${reset}"
+      pipx uninstall "$pkg" >/dev/null 2>&1 || true
+    fi
+  done
+fi
+
 # ── install (or upgrade if already present) ──────────────────────────
 # For uv:   --with-executables-from exposes sibling binaries (lens,
 #           getbased-dashboard, getbased-mcp) from the workspace deps
