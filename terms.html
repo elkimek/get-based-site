@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — getbased</title>
+<meta name="description" content="Terms of service for getbased. Not medical advice, GPLv3 licensed, no warranty, no account.">
+<meta property="og:title" content="Terms of Service — getbased">
+<meta property="og:description" content="Terms of service for getbased.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getbased.health/terms">
+<meta property="og:image" content="https://getbased.health/og-image.png">
+<meta property="og:site_name" content="getbased">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@getbasedhealth">
+<link rel="canonical" href="https://getbased.health/terms">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f7ff" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0c14;--bg2:#0f1117;--bg3:#151823;
+  --surface:rgba(255,255,255,0.03);--surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.12);
+  --text:#e8eaf0;--text2:#8b90a0;--text3:#5a5f73;
+  --blue:#4f8cff;--indigo:#6366f1;--yellow:#fbbf24;--red:#f87171;
+  --gradient:linear-gradient(135deg,#4f8cff 0%,#6366f1 50%,#a78bfa 100%);
+  --nav-bg:rgba(10,12,20,0.7);--nav-bg-scrolled:rgba(10,12,20,0.9);
+  --grid-line:rgba(255,255,255,0.02);--selection-color:rgba(79,140,255,0.3)
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+::selection{background:var(--selection-color);color:#fff}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--text3);border-radius:3px}
+
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px}
+.bg-glow{position:fixed;top:-40%;left:-20%;width:140%;height:100%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(79,140,255,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 60%,rgba(99,102,241,0.04) 0%,transparent 50%)}
+
+nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-right a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-right a:hover{color:var(--text)}
+
+main{flex:1;position:relative;z-index:1;padding:48px 32px 80px;max-width:780px;margin:0 auto;width:100%}
+
+h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(32px,5vw,44px);letter-spacing:-1.2px;line-height:1.1;margin-bottom:12px}
+.subtitle{color:var(--text2);font-size:15px;margin-bottom:8px}
+.effective{color:var(--text3);font-size:13px;font-family:'JetBrains Mono',ui-monospace,monospace;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.5px;margin:40px 0 12px;color:var(--text)}
+h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:16px;margin:24px 0 8px;color:var(--text)}
+
+p{margin-bottom:14px;color:var(--text)}
+ul,ol{margin:8px 0 16px 24px;color:var(--text)}
+li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.88em;background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:6px;padding:14px 18px;margin:16px 0;color:var(--text2);font-size:14px}
+.callout strong{color:var(--text)}
+.callout.soft{border-left-color:var(--yellow)}
+
+footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index:1}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:16px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:var(--text3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text3)}
+
+[data-theme="light"]{
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--yellow:#d97706;--red:#dc2626;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}
+[data-theme="light"] ::selection{color:var(--text)}
+@media(prefers-color-scheme:light){:root:not([data-theme]){
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--yellow:#d97706;--red:#dc2626;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}}
+
+@media(max-width:640px){
+  nav{padding:14px 20px}
+  main{padding:32px 20px 60px}
+  h1{font-size:30px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<nav>
+  <a href="/" class="nav-logo">getbased</a>
+  <div class="nav-right">
+    <a href="/app">Open app</a>
+    <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<main>
+
+<h1>Terms of Service</h1>
+<p class="subtitle">The rules for using getbased.</p>
+<p class="effective">Effective 22 April 2026</p>
+
+<div class="callout">
+<strong>Important:</strong> getbased is not a medical device. It is a tool for tracking and visualising your own health data. It does not diagnose, treat, cure, or prevent any condition. AI-generated interpretations are not medical advice. <strong>Always consult a qualified healthcare professional</strong> before making decisions based on your lab results, genetic data, or anything else getbased shows you.
+</div>
+
+<h2>1. About these Terms</h2>
+<p>These Terms of Service ("Terms") govern your use of the getbased website at <code>getbased.health</code>, the in-browser application served at <code>getbased.health/app</code>, and any official distribution (referred to collectively as <strong>"getbased"</strong>). By using getbased you agree to these Terms. If you don't agree, don't use it.</p>
+<p>getbased is developed and maintained by an individual maintainer operating in the Czech Republic (referred to as <strong>"the maintainer"</strong>).</p>
+
+<h2>2. What getbased is</h2>
+<p>getbased is a free, open-source, privacy-focused web application for tracking and interpreting blood work, genetic data, wearable metrics, and related health information. It runs in your browser, stores your data locally on your own device, and calls third-party services (AI providers, wearable vendors, sync relays) only when you configure them.</p>
+
+<h2>3. Not a medical device; not medical advice</h2>
+<p>getbased is <strong>not</strong> a medical device. It has not been reviewed or approved by any regulatory authority (FDA, EMA, CE/MDR, SÚKL, or otherwise). It is not certified for clinical, diagnostic, therapeutic, or any other medical purpose.</p>
+<p>Content displayed by getbased — including AI-generated interpretations, genetic findings, trend alerts, supplement suggestions, biological-age estimates, and context cards — is provided for <strong>informational and educational purposes only</strong>. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+<p><strong>Always consult a qualified healthcare professional</strong> (physician, licensed dietitian, pharmacist, or other medical authority in your jurisdiction) before making health decisions based on anything displayed by getbased. Never disregard professional medical advice or delay seeking it because of something you read in the app.</p>
+<p>AI providers are probabilistic and may generate plausible-sounding but incorrect outputs. Reference ranges differ between labs, populations, and clinical contexts. Genetic variant interpretations change as research evolves.</p>
+
+<h2>4. Open source &amp; license</h2>
+<p>getbased's source code is released under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener">GNU General Public License version 3 (GPLv3)</a>. You are free to use, study, modify, and redistribute the source under the terms of that license. Derivative works must remain GPL-licensed.</p>
+<p>The repository lives at <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">github.com/elkimek/get-based</a>.</p>
+<p>Third-party libraries bundled or loaded by getbased are licensed under their own terms. The <code>vendor/</code> directory in the source repository lists them.</p>
+
+<h2>5. No account, no subscription</h2>
+<p>getbased does not require an account. There is nothing to sign up for, nothing to suspend, nothing to cancel. You can stop using getbased at any time simply by closing the tab or clearing your browser data. Support for the project is voluntary (donations are optional and governed separately).</p>
+
+<h2>6. Third-party services</h2>
+<p>Features that call external services (AI providers, wearable vendors, sync relays, Knowledge Base servers) are <strong>optional</strong> and activated only when you configure them. Your relationship with those services is governed by their own terms and privacy policies. getbased neither mediates nor controls what those services do on their side. See our <a href="/privacy">Privacy Policy</a> for the list of third parties and links to their policies.</p>
+<p>If a third-party service is discontinued, changes its API, or revokes your access, the related feature may break. getbased is not liable for those outages.</p>
+
+<h2>7. Acceptable use</h2>
+<p>You agree <strong>not</strong> to:</p>
+<ul>
+  <li>Use getbased for any unlawful purpose, including inputting data you don't have the right to process</li>
+  <li>Attempt to breach, probe, or disrupt the hosted <code>getbased.health</code> infrastructure, or use the <code>/api/proxy</code> endpoint for anything other than intended AI / wearable traffic</li>
+  <li>Misrepresent output from getbased as a medical diagnosis or professional advice to others</li>
+  <li>Distribute derivative works without preserving the GPLv3 license</li>
+  <li>Automate bulk requests against the hosted service in a manner that denies service to other users</li>
+  <li>Upload malicious content, spam, or content that infringes anyone's rights</li>
+</ul>
+<p>The maintainer reserves the right to block access to the hosted site from specific IP addresses or patterns of abuse. The source is open; you may always self-host if blocked.</p>
+
+<h2>8. Warranty disclaimer</h2>
+<p>getbased is provided "<strong>AS IS</strong>" and "<strong>AS AVAILABLE</strong>", without warranty of any kind, express or implied — including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, reliability, security, or non-infringement. You use it at your own risk.</p>
+<p>This is consistent with Sections 15 and 16 of the GPLv3 and is a fundamental term of the license under which getbased is released.</p>
+
+<h2>9. Limitation of liability</h2>
+<p>To the maximum extent permitted by law, the maintainer shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages — including but not limited to loss of data, loss of profits, personal injury, or medical outcomes — arising from or related to your use of, or inability to use, getbased, even if advised of the possibility of such damages.</p>
+<p>This limitation applies regardless of the legal theory (contract, tort, negligence, strict liability, or otherwise) on which the claim is based.</p>
+<p>Because getbased is provided free of charge, no refunds apply; there is no monetary cap on liability simply because there is no monetary consideration.</p>
+<div class="callout soft">
+  <strong>Statutory rights.</strong> Nothing in these Terms excludes or limits rights you have under applicable mandatory consumer-protection law that cannot be waived by agreement. If you are a consumer in the EU, EEA, or UK, your statutory rights (including under the Czech Civil Code and GDPR) are preserved regardless of any clause above.
+</div>
+
+<h2>10. Changes to the service</h2>
+<p>getbased is under active development. Features may be added, changed, or removed. Version numbers follow semantic versioning; a changelog is kept in-app and in the source repository. Breaking changes are documented; migrations are provided when feasible but not guaranteed.</p>
+<p>The hosted <code>getbased.health</code> deployment may be taken offline for maintenance, or discontinued. The source code, released under GPLv3, remains available for self-hosting.</p>
+
+<h2>11. Changes to these Terms</h2>
+<p>If these Terms change, we'll update the <em>Effective</em> date above and note the change in the app's changelog. Continued use after the change means you accept the updated Terms. If a change is material, the app will display it on first launch after the update.</p>
+
+<h2>12. Governing law &amp; jurisdiction</h2>
+<p>These Terms are governed by the laws of the <strong>Czech Republic</strong>, without regard to its conflict-of-laws rules. Any dispute arising out of or in connection with these Terms that cannot be resolved informally shall be submitted to the courts of the Czech Republic. If you are a consumer, you may also bring proceedings in the country where you reside, in accordance with mandatory EU consumer-protection law.</p>
+<p>For EU consumers, the European Commission's Online Dispute Resolution platform is available at <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+
+<h2>13. Severability</h2>
+<p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions remain in force. The invalid provision will be replaced by a valid one whose effect is as close as possible to the invalid one's original intent.</p>
+
+<h2>14. Contact</h2>
+<p>Questions about these Terms: <a href="mailto:privacy@getbased.health">privacy@getbased.health</a></p>
+<p>Bug reports &amp; source code: <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">github.com/elkimek/get-based</a></p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">getbased</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">Open source, GPLv3</div>
+  </div>
+</footer>
+
+</body>
+</html>

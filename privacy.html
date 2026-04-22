@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — getbased</title>
+<meta name="description" content="How getbased handles your data. Local-first, no account, no tracking. What stays on your device and what transits through third parties you choose.">
+<meta property="og:title" content="Privacy Policy — getbased">
+<meta property="og:description" content="How getbased handles your data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getbased.health/privacy">
+<meta property="og:image" content="https://getbased.health/og-image.png">
+<meta property="og:site_name" content="getbased">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@getbasedhealth">
+<link rel="canonical" href="https://getbased.health/privacy">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f7ff" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0c14;--bg2:#0f1117;--bg3:#151823;
+  --surface:rgba(255,255,255,0.03);--surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.12);
+  --text:#e8eaf0;--text2:#8b90a0;--text3:#5a5f73;
+  --blue:#4f8cff;--indigo:#6366f1;--yellow:#fbbf24;
+  --gradient:linear-gradient(135deg,#4f8cff 0%,#6366f1 50%,#a78bfa 100%);
+  --nav-bg:rgba(10,12,20,0.7);--nav-bg-scrolled:rgba(10,12,20,0.9);
+  --grid-line:rgba(255,255,255,0.02);--selection-color:rgba(79,140,255,0.3)
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+::selection{background:var(--selection-color);color:#fff}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--text3);border-radius:3px}
+
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px}
+.bg-glow{position:fixed;top:-40%;left:-20%;width:140%;height:100%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(79,140,255,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 60%,rgba(99,102,241,0.04) 0%,transparent 50%)}
+
+nav{position:sticky;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-right a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-right a:hover{color:var(--text)}
+
+main{flex:1;position:relative;z-index:1;padding:48px 32px 80px;max-width:780px;margin:0 auto;width:100%}
+
+h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(32px,5vw,44px);letter-spacing:-1.2px;line-height:1.1;margin-bottom:12px}
+.subtitle{color:var(--text2);font-size:15px;margin-bottom:8px}
+.effective{color:var(--text3);font-size:13px;font-family:'JetBrains Mono',ui-monospace,monospace;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:22px;letter-spacing:-0.5px;margin:40px 0 12px;color:var(--text)}
+h3{font-family:'Outfit',sans-serif;font-weight:600;font-size:16px;margin:24px 0 8px;color:var(--text)}
+
+p{margin-bottom:14px;color:var(--text)}
+ul,ol{margin:8px 0 16px 24px;color:var(--text)}
+li{margin-bottom:6px}
+strong{color:var(--text);font-weight:600}
+code{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.88em;background:var(--surface2);padding:2px 6px;border-radius:4px;color:var(--text)}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.callout{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--yellow);border-radius:6px;padding:14px 18px;margin:16px 0;color:var(--text2);font-size:14px}
+.callout strong{color:var(--text)}
+
+footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index:1}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:16px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:var(--text3);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text3)}
+
+[data-theme="light"]{
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--yellow:#d97706;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}
+[data-theme="light"] ::selection{color:var(--text)}
+@media(prefers-color-scheme:light){:root:not([data-theme]){
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--yellow:#d97706;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}}
+
+@media(max-width:640px){
+  nav{padding:14px 20px}
+  main{padding:32px 20px 60px}
+  h1{font-size:30px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<nav>
+  <a href="/" class="nav-logo">getbased</a>
+  <div class="nav-right">
+    <a href="/app">Open app</a>
+    <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<main>
+
+<h1>Privacy Policy</h1>
+<p class="subtitle">How getbased handles your data.</p>
+<p class="effective">Effective 22 April 2026</p>
+
+<div class="callout">
+<strong>In one sentence:</strong> getbased is a local-first application. Your data lives in your browser on your own devices. No account, no analytics by default, no central server storing your health information. The only times your data leaves your device are when <em>you</em> explicitly connect a third-party service (an AI provider, a wearable, a sync relay) — and only for the duration of those calls.
+</div>
+
+<h2>1. Who runs getbased</h2>
+<p>getbased is a free, open-source project developed and maintained by an individual (referred to as <strong>"the maintainer"</strong>). There is no company, no employees, and no sales team. The source code is licensed under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener">GNU General Public License v3</a>.</p>
+<p>For the purposes of the EU General Data Protection Regulation (GDPR), the maintainer is the <strong>Data Controller</strong> for the hosted website at <code>getbased.health</code>. When you self-host getbased, <em>you</em> are the controller of your own deployment.</p>
+
+<h2>2. What we don't collect</h2>
+<p>Before listing what <em>might</em> transit, here's what we never do:</p>
+<ul>
+  <li>No user account, no login, no email required to use getbased</li>
+  <li>No tracking cookies, no advertising pixels, no third-party trackers</li>
+  <li>No analytics by default (an opt-in privacy-preserving toggle exists in Settings)</li>
+  <li>No cross-site or cross-device fingerprinting</li>
+  <li>No sale, licensing, or sharing of your data with anyone, ever</li>
+  <li>No server-side storage of your health information, lab results, DNA data, chat history, wearable rows, or profile metadata</li>
+</ul>
+
+<h2>3. What stays on your device</h2>
+<p>Virtually everything you put into getbased is stored locally in your browser:</p>
+<ul>
+  <li><strong>Profile data</strong> (sex, date of birth, location, context cards) — browser <code>localStorage</code></li>
+  <li><strong>Lab results</strong> imported from PDFs or entered manually — browser <code>localStorage</code></li>
+  <li><strong>DNA match data</strong> — only the matched SNPs from the curated list (not your full genome); browser <code>localStorage</code></li>
+  <li><strong>Wearable daily data</strong> (sleep, HRV, resting HR, readiness when connected) — browser <code>IndexedDB</code>, per-profile, never syncs</li>
+  <li><strong>Chat history</strong> — browser <code>localStorage</code>, organised into threads</li>
+  <li><strong>Backups</strong> — browser <code>IndexedDB</code> (5 most recent) and optionally a folder you choose on your own disk (up to 30 daily snapshots)</li>
+  <li><strong>API keys / authorization tokens</strong> for any service you configure — encrypted at rest with AES-256-GCM when you enable the passphrase option</li>
+</ul>
+<p>None of these are sent to getbased's website. If you clear your browser storage, uninstall the app, or use the "Clear all data" action in Settings → Data, the data is gone from your device.</p>
+
+<h2>4. Third-party services you choose</h2>
+<p>getbased calls third-party services <strong>only when you configure them</strong>. Each has its own privacy policy that governs data handling on their side.</p>
+
+<h3>4.1 AI providers (all optional)</h3>
+<p>If you enable AI features, your prompts and any data you include in context are sent to the AI provider you chose. Available providers and their policies:</p>
+<ul>
+  <li><strong>PPQ</strong> — <a href="https://www.ppq.ai/privacy" target="_blank" rel="noopener">ppq.ai/privacy</a></li>
+  <li><strong>Routstr</strong> — <a href="https://routstr.com" target="_blank" rel="noopener">routstr.com</a> (decentralised, no account)</li>
+  <li><strong>OpenRouter</strong> — <a href="https://openrouter.ai/privacy" target="_blank" rel="noopener">openrouter.ai/privacy</a></li>
+  <li><strong>Venice</strong> — <a href="https://venice.ai/legal/privacy-policy" target="_blank" rel="noopener">venice.ai/privacy</a> (end-to-end encrypted between your browser and the Venice enclave)</li>
+  <li><strong>Local AI</strong> (Ollama, LM Studio, Jan) — runs entirely on your machine; nothing leaves your network</li>
+  <li><strong>Custom API</strong> — any OpenAI-compatible endpoint you provide; their policy applies</li>
+</ul>
+<p>Before calling a cloud AI provider, getbased offers <strong>PII obfuscation</strong>: email addresses, phone numbers, street addresses, and names detected in imported PDFs are replaced with placeholders. You can enable a local-AI-based obfuscation layer on top of the regex for stronger redaction.</p>
+
+<h3>4.2 /api/proxy (the Vercel Edge Function)</h3>
+<p>The hosted getbased.health deploys a small proxy function on Vercel so the browser can reach AI providers without CORS errors. The proxy:</p>
+<ul>
+  <li>Passes your request through to the allowed provider URL and returns the response</li>
+  <li>Does <strong>not</strong> log request bodies or headers, and does not persist any data</li>
+  <li>Has no database attached</li>
+  <li>Blocks requests to private / loopback / cloud-metadata IP ranges to prevent abuse</li>
+</ul>
+<p>If you self-host, you bypass this entirely.</p>
+
+<h3>4.3 Cross-device sync (optional)</h3>
+<p>Opt-in sync uses <a href="https://www.evolu.dev" target="_blank" rel="noopener">Evolu</a>, a CRDT protocol with <strong>end-to-end encryption</strong>. Your BIP-39 mnemonic derives the encryption key; a relay server relays ciphertext between your devices but cannot read the contents. You can choose the relay (getbased's default, or one you host).</p>
+
+<h3>4.4 Wearable integrations (optional)</h3>
+<p>When you connect a wearable (e.g. Oura), getbased:</p>
+<ul>
+  <li>Performs a standard OAuth2 authorisation flow with the vendor; you grant permission directly to the vendor</li>
+  <li>Stores the resulting access/refresh tokens in your browser (encrypted when the passphrase option is enabled)</li>
+  <li>Fetches daily ring/device metrics via the vendor's public API, through <code>/api/proxy</code></li>
+  <li>Stores raw daily rows only in your browser's <code>IndexedDB</code>, never on any server</li>
+  <li>Derives a compact rolling summary (baselines, trend, recent anomalies) that may sync via the E2E-encrypted relay to your other devices, if you have cross-device sync enabled</li>
+</ul>
+<p>Disconnecting a wearable wipes its local rows immediately. The vendor retains the data they already have on their side per their own policy; getbased cannot delete it there. To revoke getbased's access, disconnect inside the app <em>and</em> revoke the app on the vendor's site.</p>
+
+<h3>4.5 Knowledge Base (Interpretive Lens)</h3>
+<p>Documents you add to the on-device Knowledge Base are indexed and embedded locally in your browser using the Origin Private File System (OPFS). Nothing is uploaded. If you use the external-server lens option, the server you point at is under your control and its privacy model is yours.</p>
+
+<h3>4.6 Fonts and CDNs</h3>
+<p>getbased loads the Inter, Outfit, and JetBrains Mono fonts from Google Fonts. Google may log the IP address that fetches them. Chart.js, pdf.js, transformers.js (Knowledge Base embedder), and a small number of other libraries load from <code>jsdelivr.net</code> on first use and are cached by your browser.</p>
+
+<h2>5. Your rights</h2>
+<p>Under GDPR and most privacy frameworks, you have the rights to access, correct, delete, export, and restrict processing of your personal data. Because getbased stores your data on your own device, you can exercise all of these rights directly, without contacting us:</p>
+<ul>
+  <li><strong>Access</strong> — the data is visible in the app; you can also export a JSON dump via Settings → Data → Export</li>
+  <li><strong>Correct</strong> — edit any value inline</li>
+  <li><strong>Delete</strong> — delete individual records, individual profiles, or all data (Settings → Data → Clear all data)</li>
+  <li><strong>Export / portability</strong> — Settings → Data → Export produces a portable JSON file</li>
+  <li><strong>Restrict processing</strong> — disable the AI context toggle, disconnect any wearable, turn off sync</li>
+</ul>
+<p>For personal data the maintainer controls (for example, if you email a support request), you can write to <a href="mailto:privacy@getbased.health">privacy@getbased.health</a>.</p>
+
+<h2>6. Children</h2>
+<p>getbased is not designed for children under 15. This matches the minimum age for consent to information-society services under Czech law (the governing law of the Terms). If you live in an EU Member State with a higher minimum age (16 in several countries under GDPR Article 8), that higher age applies to you. Please do not enter a child's medical data without appropriate guardianship and consent.</p>
+
+<h2>7. Security</h2>
+<p>Measures we apply:</p>
+<ul>
+  <li>TLS for all network transit (getbased.health and every third-party service)</li>
+  <li>AES-256-GCM passphrase-based encryption for sensitive fields at rest, when you enable it</li>
+  <li>End-to-end encryption on cross-device sync</li>
+  <li>Strict same-origin handling on the dev server</li>
+  <li>Regular security audits of the codebase (see the CHANGELOG for history)</li>
+</ul>
+<p>No system is unbreakable. If you discover a vulnerability, please report it via a private GitHub security advisory at <a href="https://github.com/elkimek/get-based/security" target="_blank" rel="noopener">github.com/elkimek/get-based/security</a>.</p>
+
+<h2>8. International data transfers</h2>
+<p>If you use the hosted getbased.health, the Vercel Edge Function runs on regional edge nodes operated by Vercel, Inc. Your request may be handled by whichever edge node is closest to you; responses do not persist. Third-party services you choose (AI providers, wearable vendors) may transfer data to their own infrastructure per their policies.</p>
+
+<h2>9. Changes to this policy</h2>
+<p>If we update this policy, we'll change the <em>Effective</em> date above and mention it in the app's changelog. Material changes will also be announced on the app's first launch after the update.</p>
+
+<h2>10. Contact</h2>
+<p>Privacy questions: <a href="mailto:privacy@getbased.health">privacy@getbased.health</a></p>
+<p>Source code, issues, general discussion: <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">github.com/elkimek/get-based</a></p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">getbased</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="footer-copy">Open source, GPLv3</div>
+  </div>
+</footer>
+
+</body>
+</html>
