@@ -11,8 +11,9 @@
 - Track trends over time with interactive charts across 17+ biomarker categories (287+ markers)
 - Specialty labs supported: OAT (organic acids), fatty acids (Spadia, ZinZino, OmegaQuant), BioStarks via custom marker pipeline
 - Bring-your-own research library — drop PDFs, research papers, or clinical guides into the app and the AI grounds every answer in those sources instead of relying only on its training. Runs fully on-device (browser RAG via MiniLM + OPFS), with multi-library support so research, protocols, and personal notes stay separate. Optional external-server backend for larger corpora
-- DNA import — upload raw data from any major provider. 42 curated SNPs across 10 health categories with APOE haplotype resolution
-- mtDNA haplogroup import with mitochondrial coupling classification (Doug Wallace's framework) and environment mismatch detection. Manual haplogroup entry also supported
+- DNA import — upload raw data from any major provider. 47 curated SNPs across 13 health categories with APOE haplotype resolution
+- mtDNA haplogroup import with 39 haplogroups (including 11 sub-clades) + mitochondrial coupling classification (Doug Wallace's framework) and environment mismatch detection. Manual haplogroup entry also supported
+- Wearable integrations — connect Oura, Fitbit, Withings, Polar, or Apple Health (file import). HRV, sleep, resting heart rate, body composition, vascular age, blood pressure, and more on the dashboard alongside lab data. Multi-vendor source picker per metric. Manual weight/BP/RHR entry first-class. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs (~200 tokens per profile). MCP agents can opt-in to a 30-day pivoted daily series for time-series reasoning
 - Biological age — PhenoAge (Levine 2018) + Bortz Age combined, with chronological age reference line
 - Biometrics tracking — weight, blood pressure, pulse with time-series history and auto-calculated BMI
 - AI chat panel with debate mode — pit two AI personas against each other over your results. Conversation threads, image attachments, web search hints
@@ -44,11 +45,12 @@
 - [DNA import](https://app.getbased.health/docs/guide/dna-import): Upload raw DNA data, mtDNA haplogroup, and view genetic insights
 - [Cross-device sync](https://app.getbased.health/docs/guide/cross-device-sync): E2E encrypted sync setup, status indicator, and self-hosting
 - [Agent access](https://app.getbased.health/docs/guide/agent-access): Connect Hermes, OpenClaw, or any MCP-compatible agent over any messenger
+- [Wearables](https://app.getbased.health/docs/guide/wearables): Connect Oura, Fitbit, Withings, Polar, Apple Health — HRV, sleep, recovery, body comp on the dashboard alongside your lab data
 - [Privacy and security](https://app.getbased.health/docs/guide/encryption): Local-first architecture, encryption, PII obfuscation
 
 ## How getbased differs from alternatives
 
 - **vs InsideTracker / SelfDecode**: getbased is free, open-source, and runs entirely in your browser. No subscription, no data collection, no account required
 - **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
-- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 17+ categories, specialty labs (OAT, fatty acids, BioStarks), DNA import (42 SNPs + mtDNA haplogroup), biological age, menstrual cycle phase-aware ranges, biometrics, and 9 lifestyle context cards that shape every AI interpretation
+- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 17+ categories, specialty labs (OAT, fatty acids, BioStarks), DNA import (47 SNPs + 39 mtDNA haplogroups), biological age, menstrual cycle phase-aware ranges, biometrics, wearable integrations (Oura/Fitbit/Withings/Polar/Apple Health) on the same dashboard, and 9 lifestyle context cards that shape every AI interpretation
 - **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, gives AI your full health context, and grounds every answer in your own research library (PDFs, papers, clinical guides) — not just a single lab report pasted into a chat window or what a generic model was trained on. Connect via Hermes, OpenClaw, or any MCP-compatible agent to chat over any messenger

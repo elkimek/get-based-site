@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>getbased — Open-Source Blood Work Dashboard with AI</title>
-<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
+<meta name="description" content="Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, menstrual cycle, and now your wearable data — Oura, Fitbit, Withings, Polar, Apple Health. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta property="og:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta property="og:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
+<meta property="og:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle, and wearable data (Oura, Fitbit, Withings, Polar, Apple Health). Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://getbased.health/">
 <meta property="og:image" content="https://getbased.health/og-image.png">
@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@getbasedhealth">
 <meta name="twitter:title" content="getbased — Open-Source Blood Work Dashboard with AI">
-<meta name="twitter:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle. Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
+<meta name="twitter:description" content="AI-powered blood work dashboard. Import lab PDFs, track 287+ biomarkers, DNA, biological age, menstrual cycle, and wearable data (Oura, Fitbit, Withings, Polar, Apple Health). Ground the AI's analysis in your own research library. E2E encrypted sync. No account needed.">
 <meta name="twitter:image" content="https://getbased.health/og-image.png">
 <link rel="canonical" href="https://getbased.health/">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -216,6 +216,24 @@ section{position:relative;z-index:1;padding:120px 32px}
 .features-section-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:20px}
 .features-section-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
 .features-section-bottom.features-section-4col{grid-template-columns:repeat(4,1fr)}
+.features-section-bottom.features-section-launch{grid-template-columns:1fr;gap:0}
+.feature-card-launch{
+  background:linear-gradient(135deg,rgba(59,124,245,0.10),rgba(124,77,255,0.06));
+  border:1px solid var(--border2);padding:32px 36px;display:flex;gap:28px;align-items:center;
+}
+.feature-card-launch .feature-icon{font-size:48px;flex-shrink:0;margin:0}
+.feature-card-launch-body{flex:1}
+.feature-card-launch h3{font-size:22px;margin-bottom:10px}
+.feature-card-launch p{font-size:14.5px;line-height:1.7;margin-bottom:10px}
+.feature-card-launch .vendor-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.feature-card-launch .vendor-chip{
+  font-size:12px;padding:4px 10px;border-radius:20px;
+  background:var(--surface);border:1px solid var(--border);color:var(--text2);
+}
+@media (max-width:760px){
+  .feature-card-launch{flex-direction:column;text-align:center;padding:24px 20px}
+  .feature-card-launch .feature-icon{font-size:40px}
+}
 .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;
   transition:all 0.3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
@@ -494,7 +512,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
   "@type": "SoftwareApplication",
   "name": "getbased",
   "url": "https://app.getbased.health",
-  "description": "Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, and menstrual cycle. Ground the AI's analysis in your own research library so it cites papers and guides you trust, not just what it already knows. E2E encrypted sync. Runs entirely in your browser with no account required.",
+  "description": "Free, open-source blood work dashboard. Import any lab PDF or photo with AI, track 287+ biomarkers, DNA, biological age, menstrual cycle, and wearable data (Oura, Fitbit, Withings, Polar, Apple Health). Ground the AI's analysis in your own research library so it cites papers and guides you trust, not just what it already knows. E2E encrypted sync. Runs entirely in your browser with no account required.",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "Web browser",
   "offers": {
@@ -510,9 +528,10 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     "Specialty labs (OAT, fatty acids, BioStarks) via custom marker pipeline",
     "AI chat panel with debate mode, image attachments, and conversation threads",
     "Bring-your-own research library (on-device RAG) — the AI grounds every answer in PDFs, research papers, and clinical guides you upload, with multi-library support",
+    "Wearable integrations — Oura, Fitbit, Withings, Polar, Apple Health (file import). HRV, sleep score, resting heart rate, body composition, vascular age, blood pressure, SpO₂ on the dashboard alongside lab data. Multi-vendor source picker per metric. Manual weight/BP/RHR entry first-class. Raw daily samples stay on-device; only a compact end-to-end-encrypted summary syncs.",
     "Menstrual cycle phase-aware reference ranges with perimenopause detection",
     "9 lifestyle context cards with AI health ratings",
-    "DNA import (42 SNPs, APOE haplotype, 5 raw DNA formats, mtDNA haplogroup with coupling classification)",
+    "DNA import (47 SNPs across 13 categories, APOE haplotype, 5 raw DNA formats, 39 mtDNA haplogroups with sub-clade resolution and coupling classification)",
     "Biological age (PhenoAge + Bortz Age)",
     "Multi-profile support for practitioners and families",
     "Biometrics tracking (weight, blood pressure, pulse)",
@@ -524,7 +543,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
     "Local-first with AES-256-GCM encryption and auto-backup",
     "JSON export and PDF reports"
   ],
-  "softwareVersion": "1.21.0"
+  "softwareVersion": "1.3.0"
 }
 </script>
 <script type="application/ld+json">
@@ -937,7 +956,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       <div class="feature-card reveal reveal-delay-1">
         <span class="feature-icon">&#129516;</span>
         <h3>DNA &amp; mtDNA Import</h3>
-        <p>The AI factors your genes, not just your labs. Upload raw DNA from any major provider &mdash; 42 SNPs across 10 health categories with APOE haplotype, plus mtDNA haplogroup for mitochondrial context.</p>
+        <p>The AI factors your genes, not just your labs. Upload raw DNA from any major provider &mdash; 47 SNPs across 13 health categories with APOE haplotype, plus mtDNA haplogroup with 39 sub-clades for mitochondrial context.</p>
         <span class="feature-tag purple">Genetics</span>
       </div>
       <div class="feature-card reveal reveal-delay-2">
@@ -951,6 +970,25 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         <h3>Personal Agents</h3>
         <p>Chat about your labs anywhere, not just the app. Connect <a href="https://hermes-agent.nousresearch.com/" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">Hermes</a>, <a href="https://openclaw.ai" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none">OpenClaw</a>, or other agents to ask through your favorite messenger.</p>
         <span class="feature-tag cyan">Read-only</span>
+      </div>
+    </div>
+
+    <!-- v1.3.0 launch row: Wearables — full-width prominence -->
+    <div class="features-section-bottom features-section-launch" style="margin-top:24px">
+      <div class="feature-card feature-card-launch reveal">
+        <span class="feature-icon">&#9900;</span>
+        <div class="feature-card-launch-body">
+          <h3>Wearables &mdash; HRV, sleep, recovery alongside your labs <span class="feature-tag blue" style="vertical-align:middle;margin-left:6px;font-size:11px">New in v1.3</span></h3>
+          <p>Connect your ring, watch, scale, or BP cuff. HRV, sleep score, resting heart rate, body composition, vascular age, blood pressure &mdash; every signal your hardware produces shows up on the dashboard alongside your blood work, with a 90-day chart per metric. Or log weight / BP / RHR by hand &mdash; manual entry is first-class. Multi-source picker per metric. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs.</p>
+          <div class="vendor-row">
+            <span class="vendor-chip">Oura</span>
+            <span class="vendor-chip">Withings</span>
+            <span class="vendor-chip">Fitbit</span>
+            <span class="vendor-chip">Polar</span>
+            <span class="vendor-chip">Apple Health</span>
+            <span class="vendor-chip">Manual entry</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

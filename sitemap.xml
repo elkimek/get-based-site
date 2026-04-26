@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://getbased.health/</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -80,9 +80,15 @@
   </url>
   <url>
     <loc>https://app.getbased.health/docs/guide/agent-access</loc>
-    <lastmod>2026-04-18</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://app.getbased.health/docs/guide/wearables</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://app.getbased.health/docs/guide/openclaw</loc>
