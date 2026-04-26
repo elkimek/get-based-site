@@ -1046,7 +1046,7 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
         <span class="wear-showcase-icon">&#9900;</span>
         <div class="wear-showcase-title">
           <h3>Wearables &mdash; HRV, sleep, recovery alongside your labs</h3>
-          <p>Connect your ring, watch, scale, or BP cuff. HRV, sleep architecture, resting heart rate, body composition, vascular age, blood pressure &mdash; every signal your hardware produces shows up on the dashboard alongside your blood work, with a 90-day chart per metric. Multi-source picker when two devices report the same value. Raw daily samples stay on your device; only a compact end-to-end-encrypted summary syncs across paired devices.</p>
+          <p>Connect your ring, watch, scale, or blood pressure cuff. The signals they track &mdash; sleep, heart rate variability, recovery, blood pressure, body composition, daily activity &mdash; show up on your dashboard alongside your lab results, with a 90-day chart for every metric. When two devices measure the same thing, you pick which one drives the card. Your raw daily data stays on your device; only a small encrypted summary syncs across your phones and laptops.</p>
         </div>
       </div>
 
@@ -1116,8 +1116,8 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
         </span>
         <div class="wear-detail-body" data-detail-body>
-          <strong>Oura</strong> &mdash; ring-based overnight tracking. HRV (rMSSD), resting heart rate, sleep stages (deep / light / REM / awake), readiness, body temperature deviation, and SpO&#8322; trend across nights. The richest recovery signal of the bunch.
-          <div class="wear-detail-meta">OAuth 2.0 &middot; one-click connect &middot; 90-day backfill</div>
+          <strong>Oura</strong> &mdash; best for recovery tracking. The ring captures heart rate variability, resting heart rate, sleep stages, readiness, body temperature trend, and overnight blood oxygen &mdash; all without you thinking about it.
+          <div class="wear-detail-meta">One-click connect &middot; 90 days of history backfilled automatically</div>
         </div>
       </div>
     </section>
@@ -1529,28 +1529,28 @@ document.querySelectorAll('.chat-mock-thread').forEach(el => {
 const wearVendorCopy = {
   'oura': {
     name: 'Oura',
-    body: 'Ring-based overnight tracking. HRV (rMSSD), resting heart rate, sleep stages (deep / light / REM / awake), readiness score, body temperature deviation, and SpO₂ trend across nights. The richest recovery signal of the bunch.',
-    meta: 'OAuth 2.0 · one-click connect · 90-day backfill'
+    body: 'Best for recovery tracking. The ring captures heart rate variability, resting heart rate, sleep stages, readiness, body temperature trend, and overnight blood oxygen — all without you thinking about it.',
+    meta: 'One-click connect · 90 days of history backfilled automatically'
   },
   'withings': {
     name: 'Withings',
-    body: 'Scale + cuff + watch ecosystem. Weight, body fat %, muscle mass, bone mass, water mass, visceral fat (Body Scan). Blood pressure (BPM Core / Connect). Vascular age, pulse wave velocity, SpO₂, body and skin temperature, full sleep architecture (ScanWatch). Cards auto-hide when your hardware doesn’t produce that signal.',
-    meta: 'OAuth 2.0 · retroactively-edited readings included via lastupdate sync'
+    body: 'The most thorough body data. Scales for weight and body composition, blood pressure cuffs, and a watch (ScanWatch) for sleep, oxygen, and vascular age. Cards stay hidden for signals your devices don’t measure — what you see is what your hardware actually tracks.',
+    meta: 'Catches readings you typed into the Withings app, even from days past'
   },
   'fitbit': {
     name: 'Fitbit',
-    body: 'Activity-first watches and bands. Steps, daytime resting heart rate, activity score, sleep efficiency (used as our sleep-score proxy since the in-app Sleep Score isn’t exposed via API), HRV from supported devices, weight if you have an Aria scale.',
-    meta: 'OAuth 2.0 (PKCE) · one-click connect · 90-day backfill'
+    body: 'Activity-first. Steps, sleep, daytime heart rate, heart rate variability on newer devices, and weight if you’ve got an Aria scale. (Fitbit doesn’t share their in-app Sleep Score with us, so we show sleep efficiency instead — same idea, slightly different number.)',
+    meta: 'One-click connect · 90 days of history backfilled automatically'
   },
   'polar': {
     name: 'Polar',
-    body: 'Workout-grade chest-strap and watch HRV. Sleep score, resting heart rate, daytime workout HRV (recorded with a chest strap during exercise, separate from overnight rMSSD), training load, daily activity. Best for lifters and endurance athletes who already wear a chest strap.',
-    meta: 'OAuth 2.0 · transactions model · sync your watch to Polar Flow first'
+    body: 'Workout-grade. Polar’s chest strap captures heart rate variability during exercise — a separate signal from your overnight HRV — alongside training load, sleep, and resting heart rate. Best for athletes who already train with a chest strap.',
+    meta: 'Sync your watch to Polar Flow first; data flows in from there'
   },
   'apple-health': {
     name: 'Apple Health',
-    body: 'File import — export the encrypted ZIP from your iPhone’s Health app and drop it on the dashboard. Aggregates anything that writes to Health: Apple Watch (HRV SDNN, sleep, RHR), Aria scales, BP cuffs, third-party rings. Re-import any time to refresh.',
-    meta: 'No OAuth · 100% on-device parsing · nothing uploaded'
+    body: 'File import — export from the iPhone Health app and drop the file onto the dashboard. Apple Health aggregates everything that writes to it: Apple Watch, smart scales, blood pressure cuffs, third-party rings. Re-import any time.',
+    meta: 'Your file is parsed entirely in the browser — nothing is uploaded'
   }
 };
 const wearVendors = document.querySelectorAll('.wear-vendor[data-vendor]');
