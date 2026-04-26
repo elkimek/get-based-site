@@ -49,6 +49,16 @@ cp /tmp/fitbit-brand/<chosen-button-dark>.svg brands/fitbit/sign-in-dark.svg
 # Their brand-resources page (polar.com/en/about_polar/brand_resources) returns
 # 404 as of 2026-04-23. Try again later, or reach out via the AccessLink
 # support channel with our app/integration ID.
+#
+# LANDING-SITE GATING (added 2026-04-26):
+# wordmark-on-{dark,light}.svg are present in this directory but are NOT
+# rendered on getbased.health/index.html. The Wearables card uses a
+# text-only "Polar" chip until written consent under the AccessLink
+# agreement lands. The app side (js/brand-assets.js) gates Polar to mono
+# fallback for the same reason. Once consent is obtained, flip BOTH:
+#   1. site: index.html .wear-vendor[data-vendor=polar] → re-add the
+#      <img> tags (mirror Oura/Withings/Fitbit chip markup)
+#   2. app: js/brand-assets.js polar entry → mode: 'official'
 ```
 
 ### Oura — login-walled
