@@ -264,9 +264,8 @@ section{position:relative;z-index:1;padding:120px 32px}
 .wear-tile{
   background:var(--surface);border:1px solid var(--border);border-radius:10px;
   padding:12px 14px;display:flex;flex-direction:column;gap:6px;
-  cursor:pointer;transition:all 0.2s;position:relative;
+  transition:all 0.2s;position:relative;
 }
-.wear-tile:hover{border-color:var(--border2);transform:translateY(-1px)}
 .wear-tile-name{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.02em}
 .wear-tile-value{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--text);line-height:1.1}
 .wear-tile-unit{font-size:10px;color:var(--text3);font-weight:500}
@@ -1593,19 +1592,11 @@ wearVendors.forEach(b => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setWearActiveVendor(b.dataset.vendor); }
   });
 });
-// Tiles also clickable — surface the source they're driven by, on a tile
-// click cycle through the vendors that DO expose this metric. Subtle
-// hint that picking a primary source is per-metric in the real app.
-wearTiles.forEach(t => {
-  t.addEventListener('click', () => {
-    const supports = (t.dataset.vendors || '').split(',').filter(Boolean);
-    if (supports.length === 0) return;
-    const current = t.querySelector('[data-via]')?.textContent.replace(/^via\s+/, '').toLowerCase().replace(' ', '-') || supports[0];
-    const idx = supports.findIndex(s => (wearVendorCopy[s]?.name.toLowerCase() || s) === current);
-    const next = supports[(idx + 1) % supports.length];
-    setWearActiveVendor(next);
-  });
-});
+// Tiles are display-only — the vendor chips at the top are the sole
+// interactive driver. Earlier I had tile-click cycling through vendors,
+// but that created a confusing dual-axis interaction (click HRV → why
+// did the whole panel just swap?). Tiles remain visually polished
+// (hover-tighten via the .dim variant) but no click handler.
 
 // ── Interactive context cards ──
 document.querySelectorAll('.ctx-card[data-detail]').forEach(card => {
