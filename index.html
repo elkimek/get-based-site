@@ -216,23 +216,89 @@ section{position:relative;z-index:1;padding:120px 32px}
 .features-section-bento{display:grid;grid-template-columns:repeat(12,1fr);gap:20px;margin-top:20px}
 .features-section-bottom{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
 .features-section-bottom.features-section-4col{grid-template-columns:repeat(4,1fr)}
-.features-section-bottom.features-section-launch{grid-template-columns:1fr;gap:0}
-.feature-card-launch{
-  background:linear-gradient(135deg,rgba(59,124,245,0.10),rgba(124,77,255,0.06));
-  border:1px solid var(--border2);padding:32px 36px;display:flex;gap:28px;align-items:center;
+
+/* ── Wearables interactive showcase (v1.3 launch) ───────────────────
+   Mirrors bento-card aesthetic but full-width and content-rich:
+   vendor mark strip, mini "dashboard strip" preview with switchable
+   source badges, device-grouped detail block. Mark logos render
+   inline as SVG so they pick up currentColor + dark/light theming.   */
+.wear-showcase{
+  margin-top:24px;padding:32px 36px;
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  position:relative;overflow:hidden;transition:border-color 0.3s;
 }
-.feature-card-launch .feature-icon{font-size:48px;flex-shrink:0;margin:0}
-.feature-card-launch-body{flex:1}
-.feature-card-launch h3{font-size:22px;margin-bottom:10px}
-.feature-card-launch p{font-size:14.5px;line-height:1.7;margin-bottom:10px}
-.feature-card-launch .vendor-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.feature-card-launch .vendor-chip{
-  font-size:12px;padding:4px 10px;border-radius:20px;
-  background:var(--surface);border:1px solid var(--border);color:var(--text2);
+.wear-showcase::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(79,140,255,0.35),transparent);
+  opacity:0.6;
 }
+.wear-showcase:hover{border-color:var(--border2)}
+.wear-showcase-head{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.wear-showcase-icon{font-size:32px;animation:iconFloat 4s ease-in-out infinite;flex-shrink:0}
+.wear-showcase-title{flex:1;min-width:280px}
+.wear-showcase-title h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:20px;margin-bottom:8px;letter-spacing:-0.5px}
+.wear-showcase-title p{font-size:14px;color:var(--text2);line-height:1.65;max-width:640px}
+
+/* Vendor mark strip — clickable, hover-glows the active vendor */
+.wear-vendors{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.wear-vendor{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:24px;
+  background:var(--bg3);border:1px solid var(--border);
+  font-size:13px;font-weight:500;color:var(--text2);
+  cursor:pointer;transition:all 0.2s;
+}
+.wear-vendor:hover{border-color:var(--border2);color:var(--text);transform:translateY(-1px)}
+.wear-vendor.active{
+  border-color:rgba(79,140,255,0.4);background:rgba(79,140,255,0.08);
+  color:var(--text);box-shadow:0 0 0 1px rgba(79,140,255,0.2);
+}
+.wear-vendor svg{flex-shrink:0;color:currentColor}
+
+/* Strip preview — 5 metric cards with sparkline + source badge */
+.wear-strip{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:12px;
+  margin-top:24px;padding:14px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:12px;
+}
+.wear-tile{
+  background:var(--surface);border:1px solid var(--border);border-radius:10px;
+  padding:12px 14px;display:flex;flex-direction:column;gap:6px;
+  cursor:pointer;transition:all 0.2s;position:relative;
+}
+.wear-tile:hover{border-color:var(--border2);transform:translateY(-1px)}
+.wear-tile-name{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:0.02em}
+.wear-tile-value{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:600;color:var(--text);line-height:1.1}
+.wear-tile-unit{font-size:10px;color:var(--text3);font-weight:500}
+.wear-tile-spark{height:18px;width:100%;color:var(--blue);opacity:0.7;margin:2px 0 -2px}
+.wear-tile-via{
+  font-size:9px;font-weight:600;color:var(--text3);letter-spacing:0.04em;
+  display:inline-flex;align-items:center;gap:4px;margin-top:auto;
+}
+.wear-tile-via svg{width:12px;height:12px}
+.wear-tile.dim{opacity:0.42;filter:grayscale(0.5)}
+.wear-tile.dim:hover{opacity:0.62}
+.wear-tile.dim .wear-tile-via{font-style:italic;color:var(--text3)}
+
+/* Detail strip — what each connected vendor unlocks. Updates on vendor click. */
+.wear-detail{
+  margin-top:18px;padding:14px 16px;
+  background:var(--bg3);border:1px solid var(--border);border-radius:10px;
+  font-size:13px;line-height:1.6;color:var(--text2);
+  display:flex;align-items:flex-start;gap:12px;
+  min-height:64px;
+}
+.wear-detail-icon{flex-shrink:0;color:var(--blue);margin-top:2px}
+.wear-detail-icon svg{width:20px;height:20px}
+.wear-detail-body{flex:1;transition:opacity 0.18s ease}
+.wear-detail-body strong{color:var(--text);font-weight:600}
+.wear-detail-meta{font-size:12px;color:var(--text3);margin-top:4px}
+
 @media (max-width:760px){
-  .feature-card-launch{flex-direction:column;text-align:center;padding:24px 20px}
-  .feature-card-launch .feature-icon{font-size:40px}
+  .wear-showcase{padding:24px 20px}
+  .wear-strip{grid-template-columns:repeat(2,1fr)}
+  .wear-tile-value{font-size:16px}
+  .wear-showcase-icon{font-size:28px}
 }
 .feature-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;
   transition:all 0.3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -973,24 +1039,89 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
       </div>
     </div>
 
-    <!-- v1.3.0 launch row: Wearables — full-width prominence -->
-    <div class="features-section-bottom features-section-launch" style="margin-top:24px">
-      <div class="feature-card feature-card-launch reveal">
-        <span class="feature-icon">&#9900;</span>
-        <div class="feature-card-launch-body">
-          <h3>Wearables &mdash; HRV, sleep, recovery alongside your labs <span class="feature-tag blue" style="vertical-align:middle;margin-left:6px;font-size:11px">New in v1.3</span></h3>
-          <p>Connect your ring, watch, scale, or BP cuff. HRV, sleep score, resting heart rate, body composition, vascular age, blood pressure &mdash; every signal your hardware produces shows up on the dashboard alongside your blood work, with a 90-day chart per metric. Or log weight / BP / RHR by hand &mdash; manual entry is first-class. Multi-source picker per metric. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs.</p>
-          <div class="vendor-row">
-            <span class="vendor-chip">Oura</span>
-            <span class="vendor-chip">Withings</span>
-            <span class="vendor-chip">Fitbit</span>
-            <span class="vendor-chip">Polar</span>
-            <span class="vendor-chip">Apple Health</span>
-            <span class="vendor-chip">Manual entry</span>
-          </div>
+    <!-- Wearables — interactive showcase. Click a vendor to see what it
+         unlocks; click a metric tile to inspect. Mirrors the bento-card
+         interactions used elsewhere in the page. -->
+    <section class="wear-showcase reveal" id="wear-showcase">
+      <div class="wear-showcase-head">
+        <span class="wear-showcase-icon">&#9900;</span>
+        <div class="wear-showcase-title">
+          <h3>Wearables &mdash; HRV, sleep, recovery alongside your labs</h3>
+          <p>Connect your ring, watch, scale, or BP cuff. HRV, sleep architecture, resting heart rate, body composition, vascular age, blood pressure &mdash; every signal your hardware produces shows up on the dashboard alongside your blood work, with a 90-day chart per metric. Multi-source picker when two devices report the same value. Raw daily samples stay on your device; only a compact end-to-end-encrypted summary syncs across paired devices.</p>
         </div>
       </div>
-    </div>
+
+      <!-- Vendor chips: click to see device-specific copy + filtered metrics -->
+      <div class="wear-vendors" role="tablist" aria-label="Choose a wearable to preview">
+        <button class="wear-vendor active" role="tab" aria-selected="true" data-vendor="oura">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/></svg>
+          <span>Oura</span>
+        </button>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="withings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/><path d="M3 9c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/></svg>
+          <span>Withings</span>
+        </button>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="fitbit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="6" cy="6" r="1.6"/><circle cx="12" cy="6" r="1.6"/><circle cx="18" cy="6" r="1.6"/><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="1.8"/><circle cx="6" cy="18" r="1.6"/><circle cx="12" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+          <span>Fitbit</span>
+        </button>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="polar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 12c0 3.9-3.1 7-7 7"/></svg>
+          <span>Polar</span>
+        </button>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="apple-health">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><path d="M9 14h6M9 17h4"/></svg>
+          <span>Apple Health</span>
+        </button>
+      </div>
+
+      <!-- Strip preview — five metric tiles. data-vendors lists which vendors
+           expose this metric; tiles dim when the active vendor doesn't.
+           Sparkline values are illustrative; real strip pulls from L2. -->
+      <div class="wear-strip" aria-label="Dashboard strip preview">
+        <div class="wear-tile" data-metric="hrv" data-vendors="oura,withings,fitbit,polar,apple-health">
+          <span class="wear-tile-name">HRV (overnight)</span>
+          <span class="wear-tile-value">42 <span class="wear-tile-unit">ms</span></span>
+          <svg class="wear-tile-spark" viewBox="0 0 80 18" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" points="0,9 12,7 24,11 36,8 48,4 60,7 72,5 80,6"/></svg>
+          <span class="wear-tile-via" data-via>via Oura</span>
+        </div>
+        <div class="wear-tile" data-metric="sleep" data-vendors="oura,withings,fitbit,polar,apple-health">
+          <span class="wear-tile-name">Sleep score</span>
+          <span class="wear-tile-value">82</span>
+          <svg class="wear-tile-spark" viewBox="0 0 80 18" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" points="0,12 12,9 24,11 36,7 48,8 60,5 72,4 80,5"/></svg>
+          <span class="wear-tile-via" data-via>via Oura</span>
+        </div>
+        <div class="wear-tile" data-metric="rhr" data-vendors="oura,withings,fitbit,polar,apple-health">
+          <span class="wear-tile-name">Resting HR</span>
+          <span class="wear-tile-value">54 <span class="wear-tile-unit">bpm</span></span>
+          <svg class="wear-tile-spark" viewBox="0 0 80 18" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" points="0,7 12,9 24,8 36,6 48,7 60,5 72,6 80,5"/></svg>
+          <span class="wear-tile-via" data-via>via Oura</span>
+        </div>
+        <div class="wear-tile" data-metric="weight" data-vendors="withings,fitbit,apple-health">
+          <span class="wear-tile-name">Weight</span>
+          <span class="wear-tile-value">76.4 <span class="wear-tile-unit">kg</span></span>
+          <svg class="wear-tile-spark" viewBox="0 0 80 18" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" points="0,4 12,5 24,7 36,8 48,9 60,11 72,12 80,13"/></svg>
+          <span class="wear-tile-via" data-via>via Withings</span>
+        </div>
+        <div class="wear-tile" data-metric="bp" data-vendors="withings,apple-health">
+          <span class="wear-tile-name">Blood pressure</span>
+          <span class="wear-tile-value">118/76</span>
+          <svg class="wear-tile-spark" viewBox="0 0 80 18" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" points="0,8 12,7 24,9 36,8 48,7 60,8 72,6 80,7"/></svg>
+          <span class="wear-tile-via" data-via>via Withings</span>
+        </div>
+      </div>
+
+      <!-- Per-vendor what-it-unlocks copy. Swaps on vendor click. -->
+      <div class="wear-detail" role="status" aria-live="polite">
+        <span class="wear-detail-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>
+        </span>
+        <div class="wear-detail-body" data-detail-body>
+          <strong>Oura</strong> &mdash; ring-based overnight tracking. HRV (rMSSD), resting heart rate, sleep stages (deep / light / REM / awake), readiness, body temperature deviation, and SpO&#8322; trend across nights. The richest recovery signal of the bunch.
+          <div class="wear-detail-meta">OAuth 2.0 &middot; one-click connect &middot; 90-day backfill</div>
+        </div>
+      </div>
+    </section>
   </div>
 </section>
 
@@ -1389,6 +1520,90 @@ document.querySelectorAll('.chat-mock-thread').forEach(el => {
       content.innerHTML = '<div class="chat-msg-user">' + t.q + '</div><div class="chat-msg-ai">' + t.a + '</div>';
       content.style.opacity = '1';
     }, 150);
+  });
+});
+
+// ── Interactive wearables showcase ──
+// Per-vendor copy: what device(s), what it actually measures, what's
+// notable about the integration. Mirrors what the user sees in the app's
+// connect-vendor flow, kept short for the hero card context.
+const wearVendorCopy = {
+  'oura': {
+    name: 'Oura',
+    body: 'Ring-based overnight tracking. HRV (rMSSD), resting heart rate, sleep stages (deep / light / REM / awake), readiness score, body temperature deviation, and SpO₂ trend across nights. The richest recovery signal of the bunch.',
+    meta: 'OAuth 2.0 · one-click connect · 90-day backfill'
+  },
+  'withings': {
+    name: 'Withings',
+    body: 'Scale + cuff + watch ecosystem. Weight, body fat %, muscle mass, bone mass, water mass, visceral fat (Body Scan). Blood pressure (BPM Core / Connect). Vascular age, pulse wave velocity, SpO₂, body and skin temperature, full sleep architecture (ScanWatch). Cards auto-hide when your hardware doesn’t produce that signal.',
+    meta: 'OAuth 2.0 · retroactively-edited readings included via lastupdate sync'
+  },
+  'fitbit': {
+    name: 'Fitbit',
+    body: 'Activity-first watches and bands. Steps, daytime resting heart rate, activity score, sleep efficiency (used as our sleep-score proxy since the in-app Sleep Score isn’t exposed via API), HRV from supported devices, weight if you have an Aria scale.',
+    meta: 'OAuth 2.0 (PKCE) · one-click connect · 90-day backfill'
+  },
+  'polar': {
+    name: 'Polar',
+    body: 'Workout-grade chest-strap and watch HRV. Sleep score, resting heart rate, daytime workout HRV (recorded with a chest strap during exercise, separate from overnight rMSSD), training load, daily activity. Best for lifters and endurance athletes who already wear a chest strap.',
+    meta: 'OAuth 2.0 · transactions model · sync your watch to Polar Flow first'
+  },
+  'apple-health': {
+    name: 'Apple Health',
+    body: 'File import — export the encrypted ZIP from your iPhone’s Health app and drop it on the dashboard. Aggregates anything that writes to Health: Apple Watch (HRV SDNN, sleep, RHR), Aria scales, BP cuffs, third-party rings. Re-import any time to refresh.',
+    meta: 'No OAuth · 100% on-device parsing · nothing uploaded'
+  }
+};
+const wearVendors = document.querySelectorAll('.wear-vendor[data-vendor]');
+const wearTiles = document.querySelectorAll('.wear-tile[data-metric]');
+const wearDetailBody = document.querySelector('[data-detail-body]');
+function setWearActiveVendor(vendor) {
+  wearVendors.forEach(b => {
+    const isActive = b.dataset.vendor === vendor;
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+  // Dim metric tiles whose data-vendors list doesn't include this vendor —
+  // mirrors the app's behaviour where the source picker only offers
+  // vendors that actually expose the metric. Dimmed tiles get an explicit
+  // "not on {vendor}" subtitle so the reason for the fade is unambiguous
+  // (rather than showing a stale "via X" from a previous click).
+  const vendorName = wearVendorCopy[vendor]?.name || vendor;
+  wearTiles.forEach(t => {
+    const supports = (t.dataset.vendors || '').split(',').includes(vendor);
+    t.classList.toggle('dim', !supports);
+    const via = t.querySelector('[data-via]');
+    if (!via) return;
+    via.textContent = supports ? ('via ' + vendorName) : ('not on ' + vendorName);
+  });
+  // Swap detail copy with a quick fade so the change reads as a state
+  // transition rather than a layout shift.
+  if (wearDetailBody) {
+    wearDetailBody.style.opacity = '0';
+    setTimeout(() => {
+      const c = wearVendorCopy[vendor] || wearVendorCopy.oura;
+      wearDetailBody.innerHTML = '<strong>' + c.name + '</strong> &mdash; ' + c.body + '<div class="wear-detail-meta">' + c.meta + '</div>';
+      wearDetailBody.style.opacity = '1';
+    }, 140);
+  }
+}
+wearVendors.forEach(b => {
+  b.addEventListener('click', () => setWearActiveVendor(b.dataset.vendor));
+  b.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setWearActiveVendor(b.dataset.vendor); }
+  });
+});
+// Tiles also clickable — surface the source they're driven by, on a tile
+// click cycle through the vendors that DO expose this metric. Subtle
+// hint that picking a primary source is per-metric in the real app.
+wearTiles.forEach(t => {
+  t.addEventListener('click', () => {
+    const supports = (t.dataset.vendors || '').split(',').filter(Boolean);
+    if (supports.length === 0) return;
+    const current = t.querySelector('[data-via]')?.textContent.replace(/^via\s+/, '').toLowerCase().replace(' ', '-') || supports[0];
+    const idx = supports.findIndex(s => (wearVendorCopy[s]?.name.toLowerCase() || s) === current);
+    const next = supports[(idx + 1) % supports.length];
+    setWearActiveVendor(next);
   });
 });
 
