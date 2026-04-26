@@ -254,6 +254,18 @@ section{position:relative;z-index:1;padding:120px 32px}
   color:var(--text);box-shadow:0 0 0 1px rgba(79,140,255,0.2);
 }
 .wear-vendor svg{flex-shrink:0;color:currentColor}
+/* Brand wordmarks/symbols — use the official files in brands/<vendor>/.
+   Two variants per chip (dark + light); CSS shows the right one for the
+   active theme. Apple Health stays generic per their guideline policy. */
+.wear-mark-dark,.wear-mark-light{height:18px;width:auto;display:inline-block;flex-shrink:0;vertical-align:middle}
+/* Polar's wordmark is much wider than Oura/Withings (122×20 vs 300×100ish);
+   slightly trim its height so chip widths feel even across the row. */
+.wear-vendor[data-vendor="polar"] .wear-mark-dark,
+.wear-vendor[data-vendor="polar"] .wear-mark-light{height:13px}
+.wear-mark-symbol{height:16px;width:16px;flex-shrink:0;display:inline-block}
+.wear-mark-light,.wear-vendor [data-theme-mark="light"]{display:none}
+[data-theme="light"] .wear-mark-dark{display:none}
+[data-theme="light"] .wear-mark-light{display:inline-block}
 
 /* Strip preview — 5 metric cards with sparkline + source badge */
 .wear-strip{
@@ -1052,24 +1064,25 @@ footer{border-top:1px solid var(--border);padding:48px 32px;position:relative;z-
 
       <!-- Vendor chips: click to see device-specific copy + filtered metrics -->
       <div class="wear-vendors" role="tablist" aria-label="Choose a wearable to preview">
-        <button class="wear-vendor active" role="tab" aria-selected="true" data-vendor="oura">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="7.5"/></svg>
-          <span>Oura</span>
+        <button class="wear-vendor active" role="tab" aria-selected="true" data-vendor="oura" aria-label="Oura">
+          <img class="wear-mark-dark" src="brands/oura/wordmark-on-dark.svg" alt="Oura" loading="lazy" decoding="async">
+          <img class="wear-mark-light" src="brands/oura/wordmark-on-light.svg" alt="Oura" loading="lazy" decoding="async">
         </button>
-        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="withings">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 16c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/><path d="M3 9c1.5-3 3-3 4.5 0s3 3 4.5 0 3-3 4.5 0 3 3 4.5 0"/></svg>
-          <span>Withings</span>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="withings" aria-label="Withings">
+          <img class="wear-mark-dark" src="brands/withings/wordmark-on-dark.svg" alt="Withings" loading="lazy" decoding="async">
+          <img class="wear-mark-light" src="brands/withings/wordmark-on-light.svg" alt="Withings" loading="lazy" decoding="async">
         </button>
-        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="fitbit">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><circle cx="6" cy="6" r="1.6"/><circle cx="12" cy="6" r="1.6"/><circle cx="18" cy="6" r="1.6"/><circle cx="6" cy="12" r="1.8"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="1.8"/><circle cx="6" cy="18" r="1.6"/><circle cx="12" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="fitbit" aria-label="Fitbit">
+          <img class="wear-mark-symbol wear-mark-dark" src="brands/fitbit/symbol-dark.png" alt="" loading="lazy" decoding="async">
+          <img class="wear-mark-symbol wear-mark-light" src="brands/fitbit/symbol-light.png" alt="" loading="lazy" decoding="async">
           <span>Fitbit</span>
         </button>
-        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="polar">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12c0-3.9 3.1-7 7-7s7 3.1 7 7"/><path d="M19 12c0 3.9-3.1 7-7 7"/></svg>
-          <span>Polar</span>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="polar" aria-label="Polar">
+          <img class="wear-mark-dark" src="brands/polar/wordmark-on-dark.svg" alt="Polar" loading="lazy" decoding="async">
+          <img class="wear-mark-light" src="brands/polar/wordmark-on-light.svg" alt="Polar" loading="lazy" decoding="async">
         </button>
-        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="apple-health">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><path d="M9 14h6M9 17h4"/></svg>
+        <button class="wear-vendor" role="tab" aria-selected="false" data-vendor="apple-health" aria-label="Apple Health">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="14 3 14 9 20 9"/><path d="M9 14h6M9 17h4"/></svg>
           <span>Apple Health</span>
         </button>
       </div>
