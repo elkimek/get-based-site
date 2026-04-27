@@ -1,4 +1,5 @@
 {
+  "buildCommand": "node stamp-version.js && node build-blog.js",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
