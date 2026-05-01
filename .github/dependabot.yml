@@ -1,0 +1,10 @@
+version: 2
+updates:
+  # No package.json at the repo root — site is static HTML + a build-blog
+  # script that runs `node build-blog.js` directly with Node's stdlib.
+  # Only github-actions needs tracking until/unless a build pipeline
+  # introduces real npm deps.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
