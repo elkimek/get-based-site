@@ -112,7 +112,7 @@ The core app is solid. The roadmap is ambitious:
 - **Auto-select best AI model** — using live medical benchmarks from Chatbot Arena
 - **OpenClaw integration** — proactive health alerts via WhatsApp, Telegram, and other messaging apps
 
-getbased is open source under GPL-3.0. The code is on [GitHub](https://github.com/elkimek/get-based). If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.
+getbased is open source under AGPL-3.0-or-later. The code is on [GitHub](https://github.com/elkimek/get-based). If you're interested in health data sovereignty — owning your data, running it locally, having AI that works for you — give it a try.
 
 Your labs tell a story. You should be the one reading it.
 
