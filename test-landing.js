@@ -1,5 +1,6 @@
-// test-landing.js — Verify landing page (standalone site repo)
-// Run: fetch('test-landing.js').then(r=>r.text()).then(s=>Function(s)())
+// test-landing.js — Verify the landing page (index.html) + thank-you.html.
+// Run in the browser console on the served site:
+//   fetch('test-landing.js').then(r=>r.text()).then(s=>Function(s)())
 
 (async function() {
   let pass = 0, fail = 0;
@@ -10,358 +11,249 @@
 
   console.log('%c🧪 Landing Page Tests', 'font-weight:bold;font-size:14px');
 
-  // ── 1. index.html source checks ──
-  console.log('\n%c1. index.html — Source content', 'font-weight:bold');
-  const siteSrc = await fetch('index.html').then(r => r.text());
-
-  // Meta tags
-  assert('og:description has 287+', siteSrc.includes('track 287+ biomarkers'));
-  assert('og:url present', siteSrc.includes('og:url'));
-  assert('og:image present', siteSrc.includes('og:image'));
-  assert('canonical link present', siteSrc.includes('rel="canonical"'));
-  assert('apple-touch-icon present', siteSrc.includes('apple-touch-icon'));
-
-  // Hero copy
-  assert('Hero: "better than a PDF"', siteSrc.includes('better than a PDF'));
-  assert('Hero: "Open source"', siteSrc.includes('Open source'));
-  assert('Hero badge: 287+ biomarkers', siteSrc.includes('287+ biomarkers'));
-  assert('Hero sub: no PII explanation', !siteSrc.includes('personal info is stripped before anything reaches AI'));
-  assert('Hero sub: no "109+"', !/hero-sub[^<]*109\+/.test(siteSrc));
-
-  // Stats bar
-  assert('Stats: 287+ biomarkers', siteSrc.includes('>287+</div>'));
-  assert('Stats: 26 categories', siteSrc.includes('>26</div>'));
-  assert('Stats: tightened label "Biomarkers"', siteSrc.includes('>Biomarkers</div>'));
-  assert('Stats: tightened label "AI providers"', siteSrc.includes('>AI providers</div>'));
-  assert('Stats: no "tracked" in biomarker label', !siteSrc.includes('Biomarkers tracked'));
-  assert('Stats: no "to choose" in AI label', !siteSrc.includes('AI providers to choose'));
-
-  // Why section
-  assert('Has #why section', siteSrc.includes('id="why"'));
-  assert('Has .why CSS rule', /\.why\s*\{/.test(siteSrc));
-  assert('Has "Because your doctor" heading', siteSrc.includes('Because your doctor'));
-  assert('Has why-story class', siteSrc.includes('why-story'));
-  assert('Has who-cards class', siteSrc.includes('who-cards'));
-  assert('Has 4 who-card items', (siteSrc.match(/who-card reveal/g) || []).length === 4);
-  assert('Persona: The biohacker', siteSrc.includes('The biohacker'));
-  assert('Persona: The patient', siteSrc.includes('The patient'));
-  assert('Persona: The doctor who cares', siteSrc.includes('The doctor who cares'));
-  assert('Persona: been dismissed', siteSrc.includes('been dismissed'));
-  assert('Value for Value link exists', siteSrc.includes('value4value.info'));
-
-  // How It Works
-  assert('Step 1: AI extracts', siteSrc.includes('AI extracts every biomarker'));
-  assert('Step 2: trends over time', siteSrc.includes('trends over time'));
-  assert('Step 2: optimal ranges', siteSrc.includes('optimal ranges'));
-  assert('Step 3: Ask AI', siteSrc.includes('Ask AI about any marker'));
-
-  // Unified features section (no standalone bento)
-  assert('Has features-section-top', siteSrc.includes('features-section-top'));
-  assert('Has features-section-bento', siteSrc.includes('features-section-bento'));
-  assert('Has features-section-bottom', siteSrc.includes('features-section-bottom'));
-  assert('No standalone .bento section', !/<section class="bento">/.test(siteSrc));
-  assert('No .features-grid class', !siteSrc.includes('features-grid'));
-
-  // Feature cards (top 3 + bottom 3 = 6 feature-card)
-  const featureCards = (siteSrc.match(/class="feature-card/g) || []).length;
-  assert('6 feature-card elements', featureCards === 6, `found ${featureCards}`);
-
-  // Top row feature cards
-  assert('Feature: Trend Charts', siteSrc.includes('Trend Charts'));
-  assert('Feature: AI PDF Import', siteSrc.includes('AI PDF Import'));
-  assert('Feature: Cycle-Aware Labs', siteSrc.includes('Cycle-Aware Labs'));
-
-  // Bottom row feature cards
-  assert('Feature: Is it actually working?', siteSrc.includes('Is it actually working?'));
-  assert('Feature: More than a chatbot', siteSrc.includes('More than a chatbot'));
-  assert('Feature: Ratios & Derived Markers', siteSrc.includes('Ratios &amp; Derived Markers'));
-
-  // Bento cards (2 in middle row)
-  const bentoCards = (siteSrc.match(/class="bento-card/g) || []).length;
-  assert('2 bento-card elements', bentoCards === 2, `found ${bentoCards}`);
-
-  // Context cards mockup (9 cards)
-  const ctxCards = (siteSrc.match(/class="ctx-card"/g) || []).length;
-  assert('9 context card mockups', ctxCards === 9, `found ${ctxCards}`);
-
-  // Chat mockup with thread rail
-  assert('Chat mock has thread rail', siteSrc.includes('Threads'));
-  assert('Chat mock overflow hidden', /\.chat-mock\{[^}]*overflow:\s*hidden/.test(siteSrc));
-
-  // Removed standalone cards
-  assert('No standalone Health Goals card', !siteSrc.includes('<h3>Health Goals</h3>'));
-  assert('No standalone Trend Alerts card', !siteSrc.includes('<h3>Trend Alerts</h3>'));
-  assert('No "Multiple views" bento card', !siteSrc.includes('Multiple views for every category'));
-  assert('No "Smart calculated markers" bento card', !siteSrc.includes('Smart calculated markers'));
-
-  // Repetition removed
-  assert('No PII Scrubbing feature card', !siteSrc.includes('<h3>PII Scrubbing</h3>'));
-  assert('No Encryption feature card', !/<h3>Encryption &amp; Auto-Backup<\/h3>/.test(siteSrc));
-  assert('No Biological Age feature card', !siteSrc.includes('<h3>Biological Age</h3>'));
-  assert('No markers scroll section', !siteSrc.includes('markers-scroll'));
-  assert('No marker-chip CSS', !siteSrc.includes('.marker-chip'));
-  assert('PII still in Privacy section', siteSrc.includes('Personal info is stripped'));
-  assert('Encrypted still in Privacy section', siteSrc.includes('Encrypted &amp; backed up'));
-
-  // Privacy section tightened
-  assert('Privacy: no "No account. No tracking."', !siteSrc.includes('No account. No tracking.'));
-
-  // AI Providers updated
-  assert('Anthropic: recommended badge', siteSrc.includes('Recommended'));
-  assert('Anthropic: best results', /Anthropic[\s\S]*?best results/.test(siteSrc));
-  assert('OpenRouter: marketplace badge', siteSrc.includes('Marketplace'));
-  assert('OpenRouter: many models', /OpenRouter[\s\S]*?many models/.test(siteSrc));
-  // ROUTSTR DISABLED: assert('Routstr: anonymous badge', /Routstr[\s\S]*?Anonymous/.test(siteSrc));
-  assert('Venice: private badge', /Venice[\s\S]*?Private/.test(siteSrc));
-  assert('Ollama: local free badge', /Ollama[\s\S]*?Local/.test(siteSrc));
-
-  // CTA updated
-  assert('CTA: "nothing to install"', siteSrc.includes('nothing to install'));
-  assert('CTA: "Stop guessing"', /cta[\s\S]*?Stop guessing/i.test(siteSrc));
-  assert('CTA: no "No account needed"', !siteSrc.includes('No account needed, your data stored locally'));
-
-  // Nav/footer
-  assert('Nav has Why link', siteSrc.includes('<a href="#why">Why</a>'));
-  assert('Nav has Support link', siteSrc.includes('<a href="#support">Support</a>'));
-  assert('Footer has Why link', /footer[\s\S]*#why/.test(siteSrc));
-  assert('Footer has Support link', /footer[\s\S]*#support/.test(siteSrc));
-
-  // CSS: responsive rules
-  assert('CSS: features-section-top responsive at 768px', /768px[\s\S]*?\.features-section-top/.test(siteSrc));
-  assert('CSS: features-section-bento responsive at 1024px', /1024px[\s\S]*?\.features-section-bento/.test(siteSrc));
-  assert('Why-grid responsive in 1024px', siteSrc.includes('.why-grid{grid-template-columns:1fr'));
-  assert('CSS: .feature-tag.cyan exists', siteSrc.includes('.feature-tag.cyan'));
-  assert('CSS: providers-grid responsive at 1024px', /1024px[\s\S]*?\.providers-grid/.test(siteSrc));
-  assert('CSS: bg layers hidden at 480px', /480px[\s\S]*?\.bg-grid/.test(siteSrc));
-
-  // Hamburger menu
-  assert('Has nav-hamburger button', siteSrc.includes('class="nav-hamburger"'));
-  assert('Hamburger has 3 spans', (siteSrc.match(/id="nav-hamburger"[^>]*>[\s\S]*?<\/button>/)?.[0]?.match(/<span>/g) || []).length === 3);
-  assert('Hamburger has aria-expanded', siteSrc.includes('aria-expanded="false"'));
-  assert('Has nav-drawer div', siteSrc.includes('class="nav-drawer"'));
-  assert('Nav drawer has links', /nav-drawer[\s\S]*?href="#why"/.test(siteSrc));
-  assert('Nav drawer has Open App CTA', /nav-drawer[\s\S]*?app\.getbased\.health/.test(siteSrc));
-  assert('CSS: nav-hamburger hidden by default', /\.nav-hamburger\{[^}]*display:none/.test(siteSrc));
-  assert('CSS: nav-hamburger shown at 768px', /768px[\s\S]*?\.nav-hamburger\{display:flex/.test(siteSrc));
-  assert('CSS: nav-drawer transforms', /\.nav-drawer\{[^}]*transform:translateY\(-100%\)/.test(siteSrc));
-  assert('CSS: nav-drawer.open transforms', /\.nav-drawer\.open\{[^}]*transform:translateY\(0\)/.test(siteSrc));
-  assert('CSS: body.nav-open overflow hidden', /body\.nav-open\{overflow:hidden/.test(siteSrc));
-  assert('JS: toggleDrawer function', siteSrc.includes('function toggleDrawer'));
-  assert('JS: Escape closes drawer', /keydown[\s\S]*?Escape[\s\S]*?toggleDrawer/.test(siteSrc));
-
-  // Mockup animations
-  assert('Has chart-line-animated class', siteSrc.includes('class="chart-line-animated"'));
-  assert('Has chart-end-dot class', siteSrc.includes('class="chart-end-dot"'));
-  assert('Has 3 sparkline-animated classes', (siteSrc.match(/class="sparkline-animated"/g) || []).length === 3);
-  assert('CSS: @keyframes drawLine', siteSrc.includes('@keyframes drawLine'));
-  assert('CSS: @keyframes sparkDraw', siteSrc.includes('@keyframes sparkDraw'));
-  assert('CSS: @keyframes dotPop', siteSrc.includes('@keyframes dotPop'));
-  assert('Animations triggered by .hero-mockup.visible', siteSrc.includes('.hero-mockup.visible .chart-line-animated'));
-
-  // Stats count-up
-  assert('Stats have data-count attrs', (siteSrc.match(/data-count="/g) || []).length === 4);
-  assert('First stat data-count=287', siteSrc.includes('data-count="287"'));
-  assert('First stat data-suffix="+"', siteSrc.includes('data-suffix="+"'));
-  assert('JS: animateCount function', siteSrc.includes('function animateCount'));
-  assert('JS: easeOutExpo function', siteSrc.includes('function easeOutExpo'));
-  assert('JS: count-up IntersectionObserver', /countObserver[\s\S]*?IntersectionObserver/.test(siteSrc));
-  assert('JS: count-up threshold 0.5', /countObserver[\s\S]*?threshold:\s*0\.5/.test(siteSrc) || /IntersectionObserver[\s\S]*?threshold:\s*0\.5/.test(siteSrc));
-
-  // GitHub stars
-  assert('JS: fetches GitHub API', siteSrc.includes('api.github.com/repos/elkimek/get-based'));
-  assert('JS: GitHub stars graceful (catch)', /fetchGitHubStars[\s\S]*?\.catch/.test(siteSrc) || /api\.github\.com[\s\S]*?\.catch/.test(siteSrc));
-
-  // Reduced motion
-  assert('Reduced motion: chart animations', /prefers-reduced-motion[\s\S]*?chart-line-animated/.test(siteSrc));
-  assert('Reduced motion: sparkline animations', /prefers-reduced-motion[\s\S]*?sparkline-animated/.test(siteSrc));
-
-  // Support section
-  assert('Has #support section', siteSrc.includes('id="support"'));
-  assert('Has #providers section', siteSrc.includes('id="providers"'));
-  assert('Share on X intent URL', siteSrc.includes('x.com/intent/tweet'));
-
-  // Provider cards use flexbox alignment
-  assert('Provider cards use flex column', /\.provider-card\{[^}]*flex-direction:column/.test(siteSrc));
-  assert('Provider badge margin-top auto', /\.provider-badge\{[^}]*margin-top:auto/.test(siteSrc));
-
-  // ── 2. DOM checks (if on index.html) ──
-  console.log('\n%c2. DOM checks', 'font-weight:bold');
-  const whySection = document.getElementById('why');
-  if (whySection) {
-    assert('#why section in DOM', true);
-    const whyGrid = whySection.querySelector('.why-grid');
-    assert('.why-grid exists', !!whyGrid);
-    const cards = whySection.querySelectorAll('.who-card');
-    assert('4 who-card elements', cards.length === 4);
-
-    const heroH1 = document.querySelector('.hero h1');
-    assert('Hero h1: "better than a PDF"', heroH1 && heroH1.textContent.includes('better than a PDF'));
-
-    const navWhyLink = document.querySelector('nav a[href="#why"]');
-    assert('Nav #why link in DOM', !!navWhyLink);
-
-    assert('No .markers in DOM', !document.querySelector('.markers'));
-
-    const domFeatureCards = document.querySelectorAll('.feature-card');
-    assert('6 feature cards in DOM', domFeatureCards.length === 6, `found ${domFeatureCards.length}`);
-
-    const domBentoCards = document.querySelectorAll('.bento-card');
-    assert('2 bento cards in DOM', domBentoCards.length === 2, `found ${domBentoCards.length}`);
-
-    const domCtxCards = document.querySelectorAll('.ctx-card');
-    assert('9 context cards in DOM', domCtxCards.length === 9, `found ${domCtxCards.length}`);
-
-    const domStatNumbers = document.querySelectorAll('.stat-number');
-    if (domStatNumbers.length >= 2) {
-      assert('First stat has data-count=287', domStatNumbers[0].dataset.count === '287');
-      assert('Second stat has data-count=26', domStatNumbers[1].dataset.count === '26');
-    }
-
-    // Hamburger DOM checks
-    const hamBtn = document.getElementById('nav-hamburger');
-    assert('Hamburger button in DOM', !!hamBtn);
-    if (hamBtn) {
-      assert('Hamburger has 3 span children', hamBtn.querySelectorAll('span').length === 3);
-      assert('Hamburger aria-expanded=false initially', hamBtn.getAttribute('aria-expanded') === 'false');
-    }
-    const drawerEl = document.getElementById('nav-drawer');
-    assert('Nav drawer in DOM', !!drawerEl);
-    if (drawerEl) {
-      const drawerLinks = drawerEl.querySelectorAll('a');
-      assert('Drawer has 9 links', drawerLinks.length === 9, `found ${drawerLinks.length}`);
-    }
-
-    // Animation class DOM checks
-    const chartLine = document.querySelector('.chart-line-animated');
-    assert('Chart line animated polyline in DOM', !!chartLine);
-    const endDot = document.querySelector('.chart-end-dot');
-    assert('Chart end dot in DOM', !!endDot);
-    const sparklines = document.querySelectorAll('.sparkline-animated');
-    assert('3 sparkline-animated in DOM', sparklines.length === 3, `found ${sparklines.length}`);
-
-    if (whyGrid) {
-      const style = getComputedStyle(whyGrid);
-      assert('.why-grid display: grid', style.display === 'grid');
-    }
-
-    // Check no standalone bento section
-    const bentoSections = document.querySelectorAll('section.bento');
-    assert('No standalone bento section in DOM', bentoSections.length === 0);
-  } else {
-    console.log('  ⚠️  Not on index.html — skipping DOM checks');
+  const src = await fetch('index.html').then(r => r.text());
+  const isLanding = src.includes('id="lenses"') && src.includes('class="nav-drawer"');
+  assert('Fetched the getbased landing page', isLanding);
+  if (!isLanding) {
+    console.log('  ⚠️  Aborting — index.html is not the landing page (dev server may be serving the app)');
+    console.log(`\n%c${pass + fail} tests: ${pass} passed, ${fail} failed`, 'color:red;font-weight:bold');
+    return;
   }
 
-  // ── 3. Link integrity ──
-  console.log('\n%c3. Link integrity', 'font-weight:bold');
-  const appLinks = (siteSrc.match(/app\.getbased\.health/g) || []).length;
-  assert('App links present (CTAs)', appLinks >= 3, `found ${appLinks}`);
-  assert('No /landing links', !siteSrc.includes('href="/landing"'));
-  assert('No relative /app links', !siteSrc.includes('href="/app"'));
+  // ── 1. Head & metadata ──
+  console.log('\n%c1. Head & metadata', 'font-weight:bold');
+  assert('Title: Personal Health Intelligence', src.includes('<title>getbased — Open-Source Personal Health Intelligence</title>'));
+  assert('Meta description mentions five lenses', /<meta name="description"[^>]*Five lenses on your biology/.test(src));
+  assert('og:title present', src.includes('property="og:title"'));
+  assert('og:image present', src.includes('property="og:image"'));
+  assert('twitter:card present', src.includes('name="twitter:card"'));
+  assert('canonical link present', src.includes('rel="canonical"'));
+  assert('apple-touch-icon present', src.includes('apple-touch-icon'));
+  assert('theme-color dark', /meta name="theme-color" content="#0a0c14"/.test(src));
+  assert('theme-color light', /meta name="theme-color" content="#f5f7ff"/.test(src));
 
-  // ── 4. Light mode support ──
-  console.log('\n%c4. Light mode', 'font-weight:bold');
-  assert('Has [data-theme="light"] CSS block', /\[data-theme="light"\]\s*\{/.test(siteSrc));
-  assert('Light theme overrides --bg', /\[data-theme="light"\]\s*\{[^}]*--bg:#f5f7ff/.test(siteSrc));
-  assert('Light theme overrides --text', /\[data-theme="light"\]\s*\{[^}]*--text:#1a1d27/.test(siteSrc));
-  assert('Light theme overrides --nav-bg', /\[data-theme="light"\]\s*\{[^}]*--nav-bg:/.test(siteSrc));
-  assert('prefers-color-scheme light no-JS fallback', /prefers-color-scheme:\s*light[\s\S]*?:root:not\(\[data-theme\]\)/.test(siteSrc));
-  assert('Early theme detection script in head', /document\.documentElement\.setAttribute\('data-theme',\s*'light'\)/.test(siteSrc));
-  assert('Live OS theme listener', /prefers-color-scheme: light[\s\S]*?addEventListener\('change'/.test(siteSrc));
-  assert('meta theme-color for dark', /meta name="theme-color" content="#0a0c14" media="\(prefers-color-scheme: dark\)"/.test(siteSrc));
-  assert('meta theme-color for light', /meta name="theme-color" content="#f5f7ff" media="\(prefers-color-scheme: light\)"/.test(siteSrc));
-  assert('Nav uses --nav-bg var', /nav\{[^}]*background:var\(--nav-bg\)/.test(siteSrc));
-  assert('Grid uses --grid-line var', /bg-grid[\s\S]*?var\(--grid-line\)/.test(siteSrc));
-  assert('Selection uses --selection-color var', /::selection\{background:var\(--selection-color\)/.test(siteSrc));
-  assert('GitHub stars pill uses var(--surface2)', siteSrc.includes("background:var(--surface2);border-radius:6px;font-size:12px"));
-  assert('Light bg-glow reduced', /\[data-theme="light"\]\s+\.bg-glow\{opacity:0\.5\}/.test(siteSrc));
-  assert('Light bg-noise reduced', /\[data-theme="light"\]\s+\.bg-noise\{opacity:0\.12\}/.test(siteSrc));
-  assert('Theme toggle button in HTML', siteSrc.includes('id="theme-toggle"'));
-  assert('Theme toggle has sun icon', siteSrc.includes('class="theme-icon-sun"'));
-  assert('Theme toggle has moon icon', siteSrc.includes('class="theme-icon-moon"'));
-  assert('CSS: .theme-toggle styles', /\.theme-toggle\{/.test(siteSrc));
-  assert('CSS: light hides sun icon', /\[data-theme="light"\]\s+\.theme-icon-sun\{display:none\}/.test(siteSrc));
-  assert('JS: toggle click sets localStorage', /theme-toggle[\s\S]*?localStorage\.setItem\('labcharts-theme'/.test(siteSrc));
+  // JSON-LD structured data
+  const ldBlocks = [...src.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  assert('Has 4 JSON-LD blocks', ldBlocks.length === 4, `found ${ldBlocks.length}`);
+  const ldTypes = [];
+  let ldValid = true;
+  ldBlocks.forEach(m => { try { ldTypes.push(JSON.parse(m[1])['@type']); } catch (e) { ldValid = false; } });
+  assert('All JSON-LD blocks parse as valid JSON', ldValid);
+  assert('Has SoftwareApplication schema', ldTypes.includes('SoftwareApplication'));
+  assert('Has FAQPage schema', ldTypes.includes('FAQPage'));
+  assert('Has HowTo schema', ldTypes.includes('HowTo'));
+  assert('JSON-LD license is AGPL-3.0', src.includes('agpl-3.0'));
 
-  // ── 5. Donate link redirect ──
-  console.log('\n%c5. Donate link redirect', 'font-weight:bold');
-  assert('Donate link has redirectURL param', siteSrc.includes('redirectURL=https%3A%2F%2Fgetbased.health%2Fthank-you'));
-  assert('Donate link still has storeId', siteSrc.includes('storeId=BfxZicwEaRcJvJnkBPHdzGuCAonAhwLBb5vbWfjT2ZR1'));
-  assert('Donate link still has currency=USD', siteSrc.includes('currency=USD'));
+  // ── 2. Navigation ──
+  console.log('\n%c2. Navigation', 'font-weight:bold');
+  assert('Nav element with id', src.includes('<nav id="nav">'));
+  assert('Nav split into left/right groups', src.includes('class="nav-left"') && src.includes('class="nav-right"'));
+  ['Five Lenses', 'Why', 'Features', 'How it works', 'Privacy', 'Support', 'FAQ', 'Compare', 'Blog'].forEach(label => {
+    assert(`Nav link: ${label}`, src.includes(`>${label}</a>`));
+  });
+  assert('Nav has Compare link to /compare', src.includes('href="/compare"'));
+  assert('Nav has Open App CTA', src.includes('class="nav-cta"'));
+  assert('Nav has theme toggle', src.includes('id="theme-toggle"'));
+  assert('Nav has hamburger button', src.includes('class="nav-hamburger"'));
+  assert('Mobile nav drawer exists', src.includes('id="nav-drawer"'));
+  assert('Drawer carries Five Lenses link', /id="nav-drawer"[\s\S]*?Five Lenses/.test(src));
 
-  // ── 6. Thank-you page ──
-  console.log('\n%c6. Thank-you page', 'font-weight:bold');
-  const tySrc = await fetch('thank-you.html').then(r => r.ok ? r.text() : '').catch(() => '');
-  assert('thank-you.html exists', tySrc.length > 0);
-  if (tySrc) {
+  // ── 3. Hero ──
+  console.log('\n%c3. Hero', 'font-weight:bold');
+  assert('Hero badge: Open source', /hero-badge[\s\S]*?Open source/.test(src));
+  assert('Hero badge: Runs in your browser', src.includes('Runs in your browser'));
+  assert('Hero H1: "Your biology"', /<h1[^>]*>Your biology/.test(src));
+  assert('Hero H1: "deserves more"', src.includes('deserves more</span>'));
+  assert('Hero subtitle: "myopic lens"', src.includes('myopic lens'));
+  assert('Hero subtitle: "Pure signal, not noise"', src.includes('Pure signal, not noise'));
+  assert('Hero actions: Launch App', /hero-actions[\s\S]*?Launch App/.test(src));
+  assert('Hero version stamp span', src.includes('id="hero-version"'));
+  assert('Interactive mockup present', src.includes('class="hero-mockup'));
+  assert('Mockup has 5 lens tabs in source', (src.match(/class="mockup-lens-tab/g) || []).length === 5, `found ${(src.match(/class="mockup-lens-tab/g) || []).length}`);
+  ['labs', 'genome', 'body', 'lifestyle', 'environment'].forEach(l => {
+    assert(`Mockup lens tab: data-lens="${l}"`, src.includes(`data-lens="${l}"`));
+  });
+  assert('Mockup has #mockup-cards container', src.includes('id="mockup-cards"'));
+  assert('Mockup has #mockup-panel container', src.includes('id="mockup-panel"'));
 
-    // Meta tags
-    assert('TY: has title', tySrc.includes('<title>Thank You'));
-    assert('TY: og:url is /thank-you', tySrc.includes('og:url') && tySrc.includes('getbased.health/thank-you'));
-    assert('TY: has og:image', tySrc.includes('og:image'));
-    assert('TY: theme-color dark meta', /meta name="theme-color" content="#0a0c14"/.test(tySrc));
-    assert('TY: theme-color light meta', /meta name="theme-color" content="#f5f7ff"/.test(tySrc));
-    assert('TY: apple-touch-icon', tySrc.includes('apple-touch-icon'));
+  // ── 4. Five Lenses section ──
+  console.log('\n%c4. Five Lenses section', 'font-weight:bold');
+  assert('Has #lenses section', src.includes('id="lenses"'));
+  assert('Section heading: "five ways to see it"', src.includes('five ways to see it'));
+  assert('Subtitle: "aren\'t five separate tabs"', src.includes("aren't five separate tabs"));
+  assert('5 lens cards in source', (src.match(/class="lens-card/g) || []).length === 5, `found ${(src.match(/class="lens-card/g) || []).length}`);
+  ['Labs', 'Genome', 'Body', 'Lifestyle', 'Environment'].forEach(l => {
+    assert(`Lens card: ${l}`, new RegExp(`lens-name">${l}<`).test(src));
+  });
+  assert('Genome lens mentions 50+ SNPs', /Genome[\s\S]*?50\+ SNPs/.test(src));
 
-    // Design system
-    assert('TY: has bg-grid', tySrc.includes('class="bg-grid"'));
-    assert('TY: has bg-glow', tySrc.includes('class="bg-glow"'));
-    assert('TY: has bg-noise', tySrc.includes('class="bg-noise"'));
-    assert('TY: has nav element', tySrc.includes('<nav'));
-    assert('TY: nav-logo links to site', /href="https:\/\/getbased\.health"[^>]*class="nav-logo"/.test(tySrc));
-    assert('TY: has footer', tySrc.includes('<footer>'));
-    assert('TY: footer-logo', tySrc.includes('footer-logo'));
-    assert('TY: footer-links', tySrc.includes('footer-links'));
+  // ── 5. Why section ──
+  console.log('\n%c5. Why section', 'font-weight:bold');
+  assert('Has #why section', src.includes('id="why"'));
+  assert('Heading: "Because your doctor"', src.includes('Because your doctor'));
+  assert('Has why-story', src.includes('why-story'));
+  assert('4 who-card items', (src.match(/class="who-card reveal/g) || []).length === 4, `found ${(src.match(/class="who-card reveal/g) || []).length}`);
+  ['The biohacker', 'The patient', 'The doctor who cares'].forEach(p => {
+    assert(`Persona: ${p}`, src.includes(p));
+  });
 
-    // Content
-    assert('TY: "Thank you!" heading', tySrc.includes('Thank you!'));
-    assert('TY: support message', tySrc.includes('free, open source, and independent'));
-    assert('TY: has check icon', tySrc.includes('check-icon'));
-    assert('TY: checkmark polyline', /polyline points="20 6 9 17 4 12"/.test(tySrc));
-    assert('TY: Back to site button', tySrc.includes('Back to site'));
-    assert('TY: Open App button', tySrc.includes('Open App'));
-    assert('TY: btn-primary exists', tySrc.includes('btn-primary'));
-    assert('TY: btn-secondary exists', tySrc.includes('btn-secondary'));
+  // ── 6. How it works ──
+  console.log('\n%c6. How it works', 'font-weight:bold');
+  assert('Has #how section', src.includes('id="how"'));
+  assert('Heading: "Three steps to clarity"', src.includes('Three steps to clarity'));
+  assert('3 step blocks', (src.match(/class="step reveal/g) || []).length === 3, `found ${(src.match(/class="step reveal/g) || []).length}`);
+  ['Import', 'Track', 'Understand'].forEach(s => {
+    assert(`Step: ${s}`, src.includes(`<h3>${s}</h3>`));
+  });
 
-    // Fonts
-    assert('TY: Inter font loaded', tySrc.includes('family=Inter'));
-    assert('TY: Outfit font loaded', tySrc.includes('family=Outfit'));
-    assert('TY: JetBrains Mono loaded', tySrc.includes('JetBrains+Mono'));
+  // ── 7. Features ──
+  console.log('\n%c7. Features section', 'font-weight:bold');
+  assert('Has #features section', src.includes('id="features"'));
+  assert('Heading: "Everything you need"', src.includes('Everything you need'));
+  assert('10 feature-card elements', (src.match(/class="feature-card/g) || []).length === 10, `found ${(src.match(/class="feature-card/g) || []).length}`);
+  assert('2 bento-card elements', (src.match(/class="bento-card/g) || []).length === 2, `found ${(src.match(/class="bento-card/g) || []).length}`);
+  ['AI PDF Import', 'DNA &amp; mtDNA Import', 'Light &amp; Sun', 'Trend Charts',
+   'Is it actually working?', 'Cycle-Aware Labs', 'Biological Age &amp; Derived Markers',
+   'Your research library', 'E2E Encrypted Sync', 'Personal Agents'].forEach(f => {
+    assert(`Feature card: ${f}`, src.includes(`<h3>${f}</h3>`));
+  });
+  assert('Bento: Consult anyone', src.includes('Consult anyone'));
+  assert("Bento: What your GP won't ask", src.includes("What your GP won't ask"));
+  assert('Wearables showcase present', src.includes('class="wear-showcase'));
+  assert('Wearables showcase has 5 vendor tabs', (src.match(/class="wear-vendor/g) || []).length >= 5);
 
-    // Theme support
-    assert('TY: dark CSS vars', /--bg:#0a0c14/.test(tySrc));
-    assert('TY: light theme block', /\[data-theme="light"\]\s*\{/.test(tySrc));
-    assert('TY: light --bg override', /\[data-theme="light"\]\s*\{[^}]*--bg:#f5f7ff/.test(tySrc));
-    assert('TY: prefers-color-scheme fallback', /prefers-color-scheme:\s*light[\s\S]*?:root:not\(\[data-theme\]\)/.test(tySrc));
-    assert('TY: early theme detection script', /labcharts-theme[\s\S]*?setAttribute\('data-theme'/.test(tySrc));
-    assert('TY: theme toggle button', tySrc.includes('id="theme-toggle"'));
-    assert('TY: theme toggle JS', /theme-toggle[\s\S]*?localStorage\.setItem\('labcharts-theme'/.test(tySrc));
-    assert('TY: sun icon', tySrc.includes('theme-icon-sun'));
-    assert('TY: moon icon', tySrc.includes('theme-icon-moon'));
+  // ── 8. Privacy ──
+  console.log('\n%c8. Privacy section', 'font-weight:bold');
+  assert('Has #privacy section', src.includes('id="privacy"'));
+  assert('Heading: "Built for privacy"', src.includes('Built for privacy'));
+  assert('5 priv-card elements', (src.match(/class="priv-card/g) || []).length === 5, `found ${(src.match(/class="priv-card/g) || []).length}`);
+  ['Nothing stored on our end', 'Personal info is stripped from PDFs', 'Fully offline option',
+   'Encrypted &amp; backed up', 'Available over Tor'].forEach(p => {
+    assert(`Privacy card: ${p}`, src.includes(`<h3>${p}</h3>`));
+  });
 
-    // Animations
-    assert('TY: reveal animation CSS', /\.reveal\{[^}]*opacity:0/.test(tySrc));
-    assert('TY: reveal elements', tySrc.includes('class="check-icon reveal"'));
-    assert('TY: IntersectionObserver', tySrc.includes('IntersectionObserver'));
-    assert('TY: checkPop animation', tySrc.includes('@keyframes checkPop'));
-    assert('TY: reduced motion support', /prefers-reduced-motion/.test(tySrc));
+  // ── 9. AI Providers ──
+  console.log('\n%c9. AI Providers section', 'font-weight:bold');
+  assert('Has #providers section', src.includes('id="providers"'));
+  assert('Heading: "choice of AI provider"', src.includes('choice') && src.includes('AI provider'));
+  assert('5 provider-card elements', (src.match(/class="provider-card/g) || []).length === 5, `found ${(src.match(/class="provider-card/g) || []).length}`);
+  ['PPQ', 'Routstr', 'OpenRouter', 'Venice AI', 'Local AI'].forEach(p => {
+    assert(`Provider: ${p}`, src.includes(`<h3>${p}</h3>`));
+  });
 
-    // Responsive
-    assert('TY: 768px breakpoint', /768px/.test(tySrc));
-    assert('TY: 480px breakpoint', /480px/.test(tySrc));
-    assert('TY: bg layers hidden at 480px', /480px[\s\S]*?\.bg-grid/.test(tySrc));
+  // ── 10. Support ──
+  console.log('\n%c10. Support section', 'font-weight:bold');
+  assert('Has #support section', src.includes('id="support"'));
+  assert('Heading: "You decide"', src.includes('You decide'));
+  assert('3 support-card elements', (src.match(/class="support-card/g) || []).length === 3, `found ${(src.match(/class="support-card/g) || []).length}`);
+  ['Donate', 'Contribute', 'Share'].forEach(s => {
+    assert(`Support card: ${s}`, src.includes(`<h3>${s}</h3>`));
+  });
+  assert('Donate link has storeId', src.includes('storeId=BfxZicwEaRcJvJnkBPHdzGuCAonAhwLBb5vbWfjT2ZR1'));
+  assert('Donate link redirects to /thank-you', src.includes('redirectURL=https%3A%2F%2Fgetbased.health%2Fthank-you'));
 
-    // Nav scroll
-    assert('TY: nav scroll JS', tySrc.includes('nav.classList.toggle'));
+  // ── 11. FAQ ──
+  console.log('\n%c11. FAQ section', 'font-weight:bold');
+  assert('Has #faq section', src.includes('id="faq"'));
+  assert('Heading: "Got questions?"', src.includes('Got questions?'));
+  assert('4 faq-item elements', (src.match(/class="faq-item/g) || []).length === 4, `found ${(src.match(/class="faq-item/g) || []).length}`);
+  assert('FAQ: hallucinate question', src.includes("Doesn't it hallucinate?"));
+  assert('FAQ: most powerful feature', src.includes("most powerful feature?"));
+  assert('FAQ: is this free', src.includes('Is this free?'));
+  assert('FAQ: who is behind this', src.includes('Who is behind this?'));
 
-    // Local dev link rewriting
-    assert('TY: local dev link rewrite', /localhost[\s\S]*?app\.getbased\.health/.test(tySrc));
+  // ── 12. CTA & footer ──
+  console.log('\n%c12. CTA & footer', 'font-weight:bold');
+  assert('CTA: "Stop guessing"', src.includes('Stop guessing'));
+  assert('CTA: "Start understanding"', src.includes('Start understanding'));
+  assert('CTA: Launch getbased button', src.includes('Launch getbased'));
+  assert('Footer has social links', src.includes('class="footer-socials"'));
+  assert('Footer disclaimer (not medical advice)', /footer-disclaimer[\s\S]*?Not medical advice/.test(src));
+  assert('Footer has Privacy + Terms links', src.includes('href="/privacy"') && src.includes('href="/terms"'));
+  assert('Footer has Docs link', src.includes('href="https://app.getbased.health/docs"'));
 
-    // No unnecessary page elements
-    assert('TY: no hamburger menu', !tySrc.includes('nav-hamburger'));
-    assert('TY: no nav-drawer', !tySrc.includes('nav-drawer'));
-    assert('TY: no hero section', !tySrc.includes('class="hero"'));
+  // ── 13. Light mode ──
+  console.log('\n%c13. Light mode support', 'font-weight:bold');
+  assert('Has [data-theme="light"] block', /\[data-theme="light"\]\s*\{/.test(src));
+  assert('Light theme overrides --bg', /\[data-theme="light"\]\s*\{[^}]*--bg:#f5f7ff/.test(src));
+  assert('prefers-color-scheme no-JS fallback', /prefers-color-scheme:\s*light[\s\S]*?:root:not\(\[data-theme\]\)/.test(src));
+  assert('Early theme detection script', /document\.documentElement\.setAttribute\('data-theme',\s*'light'\)/.test(src));
+  assert('Theme toggle: sun + moon icons', src.includes('theme-icon-sun') && src.includes('theme-icon-moon'));
+  assert('Theme toggle JS sets localStorage', /theme-toggle[\s\S]*?localStorage\.setItem\('labcharts-theme'/.test(src));
+
+  // ── 14. JS behaviour present ──
+  console.log('\n%c14. JS behaviour', 'font-weight:bold');
+  assert('JS: switchLens (mockup) function', src.includes('function switchLens'));
+  assert('JS: lensData object', src.includes('const lensData'));
+  assert('JS: toggleDrawer (hamburger) function', src.includes('function toggleDrawer'));
+  assert('JS: Escape closes drawer', /keydown[\s\S]*?Escape[\s\S]*?toggleDrawer/.test(src));
+  assert('JS: reveal IntersectionObserver', src.includes('IntersectionObserver'));
+  assert('JS: GitHub stars fetch', src.includes('api.github.com/repos/elkimek/get-based'));
+  assert('JS: no leftover stats count-up', !src.includes('function animateCount'));
+
+  // ── 15. Link integrity ──
+  console.log('\n%c15. Link integrity', 'font-weight:bold');
+  assert('App links present (3+ CTAs)', (src.match(/app\.getbased\.health/g) || []).length >= 3);
+  assert('No relative /app links', !src.includes('href="/app"'));
+  assert('Links to /compare', src.includes('href="/compare"'));
+  assert('Links to /blog', src.includes('href="/blog"'));
+
+  // ── 16. Live DOM & interactivity ──
+  console.log('\n%c16. Live DOM & interactivity', 'font-weight:bold');
+  if (document.getElementById('lenses')) {
+    assert('5 lens cards in DOM', document.querySelectorAll('.lens-card').length === 5);
+    assert('10 feature cards in DOM', document.querySelectorAll('.feature-card').length === 10);
+    assert('2 bento cards in DOM', document.querySelectorAll('.bento-card').length === 2);
+    assert('5 provider cards in DOM', document.querySelectorAll('.provider-card').length === 5);
+    assert('5 privacy cards in DOM', document.querySelectorAll('.priv-card').length === 5);
+    assert('4 FAQ items in DOM', document.querySelectorAll('.faq-item').length === 4);
+    assert('5 mockup lens tabs in DOM', document.querySelectorAll('.mockup-lens-tab').length === 5);
+
+    // Theme toggle round-trips
+    const themeBefore = document.documentElement.getAttribute('data-theme');
+    document.getElementById('theme-toggle').click();
+    assert('Theme toggle flips data-theme', document.documentElement.getAttribute('data-theme') !== themeBefore);
+    document.getElementById('theme-toggle').click();
+    assert('Theme toggle restores state', document.documentElement.getAttribute('data-theme') === themeBefore);
+
+    // FAQ accordion opens/closes
+    const faq = document.querySelector('.faq-item');
+    faq.querySelector('.faq-q').click();
+    assert('FAQ accordion opens', faq.classList.contains('open'));
+    faq.querySelector('.faq-q').click();
+    assert('FAQ accordion closes', !faq.classList.contains('open'));
+
+    // Mockup lens switching
+    const genomeTab = document.querySelector('.mockup-lens-tab[data-lens="genome"]');
+    genomeTab.click();
+    await new Promise(r => setTimeout(r, 200));
+    assert('Mockup lens switch activates tab', genomeTab.classList.contains('active'));
+    assert('Mockup lens switch updates cards', /Genome|MTHFR|APOE|SNPs/.test(document.getElementById('mockup-cards').textContent));
+    document.querySelector('.mockup-lens-tab[data-lens="labs"]').click();
+
+    // Hamburger drawer
+    const ham = document.getElementById('nav-hamburger'), drawer = document.getElementById('nav-drawer');
+    ham.click();
+    assert('Hamburger opens drawer', drawer.classList.contains('open'));
+    ham.click();
+    assert('Hamburger closes drawer', !drawer.classList.contains('open'));
   } else {
-    console.log('  ⚠️  Could not fetch thank-you.html — skipping');
+    console.log('  ⚠️  Not running on index.html — skipping live DOM checks');
+  }
+
+  // ── 17. thank-you.html ──
+  console.log('\n%c17. thank-you.html', 'font-weight:bold');
+  const ty = await fetch('thank-you.html').then(r => r.ok ? r.text() : '').catch(() => '');
+  assert('thank-you.html exists', ty.length > 0);
+  if (ty) {
+    assert('TY: has title', ty.includes('<title>Thank You'));
+    assert('TY: logo is "getbased" (one word)', ty.includes('class="nav-logo">getbased</a>'));
+    assert('TY: "Thank you!" heading', ty.includes('Thank you!'));
+    assert('TY: Back to site button', ty.includes('Back to site'));
+    assert('TY: Open App button', ty.includes('Open App'));
+    assert('TY: light theme block', /\[data-theme="light"\]\s*\{/.test(ty));
+    assert('TY: theme toggle', ty.includes('id="theme-toggle"'));
+    assert('TY: og:image', ty.includes('og:image'));
   }
 
   // ── Summary ──
