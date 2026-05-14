@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>getbased — OG image source (1200x630)</title>
+<!-- Source template for og-image.png. Render at a 1200x630 viewport and
+     screenshot to og-image.png. Kept in the repo so the social card can be
+     regenerated when the framing changes. Excluded from deploy via .vercelignore. -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:#0a0c14;font-family:'Inter',-apple-system,sans-serif;color:#e8eaf0;
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.bg-grid{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:64px 64px}
+.bg-glow{position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 34%,rgba(79,140,255,0.20) 0%,transparent 58%),
+             radial-gradient(ellipse at 78% 82%,rgba(167,139,250,0.12) 0%,transparent 55%)}
+.wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 70px}
+.logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:36px;letter-spacing:-1px;
+  background:linear-gradient(135deg,#4f8cff 0%,#6366f1 50%,#a78bfa 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:34px}
+h1{font-family:'Outfit',sans-serif;font-weight:900;font-size:78px;line-height:1.06;letter-spacing:-2.5px}
+h1 .grad{background:linear-gradient(135deg,#4f8cff 0%,#6366f1 50%,#a78bfa 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:22px;color:#8b90a0;margin-top:20px;font-weight:500}
+.lenses{display:flex;gap:16px;margin-top:42px}
+.lens{display:flex;align-items:center;gap:9px;padding:11px 19px;
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:12px;
+  font-family:'Outfit',sans-serif;font-weight:700;font-size:18px}
+.lens .ic{font-size:21px}
+.tagline{position:absolute;bottom:44px;left:0;right:0;text-align:center;z-index:1;
+  font-size:16px;color:#5a5f73;font-weight:500;letter-spacing:0.3px}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="wrap">
+  <div class="logo">getbased</div>
+  <h1>Your biology<br><span class="grad">deserves more</span></h1>
+  <div class="sub">Personal Health Intelligence &mdash; five lenses on your biology</div>
+  <div class="lenses">
+    <div class="lens"><span class="ic">&#129656;</span> Labs</div>
+    <div class="lens"><span class="ic">&#129516;</span> Genome</div>
+    <div class="lens"><span class="ic">&#8986;&#65039;</span> Body</div>
+    <div class="lens"><span class="ic">&#127968;</span> Lifestyle</div>
+    <div class="lens"><span class="ic">&#127757;</span> Environment</div>
+  </div>
+</div>
+<div class="tagline">Open source &middot; Runs in your browser &middot; No account required</div>
+</body>
+</html>

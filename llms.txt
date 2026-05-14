@@ -1,32 +1,47 @@
 # getbased
 
-> Free, open-source blood work dashboard that runs entirely in your browser.
-> Import any lab PDF or photo with AI, track biomarker trends over time, and get
-> AI-powered interpretations. No account required. Your data never leaves
-> your device.
+> Free, open-source Personal Health Intelligence that runs entirely in your browser.
+> getbased connects five lenses on your biology — labs, genome, body, lifestyle, and
+> environment — and lets AI reason across the whole picture, grounded in the research
+> you trust. Import any lab PDF or photo with AI, factor in your DNA, sync your
+> wearables, log your sun exposure. No account required. Your data never leaves your device.
+
+## The five lenses
+
+getbased is organized around five lenses on your biology. Each one informs the others, and the AI synthesizes across all of them — a gene variant reframes a lab result, your environment explains a body signal.
+
+- **Labs** — blood work, OAT, fatty acids, BioStarks and other specialty panels. 287+ markers across 17+ categories, reference and optimal range bands, trend detection
+- **Genome** — raw DNA + mtDNA import from any major provider. 50+ curated SNPs across 13 health categories with APOE haplotype, plus mtDNA haplogroup with 39 sub-clades and mitochondrial coupling classification
+- **Body** — wearables (Oura, Fitbit, Withings, Polar, Apple Health) plus manual weight, blood pressure, and pulse. HRV, sleep, resting heart rate, body composition, vascular age, SpO₂
+- **Lifestyle** — diet, sleep, exercise, stress, love life, goals, and medical & family history, captured as context cards that shape every AI interpretation
+- **Environment** — Light & Sun exposure tracking across six biological channels, plus Baubiologie EMF assessment
 
 ## What getbased does
 
-- Import any blood work PDF, photo, or screenshot — AI extracts all markers automatically (any format, any language, batch import)
-- Track trends over time with interactive charts across 17+ biomarker categories (287+ markers)
-- Specialty labs supported: OAT (organic acids), fatty acids (Spadia, ZinZino, OmegaQuant), BioStarks via custom marker pipeline
-- Bring-your-own research library — drop PDFs, research papers, or clinical guides into the app and the AI grounds every answer in those sources instead of relying only on its training. Runs fully on-device (browser RAG via MiniLM + OPFS), with multi-library support so research, protocols, and personal notes stay separate. Optional external-server backend for larger corpora
-- DNA import — upload raw data from any major provider. 47 curated SNPs across 13 health categories with APOE haplotype resolution
-- mtDNA haplogroup import with 39 haplogroups (including 11 sub-clades) + mitochondrial coupling classification (Doug Wallace's framework) and environment mismatch detection. Manual haplogroup entry also supported
-- Wearable integrations — connect Oura, Fitbit, Withings, Polar, or Apple Health (file import). HRV, sleep, resting heart rate, body composition, vascular age, blood pressure, and more on the dashboard alongside lab data. Multi-vendor source picker per metric. Manual weight/BP/RHR entry first-class. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs (~200 tokens per profile). MCP agents can opt-in to a 30-day pivoted daily series for time-series reasoning
-- Biological age — PhenoAge (Levine 2018) + Bortz Age combined, with chronological age reference line
+- Import any blood work PDF, photo, or screenshot — AI extracts all markers automatically (any format, any language, batch import). Specialty labs supported: OAT (organic acids), fatty acids (Spadia, ZinZino, OmegaQuant), BioStarks
+- Track trends over time with interactive charts across 17+ biomarker categories (287+ markers), with reference + optimal range bands and automatic trend alerts
+- Multi-unit display — see every value in both mg/dL and mmol/L (and mU/L vs µIU/mL), per-profile preference
+- Per-value notes — attach context like "fasted 14h" to any individual reading; the AI sees notes grouped by marker
+- DNA import — raw data from any major provider, including MyHeritage Low-pass WGS with strand-aware SNP matching. 50+ curated SNPs across 13 health categories with APOE haplotype resolution
+- mtDNA haplogroup import — 39 haplogroups with sub-clade resolution, mitochondrial coupling classification (Doug Wallace's framework), and environment mismatch detection. Manual haplogroup entry also supported
+- Light & Sun lens — track sun exposure across six biological channels (vitamin D, body clock, cardiovascular, mood & hormones, cellular repair, outdoor eye light). One-tap session logging, live burn-dose alerts, photosensitizing-medication awareness, and eight on-device measurement tools (lux meter, flicker detector, color-temperature, sleep darkness meter, sunrise/sunset logger, eye-level audit). Camera frames never leave the device
+- Wearable integrations — connect Oura, Fitbit, Withings, Polar, or Apple Health (file import). HRV, sleep, resting heart rate, body composition, vascular age, blood pressure, SpO₂ on the dashboard alongside lab data. Multi-vendor source picker per metric. Manual weight/BP/RHR entry first-class. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs (~200 tokens per profile). MCP agents can opt-in to a 30-day pivoted daily series for time-series reasoning
+- Medical & Family History — 117 conditions across neuro, cancer, skin, mental health, autoimmune and more, plus first-degree relatives and grandparents (with onset age and notes) so the AI sees what runs in the family
+- Biological age — PhenoAge (Levine 2018) + Bortz Age combined, with chronological age reference line, plus auto-computed derived markers and ratios
 - Biometrics tracking — weight, blood pressure, pulse with time-series history and auto-calculated BMI
-- AI chat panel with debate mode — pit two AI personas against each other over your results. Conversation threads, image attachments, web search hints
-- DNA-aware supplement and lifestyle recommendations
-- 9 lifestyle context cards (diet, exercise, sleep, stress, etc.) shape AI interpretation
+- Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 building-biology standards
+- Bring-your-own research library — drop PDFs, research papers, or clinical guides into the app and the AI grounds every answer in those sources instead of relying only on its training. Runs fully on-device (browser RAG via MiniLM + OPFS), with multi-library support and query rewriting for better recall. Optional external-server backend for larger corpora
+- AI chat panel with debate mode — pit two AI personas against each other over your results. Conversation threads, image attachments, round-by-round steering, web search hints
+- 9 lifestyle context cards (diet, sleep, exercise, stress, love life, environment, light, medical & family history, goals) shape AI interpretation
+- DNA-aware and region-aware supplement and lifestyle recommendations
 - Multi-profile support for practitioners, families, or multiple clients
 - Menstrual cycle tracking with phase-aware reference ranges, perimenopause detection, iron alerts
-- Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 standards
 - Correlation viewer, heatmaps, compare dates, trend alerts, PDF reports
 - E2E encrypted cross-device sync via Evolu CRDT with sync status indicator — self-host the relay for full control
 - Personal agent integration — query your labs from Hermes Agent, OpenClaw, or any MCP-compatible bot over Telegram, Signal, Matrix, or any messenger. Only a read-only summary is shared
-- Fully local-first — all data stored in browser localStorage, encrypted at rest (AES-256-GCM), auto-backup
-- AI providers: PPQ (anonymous, E2EE, crypto topup), Routstr (Bitcoin Lightning + Cashu), OpenRouter (200+ models, card/USDC), Venice (E2E encryption), Local AI (Ollama, LM Studio, Jan), or any custom OpenAI-compatible endpoint
+- Fully local-first — all data stored in the browser, encrypted at rest (AES-256-GCM), auto-backup with encrypted backup recovery
+- Available over Tor as a hidden service, with Onion-Location discovery
+- AI providers: PPQ (anonymous, crypto topup), Routstr (Bitcoin Lightning + Cashu), OpenRouter (200+ models, card/USDC), Venice (E2E encryption), Local AI (Ollama, LM Studio, Jan), or any custom OpenAI-compatible endpoint
 
 ## Key pages
 
@@ -34,7 +49,7 @@
 - [Web app](https://app.getbased.health): Launch the dashboard (no install needed)
 - [Documentation](https://app.getbased.health/docs): User guides, setup, and feature walkthroughs
 - [Blog](https://getbased.health/blog): Development stories and health data insights
-- [GitHub](https://github.com/elkimek/get-based): Source code (GPLv3 license)
+- [GitHub](https://github.com/elkimek/get-based): Source code (AGPL-3.0 license)
 - [Discord](https://discord.gg/zJdVB9zgQB): Community and support
 
 ## Docs highlights
@@ -52,5 +67,5 @@
 
 - **vs InsideTracker / SelfDecode**: getbased is free, open-source, and runs entirely in your browser. No subscription, no data collection, no account required
 - **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
-- **vs generic health trackers**: getbased is built specifically for lab results. 287+ biomarkers across 17+ categories, specialty labs (OAT, fatty acids, BioStarks), DNA import (47 SNPs + 39 mtDNA haplogroups), biological age, menstrual cycle phase-aware ranges, biometrics, wearable integrations (Oura/Fitbit/Withings/Polar/Apple Health) on the same dashboard, and 9 lifestyle context cards that shape every AI interpretation
+- **vs generic health trackers**: getbased connects five lenses on one dashboard — labs (287+ biomarkers, specialty panels), genome (DNA + mtDNA), body (wearables + biometrics), lifestyle (context cards, medical & family history), and environment (Light & Sun, EMF) — and the AI reasons across all of them, not one signal at a time
 - **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, gives AI your full health context, and grounds every answer in your own research library (PDFs, papers, clinical guides) — not just a single lab report pasted into a chat window or what a generic model was trained on. Connect via Hermes, OpenClaw, or any MCP-compatible agent to chat over any messenger
