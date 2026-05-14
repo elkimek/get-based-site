@@ -1,6 +1,9 @@
 # getbased.health robots.txt
 
+# Content Signals — open-source project, all uses welcome
+# search: appear in search results | ai-input: ground AI answers (RAG) | ai-train: train AI models
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /thank-you
 Disallow: /blog-template
