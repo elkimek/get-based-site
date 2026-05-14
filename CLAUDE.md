@@ -4,7 +4,7 @@ Landing page and blog for [getbased](https://getbased.health) — blood work tra
 
 ## Structure
 
-- `index.html` — landing page. Self-contained: inline CSS/JS. Dark/light theme (OS-detected + localStorage). Sections: hero, features, stats (GitHub stars count-up), CTA. Mobile hamburger menu. Chart draw-in animations
+- `index.html` — landing page. Self-contained: inline CSS/JS. Dark/light theme (OS-detected + localStorage). Sections: hero, five lenses, why, how it works, features, privacy, providers, support, FAQ, CTA. Mobile hamburger menu. Chart draw-in animations
 - `blog.html` — blog page. Two modes: list view (no param) and article view (`?post=slug`). Client-side markdown via marked.js CDN
 - `blog/posts.json` — metadata index `[{ slug, title, date, description, author }]`
 - `blog/*.md` — post files (fetched by slug)
