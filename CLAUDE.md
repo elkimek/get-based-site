@@ -15,6 +15,7 @@ Landing page and blog for [getbased](https://getbased.health) — open-source Pe
 - `thank-you.html` — post-signup thank you page
 - `icon.svg`, `icon-192.png`, `icon-512.png` — app icons
 - `vercel.json` — CSP headers, `cleanUrls`, `/blog/:slug` → `/blog/:slug/index.html` rewrite
+- `.well-known/mcp.json`, `.well-known/agent-skills/` — agent discovery metadata for the `getbased-mcp` server. Mirrored verbatim into the `get-based` (app) repo — keep both copies in sync when the MCP version, tool list, or auth changes. If `SKILL.md` changes, regenerate its `sha256` digest in `index.json`
 - `test-landing.js`, `test-blog.js` — browser-based test files
 
 ## Deployment
