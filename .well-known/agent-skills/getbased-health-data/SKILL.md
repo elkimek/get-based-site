@@ -30,6 +30,7 @@ Full configuration details: https://app.getbased.health/docs/guide/agent-access
 |---|---|
 | `getbased_lab_context` | Full lab summary — biomarkers, ranges, trends, context cards, supplements, goals |
 | `getbased_section` | One section (e.g. hormones, lipids) instead of the full dump — token-efficient |
+| `getbased_wearables_series` | Daily wearable time-series (HRV, resting HR, sleep score, readiness, steps, weight…) over the 7/30/90-day window the user opted into |
 | `getbased_list_profiles` | List profiles by name and ID; pass `profile` to any tool to target one |
 | `knowledge_search` | Semantic search over the user's own research library (requires the optional RAG server) |
 | `knowledge_list_libraries` / `knowledge_activate_library` / `knowledge_stats` | Manage which research library `knowledge_search` targets |
