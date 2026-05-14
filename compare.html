@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>getbased vs InsideTracker, SelfDecode &amp; Macromo — getbased</title>
+<meta name="description" content="How getbased compares to InsideTracker, SelfDecode, Macromo, health spreadsheets, and pasting labs into ChatGPT. Free, open source, runs in your browser — your data never leaves your device.">
+<meta property="og:title" content="How getbased compares — InsideTracker, SelfDecode, Macromo &amp; more">
+<meta property="og:description" content="A free, open-source, local-first alternative to InsideTracker, SelfDecode, and Macromo. Five lenses on your biology, AI grounded in the research you trust, no account required.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://getbased.health/compare">
+<meta property="og:image" content="https://getbased.health/og-image.png">
+<meta property="og:site_name" content="getbased">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@getbasedhealth">
+<meta name="twitter:title" content="How getbased compares — InsideTracker, SelfDecode, Macromo &amp; more">
+<meta name="twitter:description" content="A free, open-source, local-first alternative to InsideTracker, SelfDecode, and Macromo. Your data never leaves your device.">
+<meta name="twitter:image" content="https://getbased.health/og-image.png">
+<link rel="canonical" href="https://getbased.health/compare">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" content="#0a0c14" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f7ff" media="(prefers-color-scheme: light)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<script>
+// Early theme detection — runs before first paint
+(function(){
+  var t = localStorage.getItem('labcharts-theme');
+  if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+})();
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0c14;--bg2:#0f1117;--bg3:#151823;
+  --surface:rgba(255,255,255,0.03);--surface2:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.12);
+  --text:#e8eaf0;--text2:#8b90a0;--text3:#5a5f73;
+  --blue:#4f8cff;--indigo:#6366f1;--green:#34d399;--red:#f87171;--yellow:#fbbf24;
+  --gradient:linear-gradient(135deg,#4f8cff 0%,#6366f1 50%,#a78bfa 100%);
+  --gradient2:linear-gradient(135deg,#4f8cff 0%,#6366f1 100%);
+  --nav-bg:rgba(10,12,20,0.7);--nav-bg-scrolled:rgba(10,12,20,0.9);--drawer-bg:rgba(10,12,20,0.95);
+  --grid-line:rgba(255,255,255,0.02);--selection-color:rgba(79,140,255,0.3)
+}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+body.nav-open{overflow:hidden}
+::selection{background:var(--selection-color);color:#fff}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--text3);border-radius:3px}
+
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);
+  background-size:64px 64px}
+.bg-glow{position:fixed;top:-40%;left:-20%;width:140%;height:100%;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 30% 20%,rgba(79,140,255,0.06) 0%,transparent 60%),
+             radial-gradient(ellipse at 70% 60%,rgba(99,102,241,0.04) 0%,transparent 50%)}
+
+/* ═══ NAV (aligned with main page) ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 32px;display:flex;align-items:center;justify-content:space-between;
+  background:var(--nav-bg);backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--border);transition:all 0.3s}
+nav.scrolled{padding:12px 32px;background:var(--nav-bg-scrolled)}
+.nav-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;
+  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+.nav-left{display:flex;align-items:center;gap:32px}
+.nav-right{display:flex;align-items:center;gap:14px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;
+  background:var(--gradient2);color:#fff;border:none;border-radius:8px;
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;
+  letter-spacing:0.2px;text-shadow:0 1px 2px rgba(0,0,0,0.2);
+  transition:transform 0.2s,box-shadow 0.2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(79,140,255,0.4)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;z-index:101}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:transform 0.3s,opacity 0.3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){.nav-hamburger{display:flex}}
+.nav-drawer{position:fixed;top:0;left:0;right:0;z-index:99;
+  padding:80px 32px 32px;display:flex;flex-direction:column;gap:8px;
+  background:var(--drawer-bg);backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--border);
+  transform:translateY(-100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+.nav-drawer.open{transform:translateY(0);pointer-events:auto}
+.nav-drawer a{color:var(--text2);text-decoration:none;font-size:16px;font-weight:500;padding:12px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.nav-drawer a:last-child{border-bottom:none}
+.nav-drawer a:hover{color:var(--text)}
+.nav-drawer .nav-cta{margin-top:8px;justify-content:center;width:100%;text-align:center}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:8px;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;color:var(--text2);transition:color 0.2s,border-color 0.2s;flex-shrink:0}
+.theme-toggle:hover{color:var(--text);border-color:var(--border2)}
+.theme-icon-moon{display:none}
+[data-theme="light"] .theme-icon-sun{display:none}
+[data-theme="light"] .theme-icon-moon{display:block}
+
+main{flex:1;position:relative;z-index:1;padding:124px 32px 80px;max-width:880px;margin:0 auto;width:100%}
+
+.eyebrow{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue);margin-bottom:14px}
+h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);letter-spacing:-1.2px;line-height:1.1;margin-bottom:16px}
+.lede{color:var(--text2);font-size:17px;max-width:680px;margin-bottom:14px}
+.lede a{color:var(--blue);text-decoration:none}.lede a:hover{text-decoration:underline}
+
+h2{font-family:'Outfit',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.5px;margin:48px 0 12px}
+p{margin-bottom:14px;color:var(--text2)}
+p strong{color:var(--text);font-weight:600}
+section p:first-of-type{margin-top:0}
+
+.table-wrap{overflow-x:auto;margin:32px 0 8px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:620px;font-size:13.5px}
+th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+thead th{font-family:'Outfit',sans-serif;font-weight:700;font-size:14px;color:var(--text);background:var(--bg2)}
+thead th.gb{color:var(--blue)}
+tbody tr:last-child td{border-bottom:none}
+td:first-child,th:first-child{font-weight:600;color:var(--text);width:158px}
+.col-gb{background:rgba(79,140,255,0.06)}
+td.col-gb{color:var(--text)}
+.mark{font-weight:700;margin-right:5px}
+.mark.y{color:var(--green)}.mark.n{color:var(--red)}
+.tbl-note{font-size:12.5px;color:var(--text3);margin:0 2px}
+
+.cta-box{margin-top:56px;padding:32px;border:1px solid var(--border);border-radius:16px;background:var(--surface);text-align:center}
+.cta-box h2{margin:0 0 8px;font-size:22px}
+.cta-box p{margin:0 auto 20px;max-width:440px}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--gradient2);color:#fff;border-radius:9px;font-weight:700;font-size:15px;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
+.cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,140,255,0.35)}
+
+/* ═══ FOOTER (aligned with main page) ═══ */
+footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relative;z-index:1}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-row{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.footer-row.footer-top{padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+.footer-fineprint{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.footer-disclaimer{font-size:11.5px;color:var(--text2);line-height:1.55;margin:0;letter-spacing:0.01em}
+.footer-trademarks{font-size:10.5px;color:var(--text3);line-height:1.55;margin:0;max-width:760px;letter-spacing:0.01em}
+.footer-legal{font-size:11.5px;color:var(--text3);margin:0;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
+.footer-legal a{color:var(--text3);text-decoration:none;transition:color 0.15s}
+.footer-legal a:hover{color:var(--text)}
+.footer-legal-sep{opacity:0.5}
+.footer-logo{font-family:'Outfit',sans-serif;font-weight:800;font-size:18px;
+  background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.footer-socials{display:flex;gap:16px;align-items:center}
+.footer-socials a{color:var(--text3);transition:color 0.2s;display:inline-flex}
+.footer-socials a:hover{color:var(--text)}
+
+[data-theme="light"]{
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--green:#059669;--red:#dc2626;--yellow:#d97706;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --gradient2:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);--drawer-bg:rgba(245,247,255,0.98);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}
+[data-theme="light"] ::selection{color:var(--text)}
+@media(prefers-color-scheme:light){:root:not([data-theme]){
+  --bg:#f5f7ff;--bg2:#ffffff;--bg3:#f0f2f9;
+  --surface:rgba(0,0,0,0.03);--surface2:rgba(0,0,0,0.06);
+  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.12);
+  --text:#1a1d27;--text2:#5a5f73;--text3:#8b90a0;
+  --blue:#3b7cf5;--indigo:#4f51d9;--green:#059669;--red:#dc2626;--yellow:#d97706;
+  --gradient:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 50%,#7c3aed 100%);
+  --gradient2:linear-gradient(135deg,#3b7cf5 0%,#4f51d9 100%);
+  --nav-bg:rgba(245,247,255,0.8);--nav-bg-scrolled:rgba(245,247,255,0.95);--drawer-bg:rgba(245,247,255,0.98);
+  --grid-line:rgba(0,0,0,0.03);--selection-color:rgba(59,124,245,0.2)}}
+
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  .nav-links{display:none}
+  main{padding:104px 20px 60px}
+  h1{font-size:30px}
+  .footer-row{flex-direction:column;text-align:center}
+  .footer-row.footer-top{gap:18px}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<nav id="nav">
+  <div class="nav-left">
+    <a href="/" class="nav-logo">getbased</a>
+    <div class="nav-links">
+      <a href="/#lenses">Five Lenses</a>
+      <a href="/#why">Why</a>
+      <a href="/#features">Features</a>
+      <a href="/#how">How it works</a>
+      <a href="/#privacy">Privacy</a>
+      <a href="/#support">Support</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/compare">Compare</a>
+      <a href="/blog">Blog</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="https://app.getbased.health" class="nav-cta">Open App &rarr;</a>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+      <svg class="theme-icon-sun" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon-moon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="nav-drawer">
+  <a href="/#lenses">Five Lenses</a>
+  <a href="/#why">Why</a>
+  <a href="/#features">Features</a>
+  <a href="/#how">How it works</a>
+  <a href="/#privacy">Privacy</a>
+  <a href="/#support">Support</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/compare">Compare</a>
+  <a href="/blog">Blog</a>
+  <a href="https://app.getbased.health" class="nav-cta">Open App &rarr;</a>
+</div>
+
+<main>
+
+<div class="eyebrow">Comparison</div>
+<h1>How getbased compares</h1>
+<p class="lede">getbased is a free, open-source <a href="/">Personal Health Intelligence</a> app that runs entirely in your browser. Here's an honest look at how it stacks up against InsideTracker, SelfDecode, Macromo, a DIY spreadsheet, and pasting your labs into ChatGPT &mdash; including what each of those does well.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th class="gb col-gb">getbased</th>
+      <th>InsideTracker</th>
+      <th>SelfDecode</th>
+      <th>Macromo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>What it is</td>
+      <td class="col-gb">An open-source tool for the lab data you already have</td>
+      <td>A subscription service built on its own blood panels</td>
+      <td>A subscription DNA &amp; lab analysis service</td>
+      <td>A service that sells its own blood &amp; DNA tests</td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td class="col-gb"><span class="mark y">&check;</span>Free, open source</td>
+      <td>Paid panels + subscription</td>
+      <td>Subscription</td>
+      <td>Paid per test</td>
+    </tr>
+    <tr>
+      <td>Where your data lives</td>
+      <td class="col-gb"><span class="mark y">&check;</span>Your device only</td>
+      <td>Their servers</td>
+      <td>Their servers</td>
+      <td>Their cloud app</td>
+    </tr>
+    <tr>
+      <td>Account required</td>
+      <td class="col-gb"><span class="mark y">&check;</span>No</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Works fully offline</td>
+      <td class="col-gb"><span class="mark y">&check;</span>Yes, with local AI</td>
+      <td><span class="mark n">&times;</span>No</td>
+      <td><span class="mark n">&times;</span>No</td>
+      <td><span class="mark n">&times;</span>No</td>
+    </tr>
+    <tr>
+      <td>Open source</td>
+      <td class="col-gb"><span class="mark y">&check;</span>Yes, AGPL-3.0</td>
+      <td><span class="mark n">&times;</span>No</td>
+      <td><span class="mark n">&times;</span>No</td>
+      <td><span class="mark n">&times;</span>No</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p class="tbl-note">This table reflects each product's general model rather than a feature-by-feature audit. Commercial services evolve &mdash; check their own sites for current details.</p>
+
+<h2>getbased vs InsideTracker</h2>
+<p>InsideTracker is a polished, well-researched subscription service built around its own blood-test panels and recommendation engine. If you want a turnkey provider that draws your blood and hands you a plan, it does that well. The structural trade-offs: it's a paid subscription, your results live on their servers, and it's closed-source. getbased doesn't sell tests &mdash; it's a free, open-source tool for lab results from <strong>any</strong> provider you already use, and everything stays on your device.</p>
+
+<h2>getbased vs SelfDecode</h2>
+<p>SelfDecode is genetics-first &mdash; DNA analysis is its core, and it goes deep there. getbased also imports raw DNA and mtDNA, but treats it as one of five lenses alongside your labs, wearables, lifestyle, and environment, with the AI reasoning across all of them together. SelfDecode is a closed subscription with your data on their servers; getbased is free, open source, and local-first.</p>
+
+<h2>getbased vs Macromo</h2>
+<p>Macromo sells its own blood and DNA tests through partner labs and pairs them with an AI health coach in its app. Like InsideTracker, it's a paid testing service with your data in its cloud. getbased isn't a testing company &mdash; it's a free, open-source tool for the results you already have, wherever they came from, kept on your device. If you want someone to sell you the tests, Macromo does that; if you want to make sense of results you already hold, that's getbased.</p>
+
+<h2>getbased vs a spreadsheet</h2>
+<p>A spreadsheet is free, offline, and entirely yours &mdash; which is genuinely valuable, and it's what a lot of people do. What it can't do: pull markers out of a PDF for you, flag a trend before you notice it, hold reference and optimal ranges, or reason about how your genes, sleep, and labs connect. getbased keeps the "it's yours, it's local" part and adds the intelligence.</p>
+
+<h2>getbased vs pasting labs into ChatGPT</h2>
+<p>Pasting a lab report into ChatGPT or Claude can be genuinely useful for a one-off question. But the chat has no memory of your history, no structured record, no reference ranges, and &mdash; critically &mdash; nothing grounding it beyond what the model happened to be trained on. getbased structures your data, keeps it across imports, feeds the AI your full context, and grounds every answer in your own research library. It's the same intelligence, with a harness around it. You can even connect getbased to an external agent and keep chatting from your messenger &mdash; with only a read-only summary shared.</p>
+
+<div class="cta-box">
+  <h2>See your whole picture</h2>
+  <p>Free, open source, runs in your browser. Drop in a lab report and explore &mdash; no account, nothing to install.</p>
+  <a href="https://app.getbased.health" class="cta-btn">Launch getbased &rarr;</a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-row footer-top">
+      <span class="footer-logo">getbased</span>
+      <div class="footer-socials">
+        <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+        <a href="https://discord.gg/zJdVB9zgQB" target="_blank" rel="noopener" aria-label="Discord"><svg width="20" height="16" viewBox="0 0 71 55" fill="currentColor"><path d="M60.1 4.9A58.5 58.5 0 0045.4.2a.2.2 0 00-.2.1 40.8 40.8 0 00-1.8 3.7 54 54 0 00-16.2 0A37.4 37.4 0 0025.4.3a.2.2 0 00-.2-.1A58.4 58.4 0 0010.5 4.9a.2.2 0 00-.1.1C1.5 18.7-.9 32.2.3 45.5v.2a58.9 58.9 0 0017.7 9 .2.2 0 00.3-.1 42.1 42.1 0 003.6-5.9.2.2 0 00-.1-.3 38.8 38.8 0 01-5.5-2.7.2.2 0 01 0-.4l1.1-.9a.2.2 0 01.2 0 42 42 0 0035.6 0 .2.2 0 01.2 0l1.1.9a.2.2 0 010 .4c-1.8 1-3.6 1.9-5.6 2.7a.2.2 0 00-.1.3 47.3 47.3 0 003.7 5.9.2.2 0 00.2.1 58.7 58.7 0 0017.7-9 .2.2 0 00.1-.2c1.4-15.1-2.4-28.2-10.1-39.8a.2.2 0 00-.1-.1zM23.7 37.3c-3.4 0-6.3-3.2-6.3-7s2.8-7 6.3-7 6.4 3.1 6.3 7-2.8 7-6.3 7zm23.2 0c-3.4 0-6.3-3.2-6.3-7s2.8-7 6.3-7 6.4 3.1 6.3 7-2.8 7-6.3 7z"/></svg></a>
+        <a href="https://x.com/getbasedhealth" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://njump.me/npub13xgjkyve82xesxxzvy52vz99z5fcuusda4cytekct2tw800kepas498nt2" target="_blank" rel="noopener" aria-label="Nostr"><svg width="18" height="18" viewBox="0 0 875 875" fill="currentColor"><path d="m684.72,485.57c.22,12.59-11.93,51.47-38.67,81.3-26.74,29.83-56.02,20.85-58.42,20.16s-3.09-4.46-7.89-3.77-9.6,6.17-18.86,7.2-17.49,1.71-26.06-1.37c-4.46.69-5.14.71-7.2,2.24s-17.83,10.79-21.6,11.47c0,7.2-1.37,44.57,0,55.89s3.77,25.71,7.54,36c3.77,10.29,2.74,10.63,7.54,9.94s13.37.34,15.77,4.11c2.4,3.77,1.37,6.51,5.49,8.23s60.69,17.14,99.43,19.2c26.74.69,42.86,2.74,52.12,19.54,1.37,7.89,7.54,13.03,11.31,14.06s8.23,2.06,12,5.83,1.03,8.23,5.49,11.66c4.46,3.43,14.74,8.57,25.37,13.71,10.63,5.14,15.09,13.37,15.77,16.11s1.71,10.97,1.71,10.97c0,0-8.91,0-10.97-2.06s-2.74-5.83-2.74-5.83c0,0-6.17,1.03-7.54,3.43s.69,2.74-7.89.69-11.66-3.77-18.17-8.57c-6.51-4.8-16.46-17.14-25.03-16.8,4.11,8.23,5.83,8.23,10.63,10.97s8.23,5.83,8.23,5.83l-7.2,4.46s-4.46,2.06-14.74-.69-11.66-4.46-12.69-10.63,0-9.26-2.74-14.4-4.11-15.77-22.29-21.26c-18.17-5.49-66.52-21.26-100.12-24.69s-22.63-2.74-28.11-1.37-15.77,4.46-26.4-1.37c-10.63-5.83-16.8-13.71-17.49-20.23s-1.71-10.97,0-19.2,3.43-19.89,1.71-26.74-14.06-55.89-19.89-64.12c-13.03,1.03-50.74-.69-50.74-.69,0,0-2.4-.69-17.49,5.83s-36.48,13.76-46.77,19.93-14.4,9.7-16.12,13.13c.12,3-1.23,7.72-2.79,9.06s-12.48,2.42-12.48,2.42c0,0-5.85,5.86-8.25,9.97-6.86,9.6-55.2,125.14-66.52,149.83-13.54,32.57-9.77,27.43-37.71,27.43s-8.06.3-8.06.3c0,0-12.34,5.88-16.8,5.88s-18.86-2.4-26.4,0-16.46,9.26-23.31,10.29-4.95-1.34-8.38-3.74c-4-.21-14.27-.12-14.27-.12,0,0,1.74-6.51,7.91-10.88,8.23-5.83,25.37-16.11,34.63-21.26s17.49-7.89,23.31-9.26,18.51-6.17,30.51-9.94,19.54-8.23,29.83-31.54c10.29-23.31,50.4-111.43,51.43-116.23.63-2.96,3.73-6.48,4.8-15.09.66-5.35-2.49-13.04,1.71-22.63,10.97-25.03,21.6-20.23,26.4-20.23s17.14.34,26.4-1.37,15.43-2.74,24.69-7.89,11.31-8.91,11.31-8.91l-19.89-3.43s-18.51.69-25.03-4.46-15.43-15.77-15.43-15.77l-7.54-7.2,1.03,8.57s-5.14-8.91-6.51-10.29-8.57-6.51-11.31-11.31-7.54-25.03-7.54-25.03l-6.17,13.03-1.71-18.86-5.14,7.2-2.74-16.11-4.8,8.23-3.43-14.4-5.83,4.46-2.4-10.29-5.83-3.43s-14.06-9.26-16.46-9.6-4.46,3.43-4.46,3.43l1.37,12-12.2-6.27-7-11.9s2.36,4.01-9.62,7.53c-20.55,0-21.89-2.28-24.93-3.94-1.31-6.56-5.57-10.11-5.57-10.11h-20.57l-.34-6.86-7.89,3.09.69-10.29h-14.06l1.03-11.31h-8.91s3.09-9.26,25.71-22.97,25.03-16.46,46.29-17.14c21.26-.69,32.91,2.74,46.29,8.23s38.74,13.71,43.89,17.49c11.31-9.94,28.46-19.89,34.29-19.89,1.03-2.4,6.19-12.33,17.96-17.6,35.31-15.81,108.13-34,131.53-35.54,31.2-2.06,7.89-1.37,39.09,2.06,31.2,3.43,54.17,7.54,69.6,12.69,12.58,4.19,25.03,9.6,34.29,2.06,4.33-1.81,11.81-1.34,17.83-5.14,30.69-25.09,34.72-32.35,43.63-41.95s20.14-24.91,22.54-45.14,4.46-58.29-10.63-88.12-28.8-45.26-34.63-69.26c-5.83-24-8.23-61.03-6.17-73.03,2.06-12,5.14-22.29,6.86-30.51s9.94-14.74,19.89-16.46c9.94-1.71,17.83,1.37,22.29,4.8,4.46,3.43,11.65,6.28,13.37,10.29.34,1.71-1.37,6.51,8.23,8.23,9.6,1.71,16.05,4.16,16.05,4.16,0,0,15.64,4.29,3.11,7.73-12.69,2.06-20.52-.71-24.29,1.69s-7.21,10.08-9.61,11.1-7.2.34-12,4.11-9.6,6.86-12.69,14.4-5.49,15.77-3.43,26.74,8.57,31.54,14.4,43.2c5.83,11.66,20.23,40.8,24.34,47.66s15.77,29.49,16.8,53.83,1.03,44.23,0,54.86-10.84,51.65-35.53,85.94c-8.16,14.14-23.21,31.9-24.67,35.03-1.45,3.13-3.02,4.88-1.61,7.65,4.62,9.05,12.87,22.13,14.71,29.22,2.29,6.64,6.99,16.13,7.22,28.72Z"/></svg></a>
+        <a href="https://www.reddit.com/r/getbased/" target="_blank" rel="noopener" aria-label="Reddit"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 01-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 01.042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 014.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 01.14-.197.35.35 0 01.238-.042l2.906.617a1.214 1.214 0 011.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 00-.231.094.33.33 0 000 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 00.029-.463.33.33 0 00-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 00-.232-.095z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-fineprint">
+      <p class="footer-disclaimer">Not medical advice. Consult a healthcare provider before making health decisions.</p>
+      <p class="footer-trademarks">InsideTracker, SelfDecode, Macromo, and other product names are trademarks of their respective owners. Comparisons are provided for informational purposes and reflect each product's general model; they do not imply affiliation or endorsement.</p>
+      <p class="footer-legal">
+        <span>&copy; 2026 getbased</span>
+        <span class="footer-legal-sep">&middot;</span>
+        <span>Open source</span>
+        <span class="footer-legal-sep">&middot;</span>
+        <span>Built with &#10084;&#65039; by <a href="https://linktr.ee/elkimek" target="_blank" rel="noopener">Elkim</a></span>
+        <span class="footer-legal-sep">&middot;</span>
+        <a href="https://app.getbased.health/docs">Docs</a>
+        <span class="footer-legal-sep">&middot;</span>
+        <a href="/privacy">Privacy</a>
+        <span class="footer-legal-sep">&middot;</span>
+        <a href="/terms">Terms</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Theme toggle
+document.getElementById('theme-toggle').addEventListener('click', function() {
+  var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  var next = isLight ? 'dark' : 'light';
+  localStorage.setItem('labcharts-theme', next);
+  if (next === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  else document.documentElement.removeAttribute('data-theme');
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('nav-hamburger');
+const drawer = document.getElementById('nav-drawer');
+function toggleDrawer(open) {
+  const isOpen = typeof open === 'boolean' ? open : !hamburger.classList.contains('open');
+  hamburger.classList.toggle('open', isOpen);
+  drawer.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.classList.toggle('nav-open', isOpen);
+}
+hamburger.addEventListener('click', () => toggleDrawer());
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleDrawer(false)));
+document.addEventListener('click', e => {
+  if (drawer.classList.contains('open') && !drawer.contains(e.target) && !hamburger.contains(e.target)) toggleDrawer(false);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && drawer.classList.contains('open')) toggleDrawer(false);
+});
+</script>
+</body>
+</html>

@@ -638,7 +638,7 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
     "DNA import (50+ SNPs across 13 categories, APOE haplotype, 5 raw DNA formats including MyHeritage Low-pass WGS with strand-aware matching, 39 mtDNA haplogroups with sub-clade resolution and coupling classification)",
     "Menstrual cycle phase-aware reference ranges with perimenopause detection",
     "Medical & Family History — 117 conditions across neuro, cancer, skin, mental health, autoimmune, plus first-degree relatives and grandparents with onset age",
-    "9 lifestyle context cards (diet, sleep, light, exercise, stress, love life, environment, conditions, goals) with AI health ratings",
+    "9 lifestyle context cards (diet, sleep, light, exercise, stress, love life, environment, medical & family history, goals) with AI health ratings",
     "Biological age (PhenoAge + Bortz Age) plus auto-computed derived markers and ratios",
     "Multi-profile support for practitioners and families",
     "Biometrics tracking (weight, blood pressure, pulse) with chip-tagged context",
@@ -662,15 +662,23 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Does getbased AI hallucinate?",
+      "name": "Wait, AI? Doesn't it hallucinate?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "getbased isn't a chatbot — it's a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. Add your own research library and every answer gets grounded in the papers and guides you trust, not just what the model happened to see in training. You can pit two personas against each other and steer the debate yourself. The AI is the horse. The app is the reins."
+        "text": "It can — but getbased isn't a chatbot. It's a harness. Every AI response is constrained by your actual lab values, grounded in reference ranges, shaped by 9 lifestyle context cards, and filtered through your health goals. Add your own research library and every answer gets grounded in the papers and guides you trust, not just what the model happened to see in training. You can pit two personas against each other and steer the debate yourself. That's not “ask ChatGPT about my blood work” — that's directed, structured, multiplied intelligence. The AI is the horse. The app is the reins. Use the best model you have access to."
       }
     },
     {
       "@type": "Question",
-      "name": "Is getbased free?",
+      "name": "What's the most powerful feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The persona debate. Create two AI personalities — say a functional medicine doctor and a conventional endocrinologist — and hit Discuss. They argue over your actual lab results while you steer the conversation: “what about my iron panel?” It's like having a panel of specialists who never rush you, never bill you, and actually disagree with each other. That's where the real insights come from."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this free?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "The app itself is completely free and open-source — no subscriptions, no paywalls, no catch. The only cost is your AI API key, which you get directly from the provider (like OpenRouter or PPQ). Think of it like buying a calculator — you own the tool, you just supply the batteries."
@@ -678,18 +686,10 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
     },
     {
       "@type": "Question",
-      "name": "What is the most powerful feature of getbased?",
+      "name": "Who is behind this?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The persona debate. Create two AI personalities — say a functional medicine doctor and a conventional endocrinologist — and hit Discuss. They argue over your actual lab results while you steer the conversation. It's like having a panel of specialists who never rush you, never bill you, and actually disagree with each other."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is behind getbased?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A solo developer dealing with his own health issues, who vibecoded the entire app with AI. getbased is open source, AGPL-3.0 licensed, and community-driven."
+        "text": "Just a guy dealing with his own health issues. Born unlucky — one letter out of place in my DNA, making my mitochondria wonky. Slowly but surely fading from this world, hoping someone finds a cure. I want to make an impact and leave something behind. I believe AI will change everything — it already has. Not trying to predict the future, but the way I see it? It's either ride the wave or watch it pass you by. Would you believe me if I told you I can't code? I vibecoded this entire thing with AI — and if I can do it, you can do it too."
       }
     }
   ]
@@ -699,8 +699,8 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
 {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to track your blood work with getbased",
-  "description": "From a stack of lab PDFs to actionable health insights in under a minute.",
+  "name": "How to make sense of your health data with getbased",
+  "description": "From your first lab report to a connected picture of your health — labs, DNA, body, lifestyle, and environment — in under a minute.",
   "step": [
     {
       "@type": "HowToStep",
@@ -764,7 +764,7 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
       <a href="#privacy">Privacy</a>
       <a href="#support">Support</a>
       <a href="#faq">FAQ</a>
-      <a href="https://app.getbased.health/docs">Docs</a>
+      <a href="/compare">Compare</a>
       <a href="/blog">Blog</a>
     </div>
   </div>
@@ -785,7 +785,7 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
   <a href="#privacy">Privacy</a>
   <a href="#support">Support</a>
   <a href="#faq">FAQ</a>
-  <a href="https://app.getbased.health/docs">Docs</a>
+  <a href="/compare">Compare</a>
   <a href="/blog">Blog</a>
   <a href="https://app.getbased.health" class="nav-cta">Open App &rarr;</a>
 </div>
@@ -1412,6 +1412,8 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
         <span>Open source</span>
         <span class="footer-legal-sep">&middot;</span>
         <span>Built with &#10084;&#65039; by <a href="https://linktr.ee/elkimek" target="_blank" rel="noopener">Elkim</a></span>
+        <span class="footer-legal-sep">&middot;</span>
+        <a href="https://app.getbased.health/docs">Docs</a>
         <span class="footer-legal-sep">&middot;</span>
         <a href="/privacy">Privacy</a>
         <span class="footer-legal-sep">&middot;</span>
