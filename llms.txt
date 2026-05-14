@@ -47,21 +47,21 @@ getbased is organized around five lenses on your biology. Each one informs the o
 
 - [Landing page](https://getbased.health/): Feature overview and getting started
 - [Web app](https://app.getbased.health): Launch the dashboard (no install needed)
-- [Documentation](https://app.getbased.health/docs): User guides, setup, and feature walkthroughs
+- [Documentation](https://docs.getbased.health): User guides, setup, and feature walkthroughs
 - [Blog](https://getbased.health/blog): Development stories and health data insights
 - [GitHub](https://github.com/elkimek/get-based): Source code (AGPL-3.0 license)
 - [Discord](https://discord.gg/zJdVB9zgQB): Community and support
 
 ## Docs highlights
 
-- [Getting started](https://app.getbased.health/docs/guide/getting-started): First import walkthrough
-- [AI setup guide](https://app.getbased.health/docs/guide/ai-chat): Configure PPQ, Routstr, OpenRouter, Venice, or Local AI
-- [Interpretive Lens (research library)](https://app.getbased.health/docs/guide/interpretive-lens): Add your own PDFs, papers, and guides so the AI grounds answers in sources you trust
-- [DNA import](https://app.getbased.health/docs/guide/dna-import): Upload raw DNA data, mtDNA haplogroup, and view genetic insights
-- [Cross-device sync](https://app.getbased.health/docs/guide/cross-device-sync): E2E encrypted sync setup, status indicator, and self-hosting
-- [Agent access](https://app.getbased.health/docs/guide/agent-access): Connect Hermes, OpenClaw, or any MCP-compatible agent over any messenger
-- [Wearables](https://app.getbased.health/docs/guide/wearables): Connect Oura, Fitbit, Withings, Polar, Apple Health — HRV, sleep, recovery, body comp on the dashboard alongside your lab data
-- [Privacy and security](https://app.getbased.health/docs/guide/encryption): Local-first architecture, encryption, PII obfuscation
+- [Getting started](https://docs.getbased.health/quickstart): First import walkthrough
+- [AI setup guide](https://docs.getbased.health/guides/ai-chat): Configure PPQ, Routstr, OpenRouter, Venice, or Local AI
+- [Interpretive Lens (research library)](https://docs.getbased.health/guides/interpretive-lens): Add your own PDFs, papers, and guides so the AI grounds answers in sources you trust
+- [DNA import](https://docs.getbased.health/guides/dna-import): Upload raw DNA data, mtDNA haplogroup, and view genetic insights
+- [Cross-device sync](https://docs.getbased.health/guides/cross-device-sync): E2E encrypted sync setup, status indicator, and self-hosting
+- [Agent access](https://docs.getbased.health/guides/agent-access): Connect Hermes, OpenClaw, or any MCP-compatible agent over any messenger
+- [Wearables](https://docs.getbased.health/guides/wearables): Connect Oura, Fitbit, Withings, Polar, Apple Health — HRV, sleep, recovery, body comp on the dashboard alongside your lab data
+- [Privacy and security](https://docs.getbased.health/guides/encryption): Local-first architecture, encryption, PII obfuscation
 
 ## How getbased differs from alternatives
 

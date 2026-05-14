@@ -1412,7 +1412,7 @@ footer{border-top:1px solid var(--border);padding:56px 32px 40px;position:relati
         <span class="footer-legal-sep">&middot;</span>
         <span>Built with &#10084;&#65039; by <a href="https://linktr.ee/elkimek" target="_blank" rel="noopener">Elkim</a></span>
         <span class="footer-legal-sep">&middot;</span>
-        <a href="https://app.getbased.health/docs">Docs</a>
+        <a href="https://docs.getbased.health">Docs</a>
         <span class="footer-legal-sep">&middot;</span>
         <a href="/privacy">Privacy</a>
         <span class="footer-legal-sep">&middot;</span>
@@ -1706,10 +1706,9 @@ document.querySelectorAll('.ctx-card[data-detail]').forEach(card => {
     .catch(() => {});
 });
 
-// Local dev: rewrite absolute app/docs links to relative paths
+// Local dev: rewrite absolute app links to relative paths
 if(location.hostname==='localhost'||location.hostname==='127.0.0.1'){
   document.querySelectorAll('a[href*="app.getbased.health"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health','/app')});
-  document.querySelectorAll('a[href*="app.getbased.health/docs"]').forEach(a=>{a.href=a.href.replace('https://app.getbased.health/docs','/docs')});
 }
 // Tor: rewrite clearnet links to .onion equivalents
 if(location.hostname.endsWith('.onion')){

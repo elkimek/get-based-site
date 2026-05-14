@@ -55,7 +55,7 @@ The feature list grew insanely fast. Here's what exists today:
 - **Full PWA** — installable, works offline, dark/light themes, 10 responsive breakpoints
 - **35 pages of docs**, a full test suite, and a landing page
 
-That's the short version. The [full feature breakdown is in the docs](https://app.getbased.health/docs/guide/getting-started).
+That's the short version. The [full feature breakdown is in the docs](https://docs.getbased.health/quickstart).
 
 All of this runs as **static files**. No server, no database, no build step. 25 ES modules loaded natively by the browser. One person. Two weeks.
 
