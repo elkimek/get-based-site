@@ -13,7 +13,7 @@
         },
         {
           "key": "Link",
-          "value": "<https://getbased.health/llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\", <https://getbased.health/.well-known/mcp.json>; rel=\"service-desc\"; type=\"application/json\"; title=\"MCP server card\""
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\", </.well-known/mcp.json>; rel=\"service-desc\"; type=\"application/json\"; title=\"MCP server card\""
         },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
