@@ -11,7 +11,15 @@
 
   console.log('%c🧪 Landing Page Tests', 'font-weight:bold;font-size:14px');
 
-  const src = await fetch('index.html').then(r => r.text());
+  async function readText(path) {
+    if (typeof window === 'undefined') {
+      const fs = require('fs');
+      return fs.readFileSync(path, 'utf8');
+    }
+    return fetch(path).then(r => r.text());
+  }
+
+  const src = await readText('index.html');
   const isLanding = src.includes('id="lenses"') && src.includes('class="nav-drawer"');
   assert('Fetched the getbased landing page', isLanding);
   if (!isLanding) {
@@ -24,11 +32,13 @@
   console.log('\n%c1. Head & metadata', 'font-weight:bold');
   assert('Title: Personal Health Intelligence', src.includes('<title>getbased — Open-Source Personal Health Intelligence</title>'));
   assert('Meta description mentions five lenses', /<meta name="description"[^>]*Five lenses on your biology/.test(src));
+  assert('Meta description mentions Biology Scores lightly', /<meta name="description"[^>]*Biology Scores/.test(src));
   assert('og:title present', src.includes('property="og:title"'));
   assert('og:image present', src.includes('property="og:image"'));
   assert('twitter:card present', src.includes('name="twitter:card"'));
   assert('canonical link present', src.includes('rel="canonical"'));
   assert('apple-touch-icon present', src.includes('apple-touch-icon'));
+  assert('llms-txt link present', src.includes('rel="llms-txt"'));
   assert('theme-color dark', /meta name="theme-color" content="#0a0c14"/.test(src));
   assert('theme-color light', /meta name="theme-color" content="#f5f7ff"/.test(src));
 
@@ -42,7 +52,9 @@
   assert('Has SoftwareApplication schema', ldTypes.includes('SoftwareApplication'));
   assert('Has FAQPage schema', ldTypes.includes('FAQPage'));
   assert('Has HowTo schema', ldTypes.includes('HowTo'));
+  assert('Has Organization schema', ldTypes.includes('Organization'));
   assert('JSON-LD license is AGPL-3.0', src.includes('agpl-3.0'));
+  assert('SoftwareApplication has screenshot', src.includes('"screenshot": "https://getbased.health/og-image.png"'));
 
   // ── 2. Navigation ──
   console.log('\n%c2. Navigation', 'font-weight:bold');
@@ -69,22 +81,28 @@
   assert('Hero actions: Launch App', /hero-actions[\s\S]*?Launch App/.test(src));
   assert('Hero version stamp span', src.includes('id="hero-version"'));
   assert('Interactive mockup present', src.includes('class="hero-mockup'));
-  assert('Mockup has 5 lens tabs in source', (src.match(/class="mockup-lens-tab/g) || []).length === 5, `found ${(src.match(/class="mockup-lens-tab/g) || []).length}`);
-  ['labs', 'genome', 'body', 'lifestyle', 'environment'].forEach(l => {
+  assert('Mockup has 7 curated hero nav tabs in source', (src.match(/class="mockup-lens-tab/g) || []).length === 7, `found ${(src.match(/class="mockup-lens-tab/g) || []).length}`);
+  ['dashboard', 'labs', 'biology', 'genome', 'body', 'light', 'insight'].forEach(l => {
     assert(`Mockup lens tab: data-lens="${l}"`, src.includes(`data-lens="${l}"`));
   });
   assert('Mockup has #mockup-cards container', src.includes('id="mockup-cards"'));
+  assert('Dashboard mockup does not duplicate widgets with three top cards', /dashboard:\s*\{[\s\S]*?cards:\s*\[\]/.test(src));
+  assert('Dashboard mockup uses realistic dashboard panel', src.includes('mockup-panel-dashboard') && src.includes('Dashboard overview') && src.includes('Biological Coherence'));
+  assert('Dashboard mockup fills desktop space with multiple widgets', (src.match(/class="mockup-dashboard-widget/g) || []).length >= 5, `found ${(src.match(/class="mockup-dashboard-widget/g) || []).length}`);
   assert('Mockup has #mockup-panel container', src.includes('id="mockup-panel"'));
 
   // ── 4. Five Lenses section ──
   console.log('\n%c4. Five Lenses section', 'font-weight:bold');
   assert('Has #lenses section', src.includes('id="lenses"'));
-  assert('Section heading: "five ways to see it"', src.includes('five ways to see it'));
-  assert('Subtitle: "aren\'t five separate tabs"', src.includes("aren't five separate tabs"));
+  assert('Section label: How it comes together', src.includes('How it comes together'));
+  assert('Section heading: five ways + living picture', src.includes('Five ways in.') && src.includes('One living picture.'));
+  assert('Subtitle connects lenses to Biology Scores and recommendations', src.includes('each show a different angle') && src.includes('Biology Scores reveal the pattern'));
   assert('5 lens cards in source', (src.match(/class="lens-card/g) || []).length === 5, `found ${(src.match(/class="lens-card/g) || []).length}`);
-  ['Labs', 'Genome', 'Body', 'Lifestyle', 'Environment'].forEach(l => {
+  ['Labs', 'Genome', 'Body', 'Light', 'Insight'].forEach(l => {
     assert(`Lens card: ${l}`, new RegExp(`lens-name">${l}<`).test(src));
   });
+  assert('Uses one soft lens-flow instead of extra business cards', src.includes('class="lens-flow') && !src.includes('system-layer-card'));
+  assert('Lens flow: Biology Scores then Recommendations', /Biology Scores reveal the pattern[\s\S]*?Recommendations become the next step/.test(src));
   assert('Genome lens mentions 50+ SNPs', /Genome[\s\S]*?50\+ SNPs/.test(src));
 
   // ── 5. Why section ──
@@ -113,7 +131,7 @@
   assert('10 feature-card elements', (src.match(/class="feature-card/g) || []).length === 10, `found ${(src.match(/class="feature-card/g) || []).length}`);
   assert('2 bento-card elements', (src.match(/class="bento-card/g) || []).length === 2, `found ${(src.match(/class="bento-card/g) || []).length}`);
   ['AI PDF Import', 'DNA &amp; mtDNA Import', 'Light &amp; Sun', 'Trend Charts',
-   'Is it actually working?', 'Cycle-Aware Labs', 'Biological Age &amp; Derived Markers',
+   'Track what works', 'Cycle-Aware Labs', 'Biology Scores',
    'Your research library', 'E2E Encrypted Sync', 'Personal Agents'].forEach(f => {
     assert(`Feature card: ${f}`, src.includes(`<h3>${f}</h3>`));
   });
@@ -156,9 +174,9 @@
   console.log('\n%c11. FAQ section', 'font-weight:bold');
   assert('Has #faq section', src.includes('id="faq"'));
   assert('Heading: "Got questions?"', src.includes('Got questions?'));
-  assert('4 faq-item elements', (src.match(/class="faq-item/g) || []).length === 4, `found ${(src.match(/class="faq-item/g) || []).length}`);
+  assert('5 faq-item elements', (src.match(/class="faq-item/g) || []).length === 5, `found ${(src.match(/class="faq-item/g) || []).length}`);
   assert('FAQ: hallucinate question', src.includes("Doesn't it hallucinate?"));
-  assert('FAQ: most powerful feature', src.includes("most powerful feature?"));
+  assert('FAQ: app pulls together', src.includes('What pulls the app together?'));
   assert('FAQ: is this free', src.includes('Is this free?'));
   assert('FAQ: who is behind this', src.includes('Who is behind this?'));
 
@@ -170,7 +188,7 @@
   assert('Footer has social links', src.includes('class="footer-socials"'));
   assert('Footer disclaimer (not medical advice)', /footer-disclaimer[\s\S]*?Not medical advice/.test(src));
   assert('Footer has Privacy + Terms links', src.includes('href="/privacy"') && src.includes('href="/terms"'));
-  assert('Footer has Docs link', src.includes('href="https://app.getbased.health/docs"'));
+  assert('Footer has Docs link', src.includes('href="https://docs.getbased.health"'));
 
   // ── 13. Light mode ──
   console.log('\n%c13. Light mode support', 'font-weight:bold');
@@ -200,14 +218,14 @@
 
   // ── 16. Live DOM & interactivity ──
   console.log('\n%c16. Live DOM & interactivity', 'font-weight:bold');
-  if (document.getElementById('lenses')) {
+  if (typeof document !== 'undefined' && document.getElementById('lenses')) {
     assert('5 lens cards in DOM', document.querySelectorAll('.lens-card').length === 5);
     assert('10 feature cards in DOM', document.querySelectorAll('.feature-card').length === 10);
     assert('2 bento cards in DOM', document.querySelectorAll('.bento-card').length === 2);
     assert('5 provider cards in DOM', document.querySelectorAll('.provider-card').length === 5);
     assert('5 privacy cards in DOM', document.querySelectorAll('.priv-card').length === 5);
-    assert('4 FAQ items in DOM', document.querySelectorAll('.faq-item').length === 4);
-    assert('5 mockup lens tabs in DOM', document.querySelectorAll('.mockup-lens-tab').length === 5);
+    assert('5 FAQ items in DOM', document.querySelectorAll('.faq-item').length === 5);
+    assert('7 curated mockup hero nav tabs in DOM', document.querySelectorAll('.mockup-lens-tab').length === 7);
 
     // Theme toggle round-trips
     const themeBefore = document.documentElement.getAttribute('data-theme');
@@ -228,8 +246,25 @@
     genomeTab.click();
     await new Promise(r => setTimeout(r, 200));
     assert('Mockup lens switch activates tab', genomeTab.classList.contains('active'));
-    assert('Mockup lens switch updates cards', /Genome|MTHFR|APOE|SNPs/.test(document.getElementById('mockup-cards').textContent));
-    document.querySelector('.mockup-lens-tab[data-lens="labs"]').click();
+    assert('Mockup lens switch updates to full-width app-style panel', document.querySelectorAll('#mockup-cards .mockup-card').length === 0 && /Genome|APOE|Methylation|Actionable modifiers/.test(document.getElementById('mockup-panel').textContent));
+    const biologyTab = document.querySelector('.mockup-lens-tab[data-lens="biology"]');
+    biologyTab.click();
+    await new Promise(r => setTimeout(r, 200));
+    assert('Mockup Biology Scores tab activates', biologyTab.classList.contains('active'));
+    assert('Mockup Biology Scores tab uses domain score map, not duplicate dashboard card', document.querySelectorAll('#mockup-cards .mockup-card').length === 0 && /System scores|Domain score map|Thyroid hormones|Avoid over-testing/.test(document.getElementById('mockup-panel').textContent));
+    const expectedRouteTitles = {
+      labs: 'Labs', genome: 'Genome', body: 'Body', light: 'Light & Sun', insight: 'Insight'
+    };
+    for (const [lens, title] of Object.entries(expectedRouteTitles)) {
+      const tab = document.querySelector(`.mockup-lens-tab[data-lens="${lens}"]`);
+      tab.click();
+      await new Promise(r => setTimeout(r, 200));
+      const panel = document.getElementById('mockup-panel');
+      assert(`Mockup ${lens} tab has route-specific app panel`, panel.textContent.includes(title) && panel.querySelector('.mockup-route-card'));
+      const leaking = [...panel.querySelectorAll('*')].filter(el => el.scrollWidth > el.clientWidth + 1);
+      assert(`Mockup ${lens} tab has no horizontal text/card overflow`, leaking.length === 0, leaking.slice(0, 2).map(el => el.className).join(', '));
+    }
+    document.querySelector('.mockup-lens-tab[data-lens="dashboard"]').click();
 
     // Hamburger drawer
     const ham = document.getElementById('nav-hamburger'), drawer = document.getElementById('nav-drawer');
@@ -243,7 +278,7 @@
 
   // ── 17. thank-you.html ──
   console.log('\n%c17. thank-you.html', 'font-weight:bold');
-  const ty = await fetch('thank-you.html').then(r => r.ok ? r.text() : '').catch(() => '');
+  const ty = await readText('thank-you.html').catch(() => '');
   assert('thank-you.html exists', ty.length > 0);
   if (ty) {
     assert('TY: has title', ty.includes('<title>Thank You'));
