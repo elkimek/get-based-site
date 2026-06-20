@@ -1,20 +1,20 @@
 # getbased
 
 > Free, open-source Personal Health Intelligence that runs entirely in your browser.
-> getbased connects five lenses on your biology — labs, genome, body, lifestyle, and
-> environment — and lets AI reason across the whole picture, grounded in the research
+> getbased connects five lenses on your biology — labs, genome, body, light, and
+> insight — and lets AI reason across the whole picture, grounded in the research
 > you trust. Import any lab PDF or photo with AI, factor in your DNA, sync your
 > wearables, log your sun exposure. No account required. Your data never leaves your device.
 
 ## The five lenses
 
-getbased is organized around five lenses on your biology. Each one informs the others, and the AI synthesizes across all of them — a gene variant reframes a lab result, your environment explains a body signal.
+getbased is organized around five lenses on your biology. Each one informs the others, and the AI synthesizes across all of them — a gene variant reframes a lab result, your light exposure explains a body signal, and Biology Scores summarize current patterns.
 
 - **Labs** — blood work, OAT, fatty acids, BioStarks and other specialty panels. 287+ markers across 17+ categories, reference and optimal range bands, trend detection
 - **Genome** — raw DNA + mtDNA import from any major provider. 50+ curated SNPs across 13 health categories with APOE haplotype, plus mtDNA haplogroup with 39 sub-clades and mitochondrial coupling classification
 - **Body** — wearables (Oura, Fitbit, Withings, Polar, Apple Health) plus manual weight, blood pressure, and pulse. HRV, sleep, resting heart rate, body composition, vascular age, SpO₂
-- **Lifestyle** — diet, sleep, exercise, stress, love life, goals, and medical & family history, captured as context cards that shape every AI interpretation
-- **Environment** — Light & Sun exposure tracking across six biological channels, plus Baubiologie EMF assessment
+- **Light** — Light & Sun exposure tracking across six biological channels, plus on-device measurement tools
+- **Insight** — AI chat, research library, recommendations, correlations, and Biology Scores
 
 ## What getbased does
 
@@ -27,6 +27,7 @@ getbased is organized around five lenses on your biology. Each one informs the o
 - Light & Sun lens — track sun exposure across six biological channels (vitamin D, body clock, cardiovascular, mood & hormones, cellular repair, outdoor eye light). One-tap session logging, live burn-dose alerts, photosensitizing-medication awareness, and eight on-device measurement tools (lux meter, flicker detector, color-temperature, sleep darkness meter, sunrise/sunset logger, eye-level audit). Camera frames never leave the device
 - Wearable integrations — connect Oura, Fitbit, Withings, Polar, or Apple Health (file import). HRV, sleep, resting heart rate, body composition, vascular age, blood pressure, SpO₂ on the dashboard alongside lab data. Multi-vendor source picker per metric. Manual weight/BP/RHR entry first-class. Raw daily samples never leave your device; only a compact end-to-end-encrypted summary syncs (~200 tokens per profile). MCP agents can opt-in to a 30-day pivoted daily series for time-series reasoning
 - Medical & Family History — 117 conditions across neuro, cancer, skin, mental health, autoimmune and more, plus first-degree relatives and grandparents (with onset age and notes) so the AI sees what runs in the family
+- Biology Scores and Biological Coherence — deterministic pattern summaries across metabolism, thyroid, inflammation, methylation, iron, hormones, kidney/hydration, liver/bile, cellular energy, and more
 - Biological age — PhenoAge (Levine 2018) + Bortz Age combined, with chronological age reference line, plus auto-computed derived markers and ratios
 - Biometrics tracking — weight, blood pressure, pulse with time-series history and auto-calculated BMI
 - Baubiologie EMF assessment — room-by-room measurements graded against SBM-2015 building-biology standards
@@ -63,9 +64,26 @@ getbased is organized around five lenses on your biology. Each one informs the o
 - [Wearables](https://docs.getbased.health/guides/wearables): Connect Oura, Fitbit, Withings, Polar, Apple Health — HRV, sleep, recovery, body comp on the dashboard alongside your lab data
 - [Privacy and security](https://docs.getbased.health/guides/encryption): Local-first architecture, encryption, PII obfuscation
 
+## What getbased is not
+
+- **Not a medical device** — getbased is health intelligence software, not a diagnostic tool or telemedicine service. It does not diagnose, treat, or prescribe. Always consult a qualified healthcare provider for medical decisions.
+- **Not a substitute for professional medical advice** — AI interpretations are structured reasoning aids grounded in your data and your research library, not medical conclusions. The human is always in the loop.
+- **Not a cloud service** — all data is stored locally in your browser by default. No account, no server-side database, no data mining. Optional E2E-encrypted sync stays under your control.
+- **Not a supplement store** — getbased generates lifestyle and supplement recommendations based on your biomarker patterns and genetic context, but does not sell or affiliate-market products.
+- **Not a genetic testing lab** — DNA analysis requires importing raw data from an external provider (23andMe, Ancestry, MyHeritage, etc.). getbased does not sequence DNA.
+
+## Common misconceptions
+
+- **Misconception**: "getbased is a chatbot that gives medical advice."
+  **Correction**: It is a structured data harness with AI reasoning constrained by your actual lab values, reference ranges, and research library. The AI explains patterns; it does not diagnose.
+- **Misconception**: "My data is uploaded to a server."
+  **Correction**: Everything stays in your browser (IndexedDB/OPFS) unless you explicitly enable E2E-encrypted cross-device sync. Even then, the relay server cannot read your data.
+- **Misconception**: "getbased sends my health data to OpenAI."
+  **Correction**: You choose your AI provider (PPQ, Routstr, OpenRouter, Venice, Local AI, or custom endpoint). Only the structured summary you approve is sent, not raw lab PDFs or full genetic data.
+
 ## How getbased differs from alternatives
 
 - **vs InsideTracker / SelfDecode**: getbased is free, open-source, and runs entirely in your browser. No subscription, no data collection, no account required
 - **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
-- **vs generic health trackers**: getbased connects five lenses on one dashboard — labs (287+ biomarkers, specialty panels), genome (DNA + mtDNA), body (wearables + biometrics), lifestyle (context cards, medical & family history), and environment (Light & Sun, EMF) — and the AI reasons across all of them, not one signal at a time
+- **vs generic health trackers**: getbased connects five lenses on one dashboard — labs (287+ biomarkers, specialty panels), genome (DNA + mtDNA), body (wearables + biometrics), light, and insight — and the AI reasons across all of them, not one signal at a time
 - **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, gives AI your full health context, and grounds every answer in your own research library (PDFs, papers, clinical guides) — not just a single lab report pasted into a chat window or what a generic model was trained on. Connect via Hermes, OpenClaw, or any MCP-compatible agent to chat over any messenger
