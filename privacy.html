@@ -126,7 +126,7 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 
 <h1>Privacy Policy</h1>
 <p class="subtitle">How getbased handles your data.</p>
-<p class="effective">Effective 22 April 2026</p>
+<p class="effective">Effective 22 June 2026</p>
 
 <div class="callout">
 <strong>In one sentence:</strong> getbased is a local-first application. Your data lives in your browser on your own devices. No account, no analytics by default, no central server storing your health information. The only times your data leaves your device are when <em>you</em> explicitly connect a third-party service (an AI provider, a wearable, a sync relay) — and only for the duration of those calls.
@@ -180,10 +180,12 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <ul>
   <li>Passes your request through to the allowed provider URL and returns the response</li>
   <li>Does <strong>not</strong> log request bodies or headers, and does not persist any data</li>
+  <li>Does not intentionally store prompts, lab values, genetic data, wearable rows, uploaded files, AI responses, or authorization payloads</li>
   <li>Has no database attached</li>
   <li>Blocks requests to private / loopback / cloud-metadata IP ranges to prevent abuse</li>
 </ul>
-<p>If you self-host, you bypass this entirely.</p>
+<p>Network operators such as Vercel may process limited operational metadata (for example timestamps, request routing metadata, status codes, and IP addresses) for security, debugging, abuse prevention, and infrastructure operation. getbased is designed so health-data payloads are held only in memory for the time needed to forward the request and return the response.</p>
+<p>All hosted proxy traffic uses HTTPS/TLS in transit. If you self-host, you bypass getbased's hosted proxy entirely and control your own server-side logging and infrastructure.</p>
 
 <h3>4.3 Cross-device sync (optional)</h3>
 <p>Opt-in sync uses <a href="https://www.evolu.dev" target="_blank" rel="noopener">Evolu</a>, a CRDT protocol with <strong>end-to-end encryption</strong>. Your BIP-39 mnemonic derives the encryption key; a relay server relays ciphertext between your devices but cannot read the contents. You can choose the relay (getbased's default, or one you host).</p>
