@@ -129,7 +129,7 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p class="effective">Effective 22 June 2026</p>
 
 <div class="callout">
-<strong>In one sentence:</strong> getbased is a local-first application. Your data lives in your browser on your own devices. No account, no analytics by default, no central server storing your health information. The only times your data leaves your device are when <em>you</em> explicitly connect a third-party service (an AI provider, a wearable, a sync relay) — and only for the duration of those calls.
+<strong>In one sentence:</strong> getbased is a local-first application. Your health data lives in your browser on your own devices by default. No account, no central plaintext health database. Data leaves your device only when <em>you</em> use a network feature — AI providers, wearables, sync, encrypted profile sharing, support/security contact, or hosted-site/app telemetry described below.
 </div>
 
 <h2>1. Who runs getbased</h2>
@@ -140,11 +140,11 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p>Before listing what <em>might</em> transit, here's what we never do:</p>
 <ul>
   <li>No user account, no login, no email required to use getbased</li>
-  <li>No tracking cookies, no advertising pixels, no third-party trackers</li>
-  <li>No analytics by default (an opt-in privacy-preserving toggle exists in Settings)</li>
+  <li>No tracking cookies, no advertising pixels, no behavioural ad targeting</li>
   <li>No cross-site or cross-device fingerprinting</li>
-  <li>No sale, licensing, or sharing of your data with anyone, ever</li>
-  <li>No server-side storage of your health information, lab results, DNA data, chat history, wearable rows, or profile metadata</li>
+  <li>No sale, licensing, or commercial sharing of your health data</li>
+  <li>No server-side storage of plaintext health information, lab results, DNA data, chat history, wearable rows, or profile metadata. Optional sync and sharing features may store end-to-end encrypted or password-encrypted ciphertext that getbased cannot read.</li>
+  <li>Anonymous, cookieless usage analytics may run on the hosted website/app. They are limited to product usage counts and do not include health data, lab values, DNA data, chat contents, uploaded files, API keys, wearable tokens, or precise profile data. The app shows a first-launch notice and lets you turn analytics off in Settings → Privacy.</li>
 </ul>
 
 <h2>3. What stays on your device</h2>
@@ -158,13 +158,14 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
   <li><strong>Backups</strong> — browser <code>IndexedDB</code> (5 most recent) and optionally a folder you choose on your own disk (up to 30 daily snapshots)</li>
   <li><strong>API keys / authorization tokens</strong> for any service you configure — encrypted at rest with AES-256-GCM when you enable the passphrase option</li>
 </ul>
-<p>None of these are sent to getbased's website. If you clear your browser storage, uninstall the app, or use the "Clear all data" action in Settings → Data, the data is gone from your device.</p>
+<p>Health, genetic, biometric-adjacent, and wearable data may qualify as special category personal data under GDPR Article 9. getbased's default design keeps this data on your device; cloud processing only happens when you intentionally enable or use a feature that sends data to a third-party provider, sync relay, encrypted sharing endpoint, or support/security contact.</p>
+<p>None of these are sent to getbased's website by default. If you clear your browser storage, uninstall the app, or use the "Clear all data" action in Settings → Data, the data is gone from your device.</p>
 
 <h2>4. Third-party services you choose</h2>
-<p>getbased calls third-party services <strong>only when you configure them</strong>. Each has its own privacy policy that governs data handling on their side.</p>
+<p>getbased calls third-party services <strong>only when you configure or use the relevant feature</strong>. Each has its own privacy policy that governs data handling on its side. Where a provider acts as an infrastructure processor, getbased relies on that provider's data-processing terms and security measures; where you choose an external AI, wearable, relay, or custom endpoint, that provider may act as an independent controller or processor under its own terms.</p>
 
 <h3>4.1 AI providers (all optional)</h3>
-<p>If you enable AI features, your prompts and any data you include in context are sent to the AI provider you chose. Available providers and their policies:</p>
+<p>If you enable AI features, your prompts and any data you include in context are sent to the AI provider you chose. This may include health or genetic data if you add it to the AI context. Available providers and their policies:</p>
 <ul>
   <li><strong>PPQ</strong> — <a href="https://www.ppq.ai/privacy" target="_blank" rel="noopener">ppq.ai/privacy</a></li>
   <li><strong>Routstr</strong> — <a href="https://routstr.com" target="_blank" rel="noopener">routstr.com</a> (decentralised, no account)</li>
@@ -176,15 +177,15 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p>Before calling a cloud AI provider, getbased offers <strong>PII obfuscation</strong>: email addresses, phone numbers, street addresses, and names detected in imported PDFs are replaced with placeholders. You can enable a local-AI-based obfuscation layer on top of the regex for stronger redaction.</p>
 
 <h3>4.2 /api/proxy (the Vercel Edge Function)</h3>
-<p>The hosted getbased.health deploys a small proxy function on Vercel so the browser can reach AI providers without CORS errors. The proxy:</p>
+<p>The hosted getbased.health deploys a small proxy function on Vercel so the browser can reach AI providers, wearable APIs, token endpoints, and the optional sun/UV relay without CORS errors or exposing hosted OAuth client secrets. The proxy:</p>
 <ul>
   <li>Passes your request through to the allowed provider URL and returns the response</li>
   <li>Does <strong>not</strong> log request bodies or headers, and does not persist any data</li>
-  <li>Does not intentionally store prompts, lab values, genetic data, wearable rows, uploaded files, AI responses, or authorization payloads</li>
+  <li>Does not intentionally store prompts, lab values, genetic data, wearable rows, uploaded files, AI responses, OAuth codes, access/refresh tokens, or authorization payloads</li>
   <li>Has no database attached</li>
   <li>Blocks requests to private / loopback / cloud-metadata IP ranges to prevent abuse</li>
 </ul>
-<p>Network operators such as Vercel may process limited operational metadata (for example timestamps, request routing metadata, status codes, and IP addresses) for security, debugging, abuse prevention, and infrastructure operation. getbased is designed so health-data payloads are held only in memory for the time needed to forward the request and return the response.</p>
+<p>Network operators such as Vercel may process limited operational metadata (for example timestamps, request routing metadata, status codes, and IP addresses) for security, debugging, abuse prevention, and infrastructure operation. getbased is designed so request payloads are held only in memory for the time needed to forward the request and return the response.</p>
 <p>All hosted proxy traffic uses HTTPS/TLS in transit. If you self-host, you bypass getbased's hosted proxy entirely and control your own server-side logging and infrastructure.</p>
 
 <h3>4.3 Cross-device sync (optional)</h3>
@@ -201,27 +202,53 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 </ul>
 <p>Disconnecting a wearable wipes its local rows immediately. The vendor retains the data they already have on their side per their own policy; getbased cannot delete it there. To revoke getbased's access, disconnect inside the app <em>and</em> revoke the app on the vendor's site.</p>
 
-<h3>4.5 Knowledge Base (Interpretive Lens)</h3>
+<h3>4.5 Encrypted profile sharing (optional)</h3>
+<p>If you create a password-protected profile share link, your browser exports the selected profile and encrypts it before upload using AES-GCM with a password-derived key. getbased's <code>/api/share</code> endpoint stores only the encrypted ciphertext envelope in private Vercel Blob storage. The password is not sent to getbased, and the maintainer cannot decrypt the shared profile.</p>
+<p>Share links expire automatically, with a maximum lifetime of 30 days. You can also stop sharing from the device that created the link. Anyone with both the link and the password can decrypt and import the shared profile, so keep them separate.</p>
+
+<h3>4.6 Knowledge Base (Interpretive Lens)</h3>
 <p>Documents you add to the on-device Knowledge Base are indexed and embedded locally in your browser using the Origin Private File System (OPFS). Nothing is uploaded. If you use the external-server lens option, the server you point at is under your control and its privacy model is yours.</p>
 
-<h3>4.6 Fonts and CDNs</h3>
-<p>getbased loads the Inter, Outfit, and JetBrains Mono fonts from Google Fonts. Google may log the IP address that fetches them. Chart.js, pdf.js, transformers.js (Knowledge Base embedder), and a small number of other libraries load from <code>jsdelivr.net</code> on first use and are cached by your browser.</p>
+<h3>4.7 Fonts and CDNs</h3>
+<p>The public website loads Inter, Outfit, and JetBrains Mono from Google Fonts. Google may receive the IP address that fetches them. The app bundles core fonts locally, while some optional libraries such as transformers.js may load from <code>jsdelivr.net</code> on first use and are cached by your browser.</p>
 
-<h2>5. Your rights</h2>
-<p>Under GDPR and most privacy frameworks, you have the rights to access, correct, delete, export, and restrict processing of your personal data. Because getbased stores your data on your own device, you can exercise all of these rights directly, without contacting us:</p>
+<h2>5. Legal basis for processing</h2>
+<ul>
+  <li><strong>Hosted website, proxy security, abuse prevention, infrastructure logs, and operational metadata:</strong> legitimate interests in operating, securing, debugging, and preventing abuse of the service.</li>
+  <li><strong>Optional AI, wearable, sync, encrypted sharing, custom endpoint, and external Lens features:</strong> your explicit action/request to use that feature. Where health, genetic, or similar special category data is involved, getbased relies on your explicit consent or another Article 9 condition available for your own use of the feature.</li>
+  <li><strong>Support emails, GitHub issues, and vulnerability reports:</strong> responding to your request and maintaining service security.</li>
+  <li><strong>Anonymous cookieless analytics on the hosted website/app:</strong> legitimate interests in understanding basic product usage and improving the service, subject to your opt-out controls and applicable local ePrivacy rules.</li>
+</ul>
+
+<h2>6. Recipients and processors</h2>
+<p>Depending on what you use, the following providers may receive limited data:</p>
+<ul>
+  <li><strong>Vercel</strong> — hosting, Edge Functions, operational metadata, transient proxy handling, and private Blob storage for encrypted profile-share ciphertext.</li>
+  <li><strong>Umami</strong> — anonymous, cookieless usage analytics for hosted surfaces.</li>
+  <li><strong>Evolu sync relay</strong> — end-to-end encrypted sync ciphertext and relay metadata when you enable sync.</li>
+  <li><strong>AI providers</strong> — prompts and selected context you send to the provider you configure.</li>
+  <li><strong>Wearable vendors</strong> — OAuth authorization, tokens, and wearable API requests for vendors you connect.</li>
+  <li><strong>Google Fonts and jsDelivr</strong> — font/library fetch metadata such as IP address and browser request metadata on pages or features that load them.</li>
+</ul>
+
+<h2>7. Your rights</h2>
+<p>Under GDPR and most privacy frameworks, you have the rights to access, correct, delete, export, restrict processing, object, withdraw consent, and complain to a supervisory authority. Because getbased stores most data on your own device, you can exercise many of these rights directly, without contacting us:</p>
 <ul>
   <li><strong>Access</strong> — the data is visible in the app; you can also export a JSON dump via Settings → Data → Export</li>
   <li><strong>Correct</strong> — edit any value inline</li>
-  <li><strong>Delete</strong> — delete individual records, individual profiles, or all data (Settings → Data → Clear all data)</li>
+  <li><strong>Delete</strong> — delete individual records, individual profiles, all local data (Settings → Data → Clear all data), stop active profile-share links from the creating device, and disconnect integrations</li>
   <li><strong>Export / portability</strong> — Settings → Data → Export produces a portable JSON file</li>
-  <li><strong>Restrict processing</strong> — disable the AI context toggle, disconnect any wearable, turn off sync</li>
+  <li><strong>Restrict processing</strong> — disable the AI context toggle, disconnect any wearable, turn off sync, stop sharing, or avoid cloud providers</li>
+  <li><strong>Object</strong> — object to processing based on legitimate interests, including hosted analytics</li>
+  <li><strong>Withdraw consent</strong> — disable optional features, revoke wearable access with the vendor, turn off sync/sharing, or remove provider credentials</li>
+  <li><strong>Complain</strong> — you may lodge a complaint with your local supervisory authority. In Czechia, this is the Úřad pro ochranu osobních údajů (ÚOOÚ), <a href="https://uoou.gov.cz" target="_blank" rel="noopener">uoou.gov.cz</a>.</li>
 </ul>
-<p>For personal data the maintainer controls (for example, if you email a support request), you can write to <a href="mailto:privacy@getbased.health">privacy@getbased.health</a>.</p>
+<p>For personal data the maintainer controls (for example, if you email a support request, submit a vulnerability report, or contact through GitHub), you can write to <a href="mailto:privacy@getbased.health">privacy@getbased.health</a>.</p>
 
-<h2>6. Children</h2>
+<h2>8. Children</h2>
 <p>getbased is not designed for children under 15. This matches the minimum age for consent to information-society services under Czech law (the governing law of the Terms). If you live in an EU Member State with a higher minimum age (16 in several countries under GDPR Article 8), that higher age applies to you. Please do not enter a child's medical data without appropriate guardianship and consent.</p>
 
-<h2>7. Security</h2>
+<h2>9. Security</h2>
 <p>Measures we apply:</p>
 <ul>
   <li>TLS for all network transit (getbased.health and every third-party service)</li>
@@ -232,13 +259,14 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 </ul>
 <p>No system is unbreakable. If you discover a vulnerability, please report it via a private GitHub security advisory at <a href="https://github.com/elkimek/get-based/security" target="_blank" rel="noopener">github.com/elkimek/get-based/security</a>.</p>
 
-<h2>8. International data transfers</h2>
-<p>If you use the hosted getbased.health, the Vercel Edge Function runs on regional edge nodes operated by Vercel, Inc. Your request may be handled by whichever edge node is closest to you; responses do not persist. Third-party services you choose (AI providers, wearable vendors) may transfer data to their own infrastructure per their policies.</p>
+<h2>10. International data transfers</h2>
+<p>If you use the hosted getbased.health, Vercel infrastructure may process operational metadata, proxy requests, and encrypted profile-share ciphertext in regions outside your country. Google Fonts, jsDelivr, Umami, AI providers, wearable vendors, Evolu relays, and custom endpoints may also process request metadata or user-selected payloads outside the EU/EEA depending on their infrastructure and policies.</p>
+<p>Do not enable a provider, relay, custom endpoint, or share link unless you are comfortable with that provider's jurisdiction, transfer safeguards, and privacy terms. Self-hosting lets you replace getbased's hosted infrastructure with your own.</p>
 
-<h2>9. Changes to this policy</h2>
-<p>If we update this policy, we'll change the <em>Effective</em> date above and mention it in the app's changelog. Material changes will also be announced on the app's first launch after the update.</p>
+<h2>11. Changes to this policy</h2>
+<p>If we update this policy, we'll change the <em>Effective</em> date above and mention it in the app's changelog. Material changes, or changes to the app's built-in privacy version, will also be shown on the app's first launch after the update and the app will ask you to accept the current Terms and Privacy Policy before continuing.</p>
 
-<h2>10. Contact</h2>
+<h2>12. Contact</h2>
 <p>Privacy questions: <a href="mailto:privacy@getbased.health">privacy@getbased.health</a></p>
 <p>Source code, issues, general discussion: <a href="https://github.com/elkimek/get-based" target="_blank" rel="noopener">github.com/elkimek/get-based</a></p>
 

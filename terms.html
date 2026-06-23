@@ -138,12 +138,13 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p>getbased is developed and maintained by an individual maintainer operating in the Czech Republic (referred to as <strong>"the maintainer"</strong>).</p>
 
 <h2>2. What getbased is</h2>
-<p>getbased is a free, open-source, privacy-focused web application for tracking and interpreting blood work, genetic data, wearable metrics, and related health information. It runs in your browser, stores your data locally on your own device, and calls third-party services (AI providers, wearable vendors, sync relays) only when you configure them.</p>
+<p>getbased is a free, open-source, privacy-focused web application for tracking and interpreting blood work, genetic data, wearable metrics, and related health information. It runs in your browser and stores your health data locally on your own device by default. Network features are optional and include AI providers, wearable vendors, sync relays, encrypted profile sharing, hosted proxy traffic, and anonymous hosted-site/app analytics as described in the Privacy Policy.</p>
+<p>getbased is delivered as browser-based digital content/service. It requires a modern browser with JavaScript, local browser storage (<code>localStorage</code>, <code>IndexedDB</code>, and for some features OPFS), and internet access for hosted pages or optional network features. If your browser blocks storage, clears site data, disables JavaScript, or lacks required APIs, parts of getbased may not work or local data may be lost.</p>
 
 <h2>3. Not a medical device; not medical advice</h2>
 <p>getbased is <strong>not</strong> a medical device. It has not been reviewed or approved by any regulatory authority (FDA, EMA, CE/MDR, SÚKL, or otherwise). It is not certified for clinical, diagnostic, therapeutic, or any other medical purpose.</p>
 <p>getbased is intended as a wellness, self-tracking, and educational tool. It is not intended to diagnose, prevent, monitor, predict, treat, or alleviate any disease or medical condition, nor to recommend a specific clinical intervention for you.</p>
-<p>Content displayed by getbased — including AI-generated interpretations, genetic findings, trend alerts, supplement suggestions, biological-age estimates, and context cards — is provided for <strong>informational and educational purposes only</strong>. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+<p>Content displayed by getbased — including AI-generated interpretations, genetic findings, trend alerts, supplement suggestions, biological-age estimates, and context cards — is provided for <strong>informational and educational purposes only</strong>. Trend alerts and wearable summaries are not clinical monitoring, emergency alerts, triage, or treatment instructions. Supplement suggestions are educational context, not dosing instructions, prescriptions, or personalised medical recommendations.</p>
 <p>AI-generated output should be read as general context about biomarkers and health science, not as a statement that you personally have a condition, deficiency, or disease. Any clinically relevant finding must be confirmed with a qualified healthcare professional.</p>
 <p><strong>Always consult a qualified healthcare professional</strong> (physician, licensed dietitian, pharmacist, or other medical authority in your jurisdiction) before making health decisions based on anything displayed by getbased. Never disregard professional medical advice or delay seeking it because of something you read in the app.</p>
 <p>AI providers are probabilistic and may generate plausible-sounding but incorrect outputs. Reference ranges differ between labs, populations, and clinical contexts. Genetic variant interpretations change as research evolves.</p>
@@ -155,17 +156,20 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 
 <h2>5. No account, no subscription</h2>
 <p>getbased does not require an account. There is nothing to sign up for, nothing to suspend, nothing to cancel. You can stop using getbased at any time simply by closing the tab or clearing your browser data. Support for the project is voluntary (donations are optional and governed separately).</p>
+<p>At the time of these Terms, getbased does not sell a paid digital service, subscription, renewal, or in-app purchase. There is no checkout, no minimum commitment, no delivery charge, and no refund process because no payment is collected for using the app. If paid features are introduced later, the Terms and checkout flow must be updated before launch with price, cancellation, withdrawal, and complaint-handling information.</p>
 
 <h2>6. Third-party services</h2>
-<p>Features that call external services (AI providers, wearable vendors, sync relays, Knowledge Base servers) are <strong>optional</strong> and activated only when you configure them. Your relationship with those services is governed by their own terms and privacy policies. getbased neither mediates nor controls what those services do on their side. See our <a href="/privacy">Privacy Policy</a> for the list of third parties and links to their policies.</p>
-<p>If a third-party service is discontinued, changes its API, or revokes your access, the related feature may break. getbased is not liable for those outages.</p>
+<p>Features that call external services or hosted infrastructure (AI providers, wearable vendors, sync relays, Knowledge Base servers, encrypted profile sharing, hosted analytics, and the <code>/api/proxy</code> endpoint) are governed by the Privacy Policy and, where applicable, the third party's own terms and privacy policies. getbased neither mediates nor controls what those services do on their side.</p>
+<p>If you use optional profile sharing, you are responsible for choosing what to share and for keeping the link and password separate. Anyone with both can decrypt and import the shared profile until it expires or is stopped.</p>
+<p>If a third-party service is discontinued, changes its API, changes its terms, or revokes your access, the related feature may break. getbased is not liable for those outages.</p>
 
 <h2>7. Acceptable use</h2>
 <p>You agree <strong>not</strong> to:</p>
 <ul>
   <li>Use getbased for any unlawful purpose, including inputting data you don't have the right to process</li>
-  <li>Attempt to breach, probe, or disrupt the hosted <code>getbased.health</code> infrastructure, or use the <code>/api/proxy</code> endpoint for anything other than intended AI / wearable traffic</li>
-  <li>Misrepresent output from getbased as a medical diagnosis or professional advice to others</li>
+  <li>Use getbased for emergencies, triage, clinical monitoring, diagnosis, treatment decisions, medication dosing, or replacing professional care</li>
+  <li>Attempt to breach, probe, or disrupt the hosted <code>getbased.health</code> infrastructure, or use the <code>/api/proxy</code> or <code>/api/share</code> endpoints for anything other than their intended app traffic</li>
+  <li>Misrepresent output from getbased as a medical diagnosis, clinical monitoring alert, treatment plan, prescription, or professional advice to others</li>
   <li>Distribute derivative works without preserving the AGPL-3.0 license</li>
   <li>Automate bulk requests against the hosted service in a manner that denies service to other users</li>
   <li>Upload malicious content, spam, or content that infringes anyone's rights</li>
@@ -177,10 +181,10 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p>This is consistent with Sections 15 and 16 of the AGPL-3.0 and is a fundamental term of the license under which getbased is released.</p>
 
 <h2>9. Limitation of liability</h2>
-<p>To the maximum extent permitted by law, the maintainer shall not be liable for any direct, indirect, incidental, special, consequential, exemplary, or punitive damages — including but not limited to loss of data, loss of profits, personal injury, or medical outcomes — arising from or related to your use of, or inability to use, getbased, even if advised of the possibility of such damages.</p>
-<p>This limitation applies regardless of the legal theory (contract, tort, negligence, strict liability, or otherwise) on which the claim is based.</p>
-<p>Nothing in these Terms limits or excludes the maintainer's liability for death or personal injury resulting from the maintainer's gross negligence or intentional misconduct, for damage caused intentionally or through gross negligence, or for any other liability that cannot be excluded or limited under applicable mandatory laws of the Czech Republic.</p>
-<p>Because getbased is provided free of charge, no refunds apply; there is no monetary cap on liability simply because there is no monetary consideration.</p>
+<p>To the maximum extent permitted by law, the maintainer shall not be liable for indirect, incidental, special, consequential, exemplary, punitive, or similar damages — including but not limited to loss of data, loss of profits, business interruption, provider outages, AI/model errors, or decisions made from getbased output — arising from or related to your use of, or inability to use, getbased.</p>
+<p>getbased is an informational, educational, and self-tracking tool. You remain responsible for your own health decisions, backups, local data, API keys, and for confirming any clinically relevant information with a qualified healthcare professional.</p>
+<p>Nothing in these Terms limits or excludes the maintainer's liability for death or personal injury, for damage caused intentionally or through gross negligence, for harm to a person's natural rights, for liability toward a weaker party that cannot be limited in advance, or for any other liability that cannot be excluded or limited under applicable mandatory laws of the Czech Republic.</p>
+<p>Because getbased is provided free of charge, no refunds apply; there is no paid-service liability cap in these Terms.</p>
 <div class="callout soft">
   <strong>Statutory rights.</strong> Nothing in these Terms excludes or limits rights you have under applicable mandatory consumer-protection law that cannot be waived by agreement. If you are a consumer in the EU, EEA, or UK, your statutory rights (including under the Czech Civil Code and GDPR) are preserved regardless of any clause above.
 </div>
@@ -190,11 +194,11 @@ footer{border-top:1px solid var(--border);padding:32px;position:relative;z-index
 <p>The hosted <code>getbased.health</code> deployment may be taken offline for maintenance, or discontinued. The source code, released under AGPL-3.0, remains available for self-hosting.</p>
 
 <h2>11. Changes to these Terms</h2>
-<p>If these Terms change, we'll update the <em>Effective</em> date above and note the change in the app's changelog. Continued use after the change means you accept the updated Terms. If a change is material, the app will display it on first launch after the update.</p>
+<p>If these Terms change, we'll update the <em>Effective</em> date above and note the change in the app's changelog. If a change is material, or if the app's built-in legal version no longer matches the version this browser accepted, the app will display the updated Terms and Privacy Policy on first launch after the update and ask you to accept before continuing. If you do not agree, stop using the hosted app; because the source is AGPL-licensed, you may self-host an earlier version where legally and technically available.</p>
 
 <h2>12. Governing law &amp; jurisdiction</h2>
 <p>These Terms are governed by the laws of the <strong>Czech Republic</strong>, without regard to its conflict-of-laws rules. Any dispute arising out of or in connection with these Terms that cannot be resolved informally shall be submitted to the courts of the Czech Republic. If you are a consumer, you may also bring proceedings in the country where you reside, in accordance with mandatory EU consumer-protection law.</p>
-<p>For EU consumers, the European Commission's Online Dispute Resolution platform is available at <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+<p>For Czech consumers, the competent authority for out-of-court consumer dispute resolution may be the Czech Trade Inspection Authority (Česká obchodní inspekce, <a href="https://www.coi.cz" target="_blank" rel="noopener">coi.cz</a>), where applicable. For EU consumers, the European Commission's Online Dispute Resolution platform is available at <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
 
 <h2>13. Severability</h2>
 <p>If any provision of these Terms is held invalid or unenforceable, the remaining provisions remain in force. The invalid provision will be replaced by a valid one whose effect is as close as possible to the invalid one's original intent.</p>
