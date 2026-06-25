@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 # getbased agent stack installer
 #
-# One-line install:
-#   curl -sSL https://getbased.health/install.sh | bash
+# Public install:
+#   curl -fsSL https://getbased.health/install.sh | bash
+#
+# Private Agent Access bootstrap copied from getbased Settings:
+#   curl -fsSL https://getbased.health/install.sh | bash -s -- connect hermes --setup 'gbsetup_v1_...'
 #
 # Source: https://github.com/elkimek/get-based-site/blob/main/install.sh
-# What it does: installs getbased-agent-stack via pipx, scaffolds systemd
-# user units for rag (:8322) and dashboard (:8323), and starts them.
+# What it does: installs/upgrades getbased-agent-stack, scaffolds systemd
+# user units for rag (:8322) and dashboard (:8323), starts them, then
+# optionally forwards trailing arguments to `getbased-stack`.
 
 set -euo pipefail
+
+post_install_args=("$@")
 
 bold=$'\033[1m'
 dim=$'\033[2m'
@@ -148,23 +154,53 @@ if command -v loginctl >/dev/null 2>&1 \
   fi
 fi
 
-# ── next steps ────────────────────────────────────────────────────────
+# ── optional post-install getbased-stack command ──────────────────────
+if [ "${#post_install_args[@]}" -gt 0 ]; then
+  echo "${bold}Running requested getbased-stack command…${reset}"
+  safe_args=()
+  redact_next="no"
+  for arg in "${post_install_args[@]}"; do
+    if [ "$redact_next" = "yes" ]; then
+      safe_args+=("[private]")
+      redact_next="no"
+    elif [ "$arg" = "--setup" ]; then
+      safe_args+=("--setup")
+      redact_next="yes"
+    elif [[ "$arg" == gbsetup_v1_* ]]; then
+      safe_args+=("[private]")
+    else
+      safe_args+=("$arg")
+    fi
+  done
+  echo "${dim}▶ getbased-stack ${safe_args[*]}${reset}"
+
+  if [ "${post_install_args[0]}" = "connect" ] && ! getbased-stack connect --help >/dev/null 2>&1; then
+    echo "${red}Installed getbased-stack does not support 'connect'.${reset}"
+    echo "Upgrade to a release that includes Agent Access bootstrap support, then retry the private setup command copied from Settings → Agent Access."
+    exit 1
+  fi
+
+  getbased-stack "${post_install_args[@]}"
+  echo ""
+  echo "${green}✓ Requested command completed${reset}"
+  echo "${dim}Done.${reset}"
+  exit 0
+fi
+
+# ── next steps for public installer use ──────────────────────────────
 echo "${bold}Next steps:${reset}"
-echo "  1. In getbased: Settings → Cross-device Sync → enable Sync."
-echo "  2. In getbased: Settings → Agent Access → enable it and copy both:"
-echo "       GETBASED_TOKEN and GETBASED_AGENT_CONTEXT_KEY"
-echo "  3. Save them into the stack env file:"
-echo "       getbased-stack set GETBASED_TOKEN=..."
-echo "       getbased-stack set GETBASED_AGENT_CONTEXT_KEY=..."
-echo "  4. Generate your MCP client config:"
-echo "       getbased-stack mcp-config claude-desktop"
-echo "     Or open the dashboard MCP tab at http://127.0.0.1:8323"
+echo "  Public install is complete. To connect an agent to private lab data,"
+echo "  the user must open getbased and copy a private Agent Access command:"
 echo ""
-echo "${dim}Knowledge Base optional:${reset}"
-echo "  • Login URL: getbased-dashboard login-url"
-echo "  • Dashboard → MCP → Environment shows whether token/key are set."
-echo "  • Dashboard → Knowledge creates libraries for local RAG search."
-echo "  • Dashboard → Settings / Knowledge Base gives the external Lens key"
-echo "    to paste into getbased → Settings → Knowledge Base."
+echo "    getbased → Settings → Cross-device Sync → enable Sync"
+echo "    getbased → Settings → Agent Access → enable → Copy setup command"
+echo ""
+echo "  That private command contains the relay token and local decryption key."
+echo "  Do not scrape, guess, or ask an agent to invent those credentials."
+echo ""
+echo "  Knowledge Base optional:"
+echo "    getbased-dashboard login-url"
+echo "    Dashboard → Knowledge creates libraries for local RAG search."
+echo "    Dashboard → Settings / Knowledge Base gives the Lens key for getbased."
 echo ""
 echo "${dim}Done.${reset}"

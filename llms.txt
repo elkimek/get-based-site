@@ -87,3 +87,23 @@ getbased is organized around five lenses on your biology. Each one informs the o
 - **vs spreadsheets**: AI-powered PDF import extracts markers automatically. Interactive charts with reference/optimal bands, trend alerts, and correlation analysis
 - **vs generic health trackers**: getbased connects five lenses on one dashboard — labs (287+ biomarkers, specialty panels), genome (DNA + mtDNA), body (wearables + biometrics), light, and insight — and the AI reasons across all of them, not one signal at a time
 - **vs ChatGPT/Claude directly**: getbased structures your data, maintains history across imports, gives AI your full health context, and grounds every answer in your own research library (PDFs, papers, clinical guides) — not just a single lab report pasted into a chat window or what a generic model was trained on. Connect via Hermes, OpenClaw, or any MCP-compatible agent to chat over any messenger
+
+## Agent / MCP installation
+
+Public, credential-free agent installation instructions are available at:
+
+- https://getbased.health/.well-known/getbased-agent.md
+
+Public install command:
+
+```bash
+curl -fsSL https://getbased.health/install.sh | bash
+```
+
+Private Agent Access requires explicit user action in the app. Agents cannot obtain the relay token or Agent Context key from public docs. The user must open getbased → Settings → Agent Access → Copy setup command. The private command has this shape:
+
+```bash
+curl -fsSL https://getbased.health/install.sh | bash -s -- connect hermes --setup 'gbsetup_v1_...'
+```
+
+Treat the `gbsetup_v1_...` payload as a secret.
